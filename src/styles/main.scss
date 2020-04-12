@@ -1,0 +1,103 @@
+@use "./fonts";
+
+html {
+  font-size: 62.5%;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  color: white;
+  display: flex;
+  font-size: 1.6rem;
+  background-color: black;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  font-family: "Source Sans Pro", sans-serif;
+}
+
+h1 {
+  margin: 0;
+  font-family: "Source Sans Pro Semi Bold", sans-serif;
+}
+
+small {
+  display: block;
+  font-size: 1.6rem;
+}
+
+a {
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+#__next {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  margin: 1rem;
+}
+
+main {
+  flex: 1;
+  display: flex;
+
+  aside {
+    margin: 1rem 1rem 1rem 2rem;
+
+    ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+
+      li {
+        margin: 1rem;
+        display: flex;
+        cursor: pointer;
+        text-align: center;
+        position: relative;
+        align-items: center;
+        justify-content: center;
+        padding: 0.5rem 1rem 0.5rem 2rem;
+
+        &.disabled {
+          color: gray;
+          font-style: italic;
+        }
+
+        .dot {
+          left: 0;
+          width: 1.3rem;
+          height: 1.3rem;
+          position: absolute;
+          border-radius: 50%;
+        }
+      }
+    }
+  }
+
+  section {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem 2rem 1rem 1rem;
+  }
+}
+
+footer {
+  margin: 1rem;
+  display: flex;
+  font-size: 1.4rem;
+  justify-content: space-between;
+}

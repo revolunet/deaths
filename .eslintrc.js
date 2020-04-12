@@ -9,6 +9,11 @@ module.exports = {
         "plugin:react/recommended",
         "plugin:prettier/recommended"
     ],
+    "settings": {
+      "react": {
+        "version": "detect"
+      }
+    },
     "globals": {
         "Atomics": "readonly",
         "SharedArrayBuffer": "readonly"
@@ -25,7 +30,8 @@ module.exports = {
         "prettier"
     ],
     "rules": {
-      "prettier/prettier": "error",
+        "prettier/prettier": "error",
+        "react/prop-types": 0,
         "indent": [
             "error",
             2
