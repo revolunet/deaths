@@ -1,17 +1,11 @@
 import Head from "next/head"
 import React, { useRef, useEffect, useState } from "react"
-import { LineChart, Line, CartesianGrid, XAxis, YAxis } from "recharts"
 
-import deaths from "../lib/deaths"
+import colors from "../lib/colors"
+import List from "../components/List"
+import Chart from "../components/Chart"
 
-const getColor = () => "#" + Math.random().toString(16).substr(-6)
-
-const colors = Object.keys(deaths[0]).reduce((colors, year) => {
-  colors[year] = getColor()
-  return colors
-}, {})
-
-const Home = () => {
+const Home = ({ colors }) => {
   const ref = useRef()
   const [width, setWidth] = useState(0)
   const [height, setHeight] = useState(400)
@@ -24,69 +18,71 @@ const Home = () => {
   }
 
   useEffect(() => {
-    setWidth(ref.current.clientWidth)
-    setHeight(ref.current.clientHeight || height)
+    setWidth(ref.current.clientWidth - 10)
+    setHeight(ref.current.clientHeight - 10 || height)
   }, [])
 
   return (
-    <div className="container">
+    <>
       <Head>
-        <title>Create Next App</title>
+        <title>Décès annuels en France</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <header>
-        <h1>Décès annuels en France</h1>
-        <div>
-          Sources{" "}
-          <a href="https://www.data.gouv.fr/fr/datasets/fichier-des-personnes-decedees">
-            data.gouv.fr
-          </a>
-        </div>
+        <h1>
+          Décès annuels en France
+          <small>
+            Sources{" "}
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://www.data.gouv.fr/fr/datasets/fichier-des-personnes-decedees"
+            >
+              data.gouv.fr
+            </a>
+          </small>
+        </h1>
       </header>
       <main>
         <aside>
-          <ul>
-            {Object.keys(deaths[0]).map((year, i) => (
-              <li
-                key={i}
-                onClick={() => toggleYear(year)}
-                className={disabledYears[year] && "disabled"}
-                style={{ color: colors[year] }}
-              >
-                {year}
-              </li>
-            ))}
-          </ul>
+          <List
+            colors={colors}
+            toggleYear={toggleYear}
+            disabledYears={disabledYears}
+          />
         </aside>
 
         <section ref={ref}>
-          <LineChart width={width} height={height} data={deaths}>
-            {Object.keys(deaths[0]).map((year, i) =>
-              disabledYears[year] ? null : (
-                <Line
-                  key={i}
-                  dataKey={year}
-                  type="monotone"
-                  stroke={colors[year]}
-                />
-              )
-            )}
-            <CartesianGrid stroke="#ccc" />
-            <XAxis dataKey="month" />
-            <YAxis />
-          </LineChart>
+          <Chart
+            width={width}
+            height={height}
+            colors={colors}
+            disabledYears={disabledYears}
+          />
         </section>
       </main>
 
       <footer>
         <div>Chewam © 2020</div>
         <div>
-          version 0.1.0 (<a href="https://github.com/chewam/deaths">s3dd8f</a>)
+          version 0.1.0 (&nbsp;
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://github.com/chewam/deaths"
+          >
+            s3dd8f
+          </a>
+          &nbsp;)
         </div>
       </footer>
-    </div>
+    </>
   )
+}
+
+export async function getStaticProps() {
+  return { props: { colors } }
 }
 
 export default Home
