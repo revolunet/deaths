@@ -10,6 +10,7 @@ const Home = ({ colors }) => {
   const [width, setWidth] = useState(0)
   const [height, setHeight] = useState(400)
   const [disabledYears, setDisabledYears] = useState({})
+  const sha = process.env.NOW_GITHUB_COMMIT_SHA || "dev"
 
   const toggleYear = (year) => {
     if (disabledYears[year]) delete disabledYears[year]
@@ -72,7 +73,7 @@ const Home = ({ colors }) => {
             rel="noopener noreferrer"
             href="https://github.com/chewam/deaths"
           >
-            s3dd8f
+            {sha}
           </a>
           &nbsp;)
         </div>
