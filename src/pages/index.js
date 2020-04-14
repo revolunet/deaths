@@ -10,7 +10,7 @@ const Home = ({ colors }) => {
   const [width, setWidth] = useState(0)
   const [height, setHeight] = useState(400)
   const [disabledYears, setDisabledYears] = useState({})
-  const sha = process.env.NOW_GITHUB_COMMIT_SHA || "dev"
+  const sha = process.env.NOW_GITHUB_COMMIT_SHA.substring(0, 7) || "dev"
 
   const toggleYear = (year) => {
     if (disabledYears[year]) delete disabledYears[year]
@@ -71,7 +71,7 @@ const Home = ({ colors }) => {
           <a
             target="_blank"
             rel="noopener noreferrer"
-            href="https://github.com/chewam/deaths"
+            href={`https://github.com/chewam/deaths/commits/${sha}`}
           >
             {sha}
           </a>
