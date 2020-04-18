@@ -1,5 +1,5 @@
 import Head from "next/head"
-import React, { useRef, useEffect, useState } from "react"
+import React, { useState } from "react"
 
 import colors from "../lib/colors"
 import List from "../components/List"
@@ -8,9 +8,6 @@ import Footer from "../components/Footer"
 import Header from "../components/Header"
 
 const Home = ({ colors }) => {
-  const ref = useRef()
-  const [width, setWidth] = useState(0)
-
   const [disabledYears, setDisabledYears] = useState({
     2010: true,
     2011: true,
@@ -26,10 +23,6 @@ const Home = ({ colors }) => {
     else disabledYears[year] = true
     setDisabledYears({ ...disabledYears })
   }
-
-  useEffect(() => {
-    setWidth(ref.current.clientWidth - 10)
-  }, [])
 
   return (
     <>
@@ -53,8 +46,8 @@ const Home = ({ colors }) => {
           />
         </aside>
 
-        <section ref={ref}>
-          <Chart width={width} colors={colors} disabledYears={disabledYears} />
+        <section>
+          <Chart colors={colors} disabledYears={disabledYears} />
         </section>
       </main>
 
