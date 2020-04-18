@@ -18,12 +18,19 @@ const List = ({ colors, disabledYears, toggleYear }) => (
             onClick={() => toggleYear(year)}
             className={disabledYears[year] && "disabled"}
           >
-            <div>{year}</div>
-            <div className="deaths">{getTotal(year)} décès</div>
-            <span
-              className="dot"
-              style={{ backgroundColor: colors[year] }}
-            ></span>
+            <div>
+              <div
+                className="dot"
+                style={{
+                  borderColor: colors[year],
+                  backgroundColor: colors[year],
+                }}
+              ></div>
+            </div>
+            <div>
+              <div>{year}</div>
+              <div className="deaths">{getTotal(year)} décès</div>
+            </div>
           </li>
         )
       )}

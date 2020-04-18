@@ -7,7 +7,7 @@ const Footer = () => (
   <footer>
     <div>Chewam © 2020</div>
     <div>
-      version {version} (&nbsp;
+      version {version} (
       <a
         target="_blank"
         rel="noopener noreferrer"
@@ -15,7 +15,7 @@ const Footer = () => (
       >
         {sha.substring(0, 7)}
       </a>
-      &nbsp;)
+      )
     </div>
   </footer>
 )
