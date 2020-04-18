@@ -40,6 +40,7 @@ const Home = ({ colors }) => {
           name="description"
           content="Statistiques annuelles des décès en France de 2010 à nos jours."
         />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
 
       <Header />
