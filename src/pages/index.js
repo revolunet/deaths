@@ -4,13 +4,23 @@ import React, { useRef, useEffect, useState } from "react"
 import colors from "../lib/colors"
 import List from "../components/List"
 import Chart from "../components/Chart"
+import Footer from "../components/Footer"
+import Header from "../components/Header"
 
 const Home = ({ colors }) => {
   const ref = useRef()
   const [width, setWidth] = useState(0)
   const [height, setHeight] = useState(400)
-  const [disabledYears, setDisabledYears] = useState({})
-  const sha = process.env.NOW_GITHUB_COMMIT_SHA.substring(0, 7) || "dev"
+
+  const [disabledYears, setDisabledYears] = useState({
+    2010: true,
+    2011: true,
+    2012: true,
+    2013: true,
+    2014: true,
+    2015: true,
+    2016: true,
+  })
 
   const toggleYear = (year) => {
     if (disabledYears[year]) delete disabledYears[year]
@@ -30,21 +40,7 @@ const Home = ({ colors }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <header>
-        <h1>
-          Décès annuels en France
-          <small>
-            Sources{" "}
-            <a
-              target="_blank"
-              rel="noopener noreferrer"
-              href="https://www.data.gouv.fr/fr/datasets/fichier-des-personnes-decedees"
-            >
-              data.gouv.fr
-            </a>
-          </small>
-        </h1>
-      </header>
+      <Header />
       <main>
         <aside>
           <List
@@ -64,20 +60,7 @@ const Home = ({ colors }) => {
         </section>
       </main>
 
-      <footer>
-        <div>Chewam © 2020</div>
-        <div>
-          version 0.1.0 (&nbsp;
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
-            href={`https://github.com/chewam/deaths/commits/${sha}`}
-          >
-            {sha}
-          </a>
-          &nbsp;)
-        </div>
-      </footer>
+      <Footer />
     </>
   )
 }

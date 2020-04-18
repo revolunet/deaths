@@ -1,6 +1,11 @@
+"use strict"
+
 var fs = require("fs")
 var es = require("event-stream")
 var process = require("process")
+const crypto = require("crypto")
+
+const baseDir = `${__dirname}/../data`
 
 const Months = [
   "Janvier",
@@ -17,47 +22,67 @@ const Months = [
   "Decembre",
 ]
 
-const parse = (fileName) => {
-  var count = 0
-  const data = []
-  const year = fileName.substring(6, 10)
+const processData = (data) => {
+  const result = []
+
+  for (const key in data) {
+    const { year, month } = data[key]
+    const index = month - 1
+    if (2010 > year || year > 2020) continue
+    if (0 > index || index > 12) continue
+    if (!result[index]) {
+      result[index] = { month: Months[index] }
+    }
+    if (!result[index][year]) {
+      result[index][year] = 0
+    }
+    result[index][year]++
+  }
+
+  return result
+}
+
+const getLineHash = (line) =>
+  crypto.createHash("md5").update(line).digest("hex")
+
+const readLine = (line) => [
+  getLineHash(line),
+  parseInt(line.substring(154, 158), 10),
+  parseInt(line.substring(158, 160), 10),
+]
+
+const readFile = (fileName) => {
+  const data = {}
 
   return new Promise((resolve) => {
-    fs.createReadStream(`${__dirname}/../data/${fileName}`)
+    fs.createReadStream(`${baseDir}/${fileName}`)
       .pipe(es.split())
       .pipe(
         es
           .mapSync((line) => {
-            count++
-            const y = line.substring(154, 158)
-            let month = parseInt(line.substring(158, 160), 10)
-            // console.log("y", y, year, y === year)
-            if (month === 0) month++
-            if (year === y && 1 <= month && month <= 12) {
-              if (!data[month - 1]) {
-                data[month - 1] = {
-                  month: Months[month - 1],
-                }
-                data[month - 1][year] = 1
-              } else {
-                data[month - 1][year]++
-              }
+            const [hash, year, month] = readLine(line)
+            if (Number.isInteger(year) && Number.isInteger(month)) {
+              data[hash] = { year, month }
             }
           })
-          .on("error", (err) => {
-            console.log("Error while reading file.", err)
-          })
-          .on("end", () => {
-            console.log("Total count:", count, data)
-            resolve(data)
-          })
+          .on("error", (err) => console.log("Error while reading file.", err))
+          .on("end", () => resolve(data))
       )
   })
 }
 
+const getFilesData = async (files) => {
+  let data = {}
+  for (let i = 0, l = files.length; i < l; i++) {
+    console.log(`File ${i + 1}/${l}:`, files[i])
+    data = { ...(await readFile(files[i])), ...data }
+  }
+  return data
+}
+
 const getFiles = () => {
   return new Promise((resolve) => {
-    fs.readdir(`${__dirname}/../data`, (err, files) => {
+    fs.readdir(baseDir, (err, files) => {
       if (err) {
         console.error("Could not list the directory.", err)
         process.exit(1)
@@ -69,17 +94,15 @@ const getFiles = () => {
 
 const main = async () => {
   const files = await getFiles()
-  console.log("Files:", files)
-
-  const result = await files.reduce(async (promisedResult, file) => {
-    const result = await promisedResult
-    const r = await parse(file)
-    return Months.map((month, i) => {
-      return { ...(r[i] || {}), ...(result[i] || {}) }
-    })
-  }, [])
-
-  console.log("result:", JSON.stringify(result, null, 2))
+  const resultFilePath = `${__dirname}/../src/lib/deaths.json`
+  const data = await getFilesData(files)
+  console.log(
+    "File processing done:",
+    Object.keys(data).length,
+    "records found."
+  )
+  fs.writeFileSync(resultFilePath, JSON.stringify(processData(data)))
+  console.log("Result written into", resultFilePath)
 }
 
 main()
