@@ -26,7 +26,10 @@ const MonthTooltip = ({ active, payload, label }) =>
 const Chart = ({ colors, disabledYears }) => {
   return (
     <ResponsiveContainer>
-      <LineChart data={deaths}>
+      <LineChart
+        data={deaths}
+        margin={{ top: 5, right: 5, bottom: 5, left: 0 }}
+      >
         <CartesianGrid stroke="#333" strokeDasharray="3 3" />
         {Object.keys(deaths[0]).map((year, i) =>
           year === "month" || disabledYears[year] ? null : (

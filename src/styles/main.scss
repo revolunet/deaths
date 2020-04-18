@@ -17,12 +17,12 @@ body {
   background-color: black;
   text-rendering: optimizelegibility;
   -webkit-font-smoothing: antialiased;
-  font-family: "Source Sans Pro", sans-serif;
+  font-family: "Open Sans", sans-serif;
 }
 
 h1 {
   margin: 0;
-  font-family: "Source Sans Pro Semi Bold", sans-serif;
+  font-weight: 600;
 }
 
 small {
@@ -53,11 +53,12 @@ header {
 main {
   flex: 1;
   display: flex;
-  padding: 2rem;
+  padding: 1rem;
   overflow: auto;
 
   aside {
     overflow: auto;
+    padding-right: 1rem;
 
     ul {
       margin: 0;
@@ -65,9 +66,9 @@ main {
       list-style: none;
 
       li {
-        margin: 1rem;
         cursor: pointer;
         position: relative;
+        margin: 0 0 1rem 0;
         padding: 0 1rem 0.5rem 2rem;
 
         &.disabled {
@@ -86,6 +87,7 @@ main {
 
         .deaths {
           font-size: 1.4rem;
+          white-space: nowrap;
         }
       }
     }
@@ -121,14 +123,21 @@ footer {
     flex-direction: column;
 
     aside {
-      height: 130px;
-      min-height: 130px;
+      height: 110px;
+      padding-right: 0;
+      min-height: 110px;
       margin-bottom: 2rem;
 
       ul {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
       }
     }
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  html {
+    font-size: 50%;
   }
 }
