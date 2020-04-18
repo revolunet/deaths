@@ -10,7 +10,6 @@ import Header from "../components/Header"
 const Home = ({ colors }) => {
   const ref = useRef()
   const [width, setWidth] = useState(0)
-  const [height, setHeight] = useState(400)
 
   const [disabledYears, setDisabledYears] = useState({
     2010: true,
@@ -30,7 +29,6 @@ const Home = ({ colors }) => {
 
   useEffect(() => {
     setWidth(ref.current.clientWidth - 10)
-    setHeight(ref.current.clientHeight - 10 || height)
   }, [])
 
   return (
@@ -55,12 +53,7 @@ const Home = ({ colors }) => {
         </aside>
 
         <section ref={ref}>
-          <Chart
-            width={width}
-            height={height}
-            colors={colors}
-            disabledYears={disabledYears}
-          />
+          <Chart width={width} colors={colors} disabledYears={disabledYears} />
         </section>
       </main>
 
