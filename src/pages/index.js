@@ -38,6 +38,10 @@ const Home = ({ colors }) => {
       <Head>
         <title>Décès annuels en France</title>
         <link rel="icon" href="/favicon.ico" />
+        <meta
+          name="description"
+          content="Statistiques annuelles des décès en France de 2010 à nos jours."
+        />
       </Head>
 
       <Header />
