@@ -1,10 +1,13 @@
-import deaths from "./deaths"
-
-const getColor = () => "#" + Math.random().toString(16).substr(-6)
-
-const colors = Object.keys(deaths[0]).reduce((colors, year) => {
-  colors[year] = getColor()
-  return colors
-}, {})
-
-export default colors
+export default {
+  2010: "POWDERBLUE",
+  2011: "LIGHTBLUE",
+  2012: "SKYBLUE",
+  2013: "LIGHTSKYBLUE",
+  2014: "DEEPSKYBLUE",
+  2015: "DODGERBLUE",
+  2016: "CORNFLOWERBLUE",
+  2017: "ROYALBLUE",
+  2018: "MEDIUMSLATEBLUE",
+  2019: "BLUE",
+  2020: "MAGENTA",
+}
