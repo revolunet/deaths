@@ -1,5 +1,13 @@
 import React from "react"
-import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip } from "recharts"
+import {
+  LineChart,
+  Line,
+  CartesianGrid,
+  XAxis,
+  YAxis,
+  Tooltip,
+  ResponsiveContainer,
+} from "recharts"
 
 import deaths from "../lib/deaths"
 
@@ -15,25 +23,32 @@ const MonthTooltip = ({ active, payload, label }) =>
     </div>
   ) : null
 
-const Chart = ({ width, height, colors, disabledYears }) => {
+const Chart = ({ width, colors, disabledYears }) => {
   return (
-    <LineChart width={width} height={height} data={deaths}>
-      <CartesianGrid stroke="#333" strokeDasharray="3 3" />
-      {Object.keys(deaths[0]).map((year, i) =>
-        year === "month" || disabledYears[year] ? null : (
-          <Line key={i} dataKey={year} type="monotone" stroke={colors[year]} />
-        )
-      )}
-      <XAxis
-        dy={0}
-        angle={30}
-        interval={0}
-        dataKey="month"
-        padding={{ left: 30, right: 30 }}
-      />
-      <YAxis type="number" domain={[40000, 80000]} />
-      <Tooltip content={<MonthTooltip />} />
-    </LineChart>
+    <ResponsiveContainer width={width} height="100%">
+      <LineChart data={deaths}>
+        <CartesianGrid stroke="#333" strokeDasharray="3 3" />
+        {Object.keys(deaths[0]).map((year, i) =>
+          year === "month" || disabledYears[year] ? null : (
+            <Line
+              key={i}
+              dataKey={year}
+              type="monotone"
+              stroke={colors[year]}
+            />
+          )
+        )}
+        <XAxis
+          dy={0}
+          angle={30}
+          interval={0}
+          dataKey="month"
+          padding={{ left: 30, right: 30 }}
+        />
+        <YAxis type="number" domain={[40000, 80000]} />
+        <Tooltip content={<MonthTooltip />} />
+      </LineChart>
+    </ResponsiveContainer>
   )
 }
 
