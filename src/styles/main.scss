@@ -42,6 +42,7 @@ a {
 #__next {
   flex: 1;
   display: flex;
+  overflow: auto;
   flex-direction: column;
 }
 
@@ -52,9 +53,11 @@ header {
 main {
   flex: 1;
   display: flex;
+  padding: 2rem;
+  overflow: auto;
 
   aside {
-    margin: 1rem 1rem 1rem 2rem;
+    overflow: auto;
 
     ul {
       margin: 0;
@@ -93,7 +96,6 @@ main {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 1rem 2rem 1rem 1rem;
   }
 }
 
@@ -112,4 +114,19 @@ footer {
   display: flex;
   font-size: 1.4rem;
   justify-content: space-between;
+}
+
+@media screen and (max-width: 1000px) {
+  main {
+    flex-direction: column;
+
+    aside {
+      margin-bottom: 2rem;
+
+      ul {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      }
+    }
+  }
 }
