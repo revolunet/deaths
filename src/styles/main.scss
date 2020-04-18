@@ -58,7 +58,7 @@ main {
 
   aside {
     overflow: auto;
-    padding-right: 1rem;
+    padding-right: 2rem;
 
     ul {
       margin: 0;
@@ -66,28 +66,41 @@ main {
       list-style: none;
 
       li {
+        display: flex;
         cursor: pointer;
         position: relative;
-        margin: 0 0 1rem 0;
+        margin-bottom: 1rem;
+        align-items: center;
         padding: 0 1rem 0.5rem 2rem;
 
-        &.disabled {
-          color: gray;
-          font-style: italic;
-        }
-
         .dot {
-          left: 0;
-          top: 0.4rem;
           width: 1.3rem;
           height: 1.3rem;
-          position: absolute;
+          border-width: 1px;
+          min-width: 1.3rem;
+          margin-right: 1rem;
+          min-height: 1.3rem;
           border-radius: 50%;
+          border-style: solid;
         }
 
         .deaths {
+          color: #ccc;
           font-size: 1.4rem;
           white-space: nowrap;
+        }
+
+        &.disabled {
+          color: DIMGRAY;
+          font-style: italic;
+
+          .dot {
+            background-color: transparent !important;
+          }
+
+          .deaths {
+            color: inherit;
+          }
         }
       }
     }
@@ -123,9 +136,9 @@ footer {
     flex-direction: column;
 
     aside {
-      height: 110px;
+      height: 90px;
       padding-right: 0;
-      min-height: 110px;
+      min-height: 90px;
       margin-bottom: 2rem;
 
       ul {

@@ -46,9 +46,10 @@ const Chart = ({ colors, disabledYears }) => {
           angle={30}
           interval={0}
           dataKey="month"
+          tick={{ fontSize: 12 }}
           padding={{ left: 30, right: 30 }}
         />
-        <YAxis type="number" domain={[40000, 80000]} />
+        <YAxis type="number" domain={[40000, 80000]} tick={{ fontSize: 12 }} />
         <Tooltip content={<MonthTooltip />} />
       </LineChart>
     </ResponsiveContainer>
