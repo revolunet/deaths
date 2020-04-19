@@ -1,55 +1,3 @@
-@use "./fonts";
-
-html {
-  font-size: 62.5%;
-}
-
-html, body {
-  height: 100%;
-}
-
-body {
-  margin: 0;
-  padding: 0;
-  color: white;
-  display: flex;
-  font-size: 1.6rem;
-  background-color: black;
-  text-rendering: optimizelegibility;
-  -webkit-font-smoothing: antialiased;
-  font-family: "Open Sans", sans-serif;
-}
-
-h1 {
-  margin: 0;
-  font-weight: 600;
-}
-
-small {
-  display: block;
-  font-size: 1.6rem;
-}
-
-a {
-  color: DODGERBLUE;
-  text-decoration: none;
-
-  &:hover {
-    text-decoration: underline;
-  }
-}
-
-#__next {
-  flex: 1;
-  display: flex;
-  overflow: auto;
-  flex-direction: column;
-}
-
-header {
-  margin: 1rem;
-}
-
 main {
   flex: 1;
   display: flex;
@@ -111,26 +59,19 @@ main {
     display: flex;
     align-items: center;
     justify-content: center;
+
+    .custom-tooltip {
+      font-size: 1.2rem;
+      border-radius: 3px;
+      padding: 0.5rem 1rem;
+      background-color: #222;
+
+      & > div:first-child {
+        font-weight: 600;
+        font-size: 1.4rem;
+      }
+    }
   }
-}
-
-.custom-tooltip {
-  font-size: 1.2rem;
-  border-radius: 3px;
-  padding: 0.5rem 1rem;
-  background-color: #222;
-
-  & > div:first-child {
-    font-weight: 600;
-    font-size: 1.4rem;
-  }
-}
-
-footer {
-  margin: 1rem;
-  display: flex;
-  font-size: 1.4rem;
-  justify-content: space-between;
 }
 
 @media screen and (max-width: 1000px) {
@@ -148,11 +89,5 @@ footer {
         grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
       }
     }
-  }
-}
-
-@media screen and (max-width: 1000px) {
-  html {
-    font-size: 50%;
   }
 }

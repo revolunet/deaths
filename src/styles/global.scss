@@ -1,0 +1,44 @@
+html {
+  font-size: 62.5%;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  color: white;
+  display: flex;
+  font-size: 1.6rem;
+  background-color: black;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  font-family: "Open Sans", sans-serif;
+}
+
+h1 {
+  margin: 0;
+  font-weight: 600;
+}
+
+small {
+  display: block;
+  font-size: 1.6rem;
+}
+
+a {
+  color: DODGERBLUE;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  html {
+    font-size: 50%;
+  }
+}
