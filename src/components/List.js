@@ -1,6 +1,6 @@
 import React from "react"
 
-import deaths from "../lib/deaths"
+import deaths from "@data/deaths"
 
 const getTotal = (year) =>
   new Intl.NumberFormat("fr-FR").format(
@@ -16,7 +16,7 @@ const List = ({ colors, disabledYears, toggleYear }) => (
           <li
             key={i}
             onClick={() => toggleYear(year)}
-            className={disabledYears[year] && "disabled"}
+            className={disabledYears[year] ? "disabled" : ""}
           >
             <div>
               <div

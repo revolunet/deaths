@@ -1,0 +1,12 @@
+@use "./fonts";
+@use "./global";
+@use "./header";
+@use "./main";
+@use "./footer";
+
+#__next {
+  flex: 1;
+  display: flex;
+  overflow: auto;
+  flex-direction: column;
+}

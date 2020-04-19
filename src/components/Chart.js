@@ -1,15 +1,15 @@
 import React from "react"
 import {
-  LineChart,
   Line,
-  CartesianGrid,
   XAxis,
   YAxis,
   Tooltip,
+  LineChart,
+  CartesianGrid,
   ResponsiveContainer,
 } from "recharts"
 
-import deaths from "../lib/deaths"
+import deaths from "@data/deaths"
 
 const MonthTooltip = ({ active, payload, label }) =>
   active ? (

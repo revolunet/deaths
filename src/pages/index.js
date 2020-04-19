@@ -1,11 +1,11 @@
 import Head from "next/head"
 import React, { useState } from "react"
 
-import colors from "../lib/colors"
-import List from "../components/List"
-import Chart from "../components/Chart"
-import Footer from "../components/Footer"
-import Header from "../components/Header"
+import colors from "@data/colors"
+import List from "@components/List"
+import Chart from "@components/Chart"
+import Footer from "@components/Footer"
+import Header from "@components/Header"
 
 const Home = ({ colors }) => {
   const [disabledYears, setDisabledYears] = useState({
@@ -19,23 +19,25 @@ const Home = ({ colors }) => {
   })
 
   const toggleYear = (year) => {
-    if (disabledYears[year]) delete disabledYears[year]
-    else disabledYears[year] = true
+    disabledYears[year] = !disabledYears[year]
     setDisabledYears({ ...disabledYears })
   }
 
+  const Meta = () => (
+    <Head>
+      <title>Décès annuels en France</title>
+      <link rel="icon" href="/favicon.ico" />
+      <meta
+        name="description"
+        content="Statistiques annuelles des décès en France de 2010 à nos jours."
+      />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    </Head>
+  )
+
   return (
     <>
-      <Head>
-        <title>Décès annuels en France</title>
-        <link rel="icon" href="/favicon.ico" />
-        <meta
-          name="description"
-          content="Statistiques annuelles des décès en France de 2010 à nos jours."
-        />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      </Head>
-
+      <Meta />
       <Header />
       <main>
         <aside>
@@ -50,7 +52,6 @@ const Home = ({ colors }) => {
           <Chart colors={colors} disabledYears={disabledYears} />
         </section>
       </main>
-
       <Footer />
     </>
   )
