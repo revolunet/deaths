@@ -9,7 +9,15 @@ import {
   ResponsiveContainer,
 } from "recharts"
 
+import colors from "@data/colors"
 import deaths from "@data/deaths"
+
+const styles = {
+  stroke: "#333",
+  tick: { fontSize: 12 },
+  padding: { left: 30, right: 30 },
+  margin: { top: 5, right: 5, bottom: 5, left: 0 },
+}
 
 const MonthTooltip = ({ active, payload, label }) =>
   active ? (
@@ -23,37 +31,27 @@ const MonthTooltip = ({ active, payload, label }) =>
     </div>
   ) : null
 
-const Chart = ({ colors, disabledYears }) => {
-  return (
-    <ResponsiveContainer>
-      <LineChart
-        data={deaths}
-        margin={{ top: 5, right: 5, bottom: 5, left: 0 }}
-      >
-        <CartesianGrid stroke="#333" strokeDasharray="3 3" />
-        {Object.keys(deaths[0]).map((year, i) =>
-          year === "month" || disabledYears[year] ? null : (
-            <Line
-              key={i}
-              dataKey={year}
-              type="monotone"
-              stroke={colors[year]}
-            />
-          )
-        )}
-        <XAxis
-          dy={0}
-          angle={30}
-          interval={0}
-          dataKey="month"
-          tick={{ fontSize: 12 }}
-          padding={{ left: 30, right: 30 }}
-        />
-        <YAxis type="number" domain={[40000, 80000]} tick={{ fontSize: 12 }} />
-        <Tooltip content={<MonthTooltip />} />
-      </LineChart>
-    </ResponsiveContainer>
-  )
-}
+const Chart = ({ years }) => (
+  <ResponsiveContainer>
+    <LineChart data={deaths} margin={styles.margin}>
+      <CartesianGrid stroke={styles.stroke} strokeDasharray="3 3" />
+      {Object.keys(years).map((year, i) =>
+        years[year] ? (
+          <Line key={i} dataKey={year} type="monotone" stroke={colors[year]} />
+        ) : null
+      )}
+      <XAxis
+        dy={0}
+        angle={30}
+        interval={0}
+        dataKey="month"
+        tick={styles.tick}
+        padding={styles.padding}
+      />
+      <YAxis type="number" domain={[40000, 80000]} tick={styles.tick} />
+      <Tooltip content={<MonthTooltip />} />
+    </LineChart>
+  </ResponsiveContainer>
+)
 
 export default Chart

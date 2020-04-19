@@ -1,39 +1,33 @@
 import React from "react"
 
-import deaths from "@data/deaths"
+import colors from "@data/colors"
+import { getTotal } from "@utils/deaths"
 
-const getTotal = (year) =>
-  new Intl.NumberFormat("fr-FR").format(
-    deaths.reduce((count, month) => count + (month[year] || 0), 0)
-  )
-
-const List = ({ colors, disabledYears, toggleYear }) => (
+const List = ({ years, toggleYear }) => (
   <ul>
-    {Object.keys(deaths[0])
+    {Object.keys(years)
       .reverse()
-      .map((year, i) =>
-        year === "month" ? null : (
-          <li
-            key={i}
-            onClick={() => toggleYear(year)}
-            className={disabledYears[year] ? "disabled" : ""}
-          >
-            <div>
-              <div
-                className="dot"
-                style={{
-                  borderColor: colors[year],
-                  backgroundColor: colors[year],
-                }}
-              ></div>
-            </div>
-            <div>
-              <div>{year}</div>
-              <div className="deaths">{getTotal(year)} décès</div>
-            </div>
-          </li>
-        )
-      )}
+      .map((year, i) => (
+        <li
+          key={i}
+          onClick={() => toggleYear(year)}
+          className={years[year] ? "" : "disabled"}
+        >
+          <div>
+            <div
+              className="dot"
+              style={{
+                borderColor: colors[year],
+                backgroundColor: colors[year],
+              }}
+            ></div>
+          </div>
+          <div>
+            <div>{year}</div>
+            <div className="deaths">{getTotal(year)} décès</div>
+          </div>
+        </li>
+      ))}
   </ul>
 )
 

@@ -94,7 +94,7 @@ const getFiles = () => {
 
 const main = async () => {
   const files = await getFiles()
-  const resultFilePath = `${__dirname}/../src/lib/deaths.json`
+  const resultFilePath = `${__dirname}/../src/data/deaths.json`
   const data = await getFilesData(files)
   console.log(
     "File processing done:",
