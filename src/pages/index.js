@@ -1,32 +1,24 @@
 import Head from "next/head"
 import React, { useState } from "react"
 
-import colors from "@data/colors"
 import List from "@components/List"
 import Chart from "@components/Chart"
 import Footer from "@components/Footer"
 import Header from "@components/Header"
+import { defaultYears } from "@utils/deaths"
 
-const Home = ({ colors }) => {
-  const [disabledYears, setDisabledYears] = useState({
-    2010: true,
-    2011: true,
-    2012: true,
-    2013: true,
-    2014: true,
-    2015: true,
-    2016: true,
-  })
+const Home = () => {
+  const [years, setYearsState] = useState(defaultYears)
 
   const toggleYear = (year) => {
-    disabledYears[year] = !disabledYears[year]
-    setDisabledYears({ ...disabledYears })
+    years[year] = !years[year]
+    setYearsState({ ...years })
   }
 
   const Meta = () => (
     <Head>
       <title>Décès annuels en France</title>
-      <link rel="icon" href="/favicon.ico" />
+      <link rel="icon" href="/favicon.png" />
       <meta
         name="description"
         content="Statistiques annuelles des décès en France de 2010 à nos jours."
@@ -41,24 +33,16 @@ const Home = ({ colors }) => {
       <Header />
       <main>
         <aside>
-          <List
-            colors={colors}
-            toggleYear={toggleYear}
-            disabledYears={disabledYears}
-          />
+          <List toggleYear={toggleYear} years={years} />
         </aside>
 
         <section>
-          <Chart colors={colors} disabledYears={disabledYears} />
+          <Chart years={years} />
         </section>
       </main>
       <Footer />
     </>
   )
-}
-
-export async function getStaticProps() {
-  return { props: { colors } }
 }
 
 export default Home
