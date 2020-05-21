@@ -75,7 +75,7 @@ const getFilesData = async (files) => {
   let data = {}
   for (let i = 0, l = files.length; i < l; i++) {
     console.log(`File ${i + 1}/${l}:`, files[i])
-    data = { ...(await readFile(files[i])), ...data }
+    Object.assign(data, await readFile(files[i]))
   }
   return data
 }
