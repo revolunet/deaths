@@ -9,7 +9,7 @@ import {
   ResponsiveContainer,
 } from "recharts"
 
-import { linearDeaths } from "@utils/deaths"
+import { linearDeaths } from "utils/deaths"
 
 const styles = {
   stroke: "#333",
@@ -19,7 +19,7 @@ const styles = {
 }
 
 const MonthTooltip = ({ active, payload, label }) =>
-  console.log("MonthTooltip", active, payload, label) || active ? (
+  active ? (
     <div className="custom-tooltip">
       <div>{label}</div>
       <div>{new Intl.NumberFormat("fr-FR").format(payload[0].value)} décès</div>
