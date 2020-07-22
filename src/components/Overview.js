@@ -10,6 +10,7 @@ import {
 } from "recharts"
 
 import { linearDeaths } from "utils/deaths"
+console.log("linearDeaths", linearDeaths)
 
 const styles = {
   stroke: "#333",
