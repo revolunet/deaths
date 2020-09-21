@@ -1,6 +1,6 @@
 {
   "name": "deaths",
-  "version": "0.3.2",
+  "version": "1.0.8",
   "private": false,
   "scripts": {
     "dev": "next dev",
