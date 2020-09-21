@@ -1,3 +1,10 @@
+## [1.0.12](https://github.com/chewam/deaths/compare/v1.0.11...v1.0.12) (2020-09-21)
+
+
+### Bug Fixes
+
+* Add Sentry. ([#14](https://github.com/chewam/deaths/issues/14)) ([e6e71a4](https://github.com/chewam/deaths/commit/e6e71a42ff2c8fd37a10b61b4b6d3d78b231c454))
+
 ## [1.0.11](https://github.com/chewam/deaths/compare/v1.0.10...v1.0.11) (2020-09-21)
 
 
