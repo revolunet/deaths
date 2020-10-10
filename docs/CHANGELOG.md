@@ -1,3 +1,10 @@
+## [1.0.13](https://github.com/chewam/deaths/compare/v1.0.12...v1.0.13) (2020-10-10)
+
+
+### Bug Fixes
+
+* Display improvments. ([dab538d](https://github.com/chewam/deaths/commit/dab538d7aa2bbe8a78eff0477bb6809e63d10ed9))
+
 ## [1.0.12](https://github.com/chewam/deaths/compare/v1.0.11...v1.0.12) (2020-09-21)
 
 
