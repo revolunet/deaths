@@ -12,10 +12,11 @@ import {
 import { linearDeaths } from "@utils/deaths"
 
 const styles = {
-  stroke: "#333",
+  stroke: "#b3b3b3",
+  gridStroke: "#666",
   tick: { fontSize: 12 },
-  padding: { left: 30, right: 30 },
-  margin: { top: 5, right: 5, bottom: 5, left: 0 },
+  padding: { left: 0, right: 20 },
+  margin: { top: 8, right: 0, bottom: 10, left: -10 },
 }
 
 const MonthTooltip = ({ active, payload, label }) =>
@@ -27,19 +28,26 @@ const MonthTooltip = ({ active, payload, label }) =>
   ) : null
 
 const Overview = () => (
-  <ResponsiveContainer>
+  <ResponsiveContainer id="overview-resp-container">
     <LineChart data={linearDeaths} margin={styles.margin}>
-      <CartesianGrid stroke={styles.stroke} strokeDasharray="3 3" />
-      <Line dataKey="value" type="monotone" />
+      <CartesianGrid stroke={styles.gridStroke} strokeDasharray="3 3" />
+      <Line dataKey="value" type="monotone" dot={{ fill: styles.stroke }} />
       <XAxis
-        dy={0}
+        dy={10}
         angle={30}
         dataKey="label"
         tick={styles.tick}
+        stroke={styles.stroke}
         padding={styles.padding}
         interval="preserveStartEnd"
       />
-      <YAxis type="number" domain={[40000, 75000]} tick={styles.tick} />
+      <YAxis
+        dx={-5}
+        type="number"
+        tick={styles.tick}
+        stroke={styles.stroke}
+        domain={[40000, 75000]}
+      />
       <Tooltip content={<MonthTooltip />} />
     </LineChart>
   </ResponsiveContainer>

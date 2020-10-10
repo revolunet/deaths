@@ -13,10 +13,11 @@ import colors from "@data/colors"
 import deaths from "@data/deaths"
 
 const styles = {
-  stroke: "#333",
+  stroke: "#b3b3b3",
+  gridStroke: "#666",
   tick: { fontSize: 12 },
-  padding: { left: 30, right: 30 },
-  margin: { top: 5, right: 5, bottom: 5, left: 0 },
+  padding: { left: 0, right: 25 },
+  margin: { top: 8, right: 0, bottom: 10, left: -10 },
 }
 
 const MonthTooltip = ({ active, payload, label }) =>
@@ -31,27 +32,40 @@ const MonthTooltip = ({ active, payload, label }) =>
     </div>
   ) : null
 
-const Chart = ({ years }) => (
-  <ResponsiveContainer>
+const YearsView = ({ years }) => (
+  <ResponsiveContainer id="chart-resp-container">
     <LineChart data={deaths} margin={styles.margin}>
-      <CartesianGrid stroke={styles.stroke} strokeDasharray="3 3" />
+      <CartesianGrid stroke={styles.gridStroke} strokeDasharray="3 3" />
       {Object.keys(years).map((year, i) =>
         years[year] ? (
-          <Line key={i} dataKey={year} type="monotone" stroke={colors[year]} />
+          <Line
+            key={i}
+            dataKey={year}
+            type="monotone"
+            stroke={colors[year]}
+            dot={{ fill: styles.stroke }}
+          />
         ) : null
       )}
       <XAxis
-        dy={0}
+        dy={10}
         angle={30}
         interval={0}
         dataKey="month"
         tick={styles.tick}
+        stroke={styles.stroke}
         padding={styles.padding}
       />
-      <YAxis type="number" domain={[40000, 80000]} tick={styles.tick} />
+      <YAxis
+        dx={-5}
+        type="number"
+        tick={styles.tick}
+        stroke={styles.stroke}
+        domain={[40000, 80000]}
+      />
       <Tooltip content={<MonthTooltip />} />
     </LineChart>
   </ResponsiveContainer>
 )
 
-export default Chart
+export default YearsView

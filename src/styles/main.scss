@@ -1,93 +1,39 @@
+@use "./variables" as *;
+
 main {
   flex: 1;
   display: flex;
-  padding: 1rem;
   overflow: auto;
+  padding: $spacing / 2 $spacing;
+  flex-direction: column;
 
-  aside {
-    overflow: auto;
-    padding-right: 2rem;
+  section {
+    &.top {
+      flex: 1;
+      display: flex;
+      overflow: auto;
+      margin: $spacing * 0.5 0 $spacing * 2.5;
+    }
 
-    ul {
+    &.bottom {
+      height: 33%;
+    }
+
+    figure {
+      flex: 1;
       margin: 0;
-      padding: 0;
-      list-style: none;
-
-      li {
-        display: flex;
-        cursor: pointer;
-        position: relative;
-        margin-bottom: 1rem;
-        align-items: center;
-        padding: 0 1rem 0.5rem 2rem;
-
-        .dot {
-          width: 1.3rem;
-          height: 1.3rem;
-          border-width: 1px;
-          min-width: 1.3rem;
-          margin-right: 1rem;
-          min-height: 1.3rem;
-          border-radius: 50%;
-          border-style: solid;
-        }
-
-        .deaths {
-          color: #ccc;
-          font-size: 1.4rem;
-          white-space: nowrap;
-        }
-
-        &.disabled {
-          color: DIMGRAY;
-          font-style: italic;
-
-          .dot {
-            background-color: transparent !important;
-          }
-
-          .deaths {
-            color: inherit;
-          }
-        }
-      }
     }
   }
 
-  section {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    .custom-tooltip {
-      font-size: 1.2rem;
-      border-radius: 3px;
-      padding: 0.5rem 1rem;
-      background-color: #222;
-
-      & > div:first-child {
-        font-weight: 600;
-        font-size: 1.4rem;
-      }
-    }
+  aside {
+    overflow: auto;
+    margin: 0 $spacing 0 0;
+    padding: 0 $spacing * 2 0 0;
   }
 }
 
 @media screen and (max-width: 1000px) {
-  main {
+  section.top {
     flex-direction: column;
-
-    aside {
-      height: 90px;
-      padding-right: 0;
-      min-height: 90px;
-      margin-bottom: 2rem;
-
-      ul {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
-      }
-    }
   }
 }
