@@ -1,4 +1,5 @@
 import deaths from "@data/deaths"
+import population from "@data/population"
 
 const Months = [
   "Janvier",
@@ -19,6 +20,12 @@ export const getTotal = (year) =>
   new Intl.NumberFormat("fr-FR").format(
     deaths.reduce((count, month) => count + (month[year] || 0), 0)
   )
+
+export const getRatio = (year) =>
+  (
+    (deaths.reduce((count, month) => count + (month[year] || 0), 0) * 100) /
+    population[year]
+  ).toFixed(2)
 
 export const defaultYears = Object.keys(deaths[0]).reduce(
   (years, year) => (year !== "month" && (years[year] = year > 2016), years),

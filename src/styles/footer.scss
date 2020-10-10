@@ -1,6 +1,8 @@
+@use "./variables" as *;
+
 footer {
-  margin: 1rem;
   display: flex;
-  font-size: 1.4rem;
+  margin: $spacing;
+  font-size: $font-size * 0.8;
   justify-content: space-between;
 }

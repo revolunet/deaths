@@ -2,11 +2,11 @@ import Head from "next/head"
 import React, { useState } from "react"
 
 import List from "@components/List"
-import Chart from "@components/Chart"
 import Footer from "@components/Footer"
 import Header from "@components/Header"
 import Overview from "@components/Overview"
 import { defaultYears } from "@utils/deaths"
+import YearsView from "@components/YearsView"
 
 const Home = () => {
   const [years, setYearsState] = useState(defaultYears)
@@ -33,17 +33,18 @@ const Home = () => {
       <Meta />
       <Header />
       <main>
-        <aside>
-          <List toggleYear={toggleYear} years={years} />
-        </aside>
-
-        <section>
-          <Chart years={years} />
+        <section className="top">
+          <aside>
+            <List toggleYear={toggleYear} years={years} />
+          </aside>
+          <figure>
+            <YearsView years={years} />
+          </figure>
+        </section>
+        <section className="bottom">
+          <Overview />
         </section>
       </main>
-      <section style={{ height: "200px", margin: "1rem" }}>
-        <Overview />
-      </section>
       <Footer />
     </>
   )

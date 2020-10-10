@@ -1,10 +1,10 @@
 import React from "react"
 
 import colors from "@data/colors"
-import { getTotal } from "@utils/deaths"
+import { getRatio, getTotal } from "@utils/deaths"
 
 const List = ({ years, toggleYear }) => (
-  <ul>
+  <ul className="list">
     {Object.keys(years)
       .reverse()
       .map((year, i) => (
@@ -24,7 +24,10 @@ const List = ({ years, toggleYear }) => (
           </div>
           <div>
             <div>{year}</div>
-            <div className="deaths">{getTotal(year)} décès</div>
+            <div className="deaths">
+              <div>{getTotal(year)} décès</div>
+              <div>({getRatio(year)}% de la population totale)</div>
+            </div>
           </div>
         </li>
       ))}
