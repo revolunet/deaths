@@ -1,3 +1,10 @@
+## [1.0.15](https://github.com/chewam/deaths/compare/v1.0.14...v1.0.15) (2020-10-11)
+
+
+### Bug Fixes
+
+* Restore semantic release config. ([673a70b](https://github.com/chewam/deaths/commit/673a70bac80fa9c52d782481c683c2df09959a00))
+
 ## [1.0.13](https://github.com/chewam/deaths/compare/v1.0.12...v1.0.13) (2020-10-10)
 
 
