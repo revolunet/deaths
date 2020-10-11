@@ -18,6 +18,12 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 yarn lint
 ```
 
+##### Run tests
+
+```bash
+yarn test
+```
+
 ##### Build application
 
 ```bash
