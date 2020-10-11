@@ -3,6 +3,7 @@ module.exports = {
     browser: true,
     es6: true,
     node: true,
+    "jest/globals": true,
   },
   extends: [
     "eslint:recommended",
@@ -35,7 +36,7 @@ module.exports = {
     ecmaVersion: 2018,
     sourceType: "module",
   },
-  plugins: ["react", "prettier", "import"],
+  plugins: ["react", "prettier", "import", "jest"],
   rules: {
     "prettier/prettier": "error",
     "react/prop-types": 0,
@@ -48,5 +49,10 @@ module.exports = {
     "import/namespace": 2,
     "import/default": 2,
     "import/export": 2,
+    "jest/no-disabled-tests": "warn",
+    "jest/no-focused-tests": "error",
+    "jest/no-identical-title": "error",
+    "jest/prefer-to-have-length": "warn",
+    "jest/valid-expect": "error",
   },
 }
