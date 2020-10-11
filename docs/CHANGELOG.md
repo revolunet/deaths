@@ -1,3 +1,10 @@
+## [1.0.20](https://github.com/chewam/deaths/compare/v1.0.19...v1.0.20) (2020-10-11)
+
+
+### Bug Fixes
+
+* Setup semrel plugin execution. ([a20f765](https://github.com/chewam/deaths/commit/a20f765dfbb88de2d25d91100b1b3783b93a41da))
+
 ## [1.0.15](https://github.com/chewam/deaths/compare/v1.0.14...v1.0.15) (2020-10-11)
 
 
