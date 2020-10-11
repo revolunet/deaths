@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/chewam/deaths/compare/v1.1.0...v1.1.1) (2020-10-11)
+
+
+### Bug Fixes
+
+* Export build script. ([ebf1a74](https://github.com/chewam/deaths/commit/ebf1a7491dc78eb6255bfa987a10bfa1e9441a81))
+
 # [1.1.0](https://github.com/chewam/deaths/compare/v1.0.20...v1.1.0) (2020-10-11)
 
 
