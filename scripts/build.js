@@ -105,5 +105,4 @@ const main = async () => {
   console.log("Result written into", resultFilePath)
 }
 
-main()
-// module.exports = main
+module.exports = main
