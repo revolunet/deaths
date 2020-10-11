@@ -1,3 +1,10 @@
+## [1.0.22](https://github.com/chewam/deaths/compare/v1.0.21...v1.0.22) (2020-10-11)
+
+
+### Bug Fixes
+
+* Chain tests and release workflows. ([b6ecd19](https://github.com/chewam/deaths/commit/b6ecd1941f7ab7f3c8b5b521e313877c5b5adccc))
+
 ## [1.0.21](https://github.com/chewam/deaths/compare/v1.0.20...v1.0.21) (2020-10-11)
 
 
