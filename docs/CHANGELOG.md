@@ -1,3 +1,10 @@
+## [1.0.23](https://github.com/chewam/deaths/compare/v1.0.22...v1.0.23) (2020-10-11)
+
+
+### Bug Fixes
+
+* Display ci workflow sum up. ([eb357a9](https://github.com/chewam/deaths/commit/eb357a9ed3ccce8c87ce78f27c7b754dcc929902))
+
 ## [1.0.22](https://github.com/chewam/deaths/compare/v1.0.21...v1.0.22) (2020-10-11)
 
 
