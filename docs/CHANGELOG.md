@@ -1,3 +1,17 @@
+# [1.1.0](https://github.com/chewam/deaths/compare/v1.0.20...v1.1.0) (2020-10-11)
+
+
+### Bug Fixes
+
+* Add Github release to release workflow. ([85e717b](https://github.com/chewam/deaths/commit/85e717be5318522f7408c06312c312df9f436fc6))
+* Chain tests and release workflows. ([4fb8622](https://github.com/chewam/deaths/commit/4fb862214caffae961c8702fa66d5927cee970c6))
+* Display ci workflow sum up. ([c2b206d](https://github.com/chewam/deaths/commit/c2b206d63f294217cfc27c96a78574ce635815a0))
+
+
+### Features
+
+* Auto update deaths data ([#25](https://github.com/chewam/deaths/issues/25)) ([74ab2e8](https://github.com/chewam/deaths/commit/74ab2e8ee5454f0a987382a0ec2e394da9295854))
+
 ## [1.0.21](https://github.com/chewam/deaths/compare/v1.0.20...v1.0.21) (2020-10-11)
 
 
