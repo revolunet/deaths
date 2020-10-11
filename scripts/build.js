@@ -87,7 +87,7 @@ const getFiles = () => {
         console.error("Could not list the directory.", err)
         process.exit(1)
       }
-      resolve(files)
+      resolve(files.filter((file) => file.match(/^.+\.txt$/)))
     })
   })
 }
@@ -106,3 +106,4 @@ const main = async () => {
 }
 
 main()
+// module.exports = main
