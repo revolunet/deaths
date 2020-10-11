@@ -1,3 +1,10 @@
+## [1.0.21](https://github.com/chewam/deaths/compare/v1.0.20...v1.0.21) (2020-10-11)
+
+
+### Bug Fixes
+
+* Add Github release to release workflow. ([b2f1026](https://github.com/chewam/deaths/commit/b2f10266be943cdafcd5ae3e3bf2c7e691485547))
+
 ## [1.0.20](https://github.com/chewam/deaths/compare/v1.0.19...v1.0.20) (2020-10-11)
 
 
