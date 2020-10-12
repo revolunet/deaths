@@ -11,38 +11,38 @@ on:
 jobs:
   #
 
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
+  # test:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout repository
+  #       uses: actions/checkout@v2
 
-      - name: Get yarn cache directory path
-        id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
+  #     - name: Get yarn cache directory path
+  #       id: yarn-cache-dir-path
+  #       run: echo "::set-output name=dir::$(yarn cache dir)"
 
-      - name: Get yarn cache
-        uses: actions/cache@v2
-        id: yarn-cache
-        with:
-          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
+  #     - name: Get yarn cache
+  #       uses: actions/cache@v2
+  #       id: yarn-cache
+  #       with:
+  #         path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+  #         key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+  #         restore-keys: |
+  #           ${{ runner.os }}-yarn-
 
-      - name: Install
-        run: yarn --frozen-lockfile --perfer-offline
+  #     - name: Install
+  #       run: yarn --frozen-lockfile --perfer-offline
 
-      - name: Lint
-        run: yarn lint
+  #     - name: Lint
+  #       run: yarn lint
 
-      - name: Test
-        run: yarn test:ci
+  #     - name: Test
+  #       run: yarn test:ci
 
   #
 
   release:
-    needs: test
+    # needs: test
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -56,9 +56,10 @@ jobs:
         id: semantic
         uses: cycjimmy/semantic-release-action@v2
         with:
-          extra_plugins: |
-            @semantic-release/changelog
-            @semantic-release/git
+          semantic_version: 17
+          # extra_plugins: |
+          #   @semantic-release/changelog
+          #   @semantic-release/git
         env:
           GITHUB_TOKEN: ${{ secrets.PAT }}
 
