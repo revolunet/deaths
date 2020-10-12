@@ -1,3 +1,10 @@
+## [1.1.3](https://github.com/chewam/deaths/compare/v1.1.2...v1.1.3) (2020-10-12)
+
+
+### Bug Fixes
+
+* Downgrade data to 2020 m7. ([2af3243](https://github.com/chewam/deaths/commit/2af3243fed2148e18510d068382cf7b4396b5413))
+
 ## [1.1.2](https://github.com/chewam/deaths/compare/v1.1.1...v1.1.2) (2020-10-12)
 
 
