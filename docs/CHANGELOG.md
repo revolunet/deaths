@@ -1,3 +1,12 @@
+## [1.1.2](https://github.com/chewam/deaths/compare/v1.1.1...v1.1.2) (2020-10-12)
+
+
+### Bug Fixes
+
+* Force version update. ([15072f6](https://github.com/chewam/deaths/commit/15072f6a979f77c05f163bdff7448a38dac73c7b))
+* Force version update. ([79369b8](https://github.com/chewam/deaths/commit/79369b8ffa1c03382735de16e613641587fb18c9))
+* Set explicit version of semantic release. ([b8d71eb](https://github.com/chewam/deaths/commit/b8d71eb878cbe351af8375e170f9fc4237645aba))
+
 ## [1.1.1](https://github.com/chewam/deaths/compare/v1.1.0...v1.1.1) (2020-10-11)
 
 
