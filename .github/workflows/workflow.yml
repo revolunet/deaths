@@ -50,6 +50,7 @@ jobs:
         with:
           ref: alpha
           token: ${{ secrets.PAT }}
+          persist-credentials: false
 
       - name: Semantic Release
         id: semantic
