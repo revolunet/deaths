@@ -1,3 +1,10 @@
+## [1.2.3](https://github.com/chewam/deaths/compare/v1.2.2...v1.2.3) (2020-10-18)
+
+
+### Bug Fixes
+
+* Increase screenshot size by 1.5. ([90f1b49](https://github.com/chewam/deaths/commit/90f1b493daa5fbf8edfa2fdeb84a58a4ee8d5013))
+
 ## [1.2.2](https://github.com/chewam/deaths/compare/v1.2.1...v1.2.2) (2020-10-18)
 
 
