@@ -50,6 +50,21 @@ jobs:
         with:
           token: ${{ secrets.PAT }}
 
+      - name: Take screenshot
+        id: screenshot
+        uses: swinton/screenshot-website@v1.x
+        with:
+          delay: 5
+          overwrite: true
+          source: https://deaths.now.sh
+          disable-animations: true
+
+      - name: Copy screenshot
+        run: |
+          echo ${{ steps.screenshot.outputs.path }}
+          cp ${{ steps.screenshot.outputs.path }} ./public/
+          ls -la ./public/
+
       - name: Semantic Release
         id: semantic
         uses: cycjimmy/semantic-release-action@v2
