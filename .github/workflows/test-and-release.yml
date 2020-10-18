@@ -55,6 +55,8 @@ jobs:
         uses: swinton/screenshot-website@v1.x
         with:
           delay: 5
+          width: 1200
+          height: 630
           overwrite: true
           source: https://deaths.now.sh
           disable-animations: true
