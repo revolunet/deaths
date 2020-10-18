@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/chewam/deaths/compare/v1.1.3...v1.2.0) (2020-10-18)
+
+
+### Features
+
+* Add Open Graph meta info. ([#27](https://github.com/chewam/deaths/issues/27)) ([29fb31b](https://github.com/chewam/deaths/commit/29fb31b854d2b0d14f7101c2786b65678219c9be))
+
 ## [1.1.3](https://github.com/chewam/deaths/compare/v1.1.2...v1.1.3) (2020-10-12)
 
 
