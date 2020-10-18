@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/chewam/deaths/compare/v1.2.0...v1.2.1) (2020-10-18)
+
+
+### Bug Fixes
+
+* Set proper og:image screenshot size. ([147f090](https://github.com/chewam/deaths/commit/147f090208c447f066d33c1ced840d703fbcd369))
+
 # [1.2.0](https://github.com/chewam/deaths/compare/v1.1.3...v1.2.0) (2020-10-18)
 
 
