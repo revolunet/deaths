@@ -1,3 +1,10 @@
+## [1.2.4](https://github.com/chewam/deaths/compare/v1.2.3...v1.2.4) (2020-10-18)
+
+
+### Bug Fixes
+
+* Fix top chart resize. ([d1f7028](https://github.com/chewam/deaths/commit/d1f7028fab541ff45100b0e3833586ecb99961b3))
+
 ## [1.2.3](https://github.com/chewam/deaths/compare/v1.2.2...v1.2.3) (2020-10-18)
 
 
