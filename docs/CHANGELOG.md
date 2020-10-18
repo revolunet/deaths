@@ -1,3 +1,10 @@
+## [1.2.2](https://github.com/chewam/deaths/compare/v1.2.1...v1.2.2) (2020-10-18)
+
+
+### Bug Fixes
+
+* Divide screenshot size by 2. ([b78c4cb](https://github.com/chewam/deaths/commit/b78c4cb17789c5213a2f328d5153e50239bfa2a7))
+
 ## [1.2.1](https://github.com/chewam/deaths/compare/v1.2.0...v1.2.1) (2020-10-18)
 
 
