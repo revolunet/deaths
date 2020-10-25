@@ -1,3 +1,10 @@
+## [1.2.5](https://github.com/chewam/deaths/compare/v1.2.4...v1.2.5) (2020-10-25)
+
+
+### Bug Fixes
+
+* Optimize chart rendering. ([0a61c46](https://github.com/chewam/deaths/commit/0a61c46bd0ccfa56b98e89c52c23b94a0f4ab6dd))
+
 ## [1.2.4](https://github.com/chewam/deaths/compare/v1.2.3...v1.2.4) (2020-10-18)
 
 
