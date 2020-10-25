@@ -31,7 +31,7 @@ const MonthTooltip = ({ active, payload, label }) =>
     </div>
   ) : null
 
-const YearsView = ({ years }) => (
+const Chart = ({ years }) => (
   <ResponsiveContainer id="chart-resp-container">
     <LineChart data={deaths} margin={styles.margin}>
       <CartesianGrid stroke={styles.gridStroke} strokeDasharray="3 3" />
@@ -67,4 +67,4 @@ const YearsView = ({ years }) => (
   </ResponsiveContainer>
 )
 
-export default YearsView
+export default Chart

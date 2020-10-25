@@ -1,21 +1,12 @@
-import { useState } from "react"
 import NextHead from "next/head"
 
-import List from "@components/List"
+import Years from "@components/years"
 import Footer from "@components/Footer"
 import Header from "@components/Header"
 import Overview from "@components/Overview"
-import { defaultYears } from "@utils/deaths"
-import YearsView from "@components/YearsView"
 
 const Home = () => {
   const VERCEL_URL = process.env.VERCEL_URL
-  const [years, setYearsState] = useState(defaultYears)
-
-  const toggleYear = (year) => {
-    years[year] = !years[year]
-    setYearsState({ ...years })
-  }
 
   const Head = () => (
     <NextHead>
@@ -40,12 +31,7 @@ const Home = () => {
       <Header />
       <main>
         <section className="top">
-          <aside>
-            <List toggleYear={toggleYear} years={years} />
-          </aside>
-          <figure>
-            <YearsView years={years} />
-          </figure>
+          <Years />
         </section>
         <section className="bottom">
           <Overview />
