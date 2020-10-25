@@ -1,3 +1,10 @@
+## [1.4.2](https://github.com/chewam/deaths/compare/v1.4.1...v1.4.2) (2020-10-25)
+
+
+### Bug Fixes
+
+* Dynamic ANALYTICS_ID. ([2fbee79](https://github.com/chewam/deaths/commit/2fbee799105048c64c7f019ac2f9266976342fe1))
+
 ## [1.4.1](https://github.com/chewam/deaths/compare/v1.4.0...v1.4.1) (2020-10-25)
 
 
