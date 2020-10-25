@@ -1,3 +1,10 @@
+## [1.4.1](https://github.com/chewam/deaths/compare/v1.4.0...v1.4.1) (2020-10-25)
+
+
+### Bug Fixes
+
+* Run analytics on produciton only. ([ac154a6](https://github.com/chewam/deaths/commit/ac154a67457a208bf40f66559c1afba781e8e6d7))
+
 # [1.4.0](https://github.com/chewam/deaths/compare/v1.3.0...v1.4.0) (2020-10-25)
 
 
