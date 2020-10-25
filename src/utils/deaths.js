@@ -1,20 +1,6 @@
 import deaths from "@data/deaths"
 import population from "@data/population"
-
-const Months = [
-  "Janvier",
-  "Février",
-  "Mars",
-  "Avril",
-  "Mai",
-  "Juin",
-  "Juillet",
-  "Aout",
-  "Septembre",
-  "Octobre",
-  "Novembre",
-  "Decembre",
-]
+import Months from "@data/months"
 
 export const getTotal = (year) =>
   new Intl.NumberFormat("fr-FR").format(
