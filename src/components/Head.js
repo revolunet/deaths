@@ -26,7 +26,7 @@ const Head = () => {
         <>
           <script
             async
-            src="https://www.googletagmanager.com/gtag/js?id=UA-180825985-1"
+            src={`https://www.googletagmanager.com/gtag/js?id=${ANALYTICS_ID}`}
           />
           <script
             dangerouslySetInnerHTML={{
@@ -34,7 +34,7 @@ const Head = () => {
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', 'UA-180825985-1', {
+            gtag('config', '${ANALYTICS_ID}', {
               page_path: window.location.pathname,
             });
           `,
