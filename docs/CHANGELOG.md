@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/chewam/deaths/compare/v1.2.5...v1.3.0) (2020-10-25)
+
+
+### Features
+
+* Add max deaths reference line. ([3ff7f23](https://github.com/chewam/deaths/commit/3ff7f23a51818ced656f004aabf7f8ebcbb4dd7f))
+
 ## [1.2.5](https://github.com/chewam/deaths/compare/v1.2.4...v1.2.5) (2020-10-25)
 
 
