@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/chewam/deaths/compare/v1.3.0...v1.4.0) (2020-10-25)
+
+
+### Features
+
+* Dynamic chart color scheme. ([cfbb07f](https://github.com/chewam/deaths/commit/cfbb07fd956146c31d20b0e192da0ff919e84893))
+
 # [1.3.0](https://github.com/chewam/deaths/compare/v1.2.5...v1.3.0) (2020-10-25)
 
 
