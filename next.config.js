@@ -7,6 +7,7 @@ module.exports = nextSourceMaps({
     APP_VERSION: version,
     SENTRY_DSN: process.env.SENTRY_DSN,
     VERCEL_URL: process.env.VERCEL_URL,
+    ANALYTICS_ID: process.env.ANALYTICS_ID,
     VERCEL_GITHUB_COMMIT_SHA: process.env.VERCEL_GITHUB_COMMIT_SHA,
   },
   webpack: (config, { isServer, buildId }) => {
