@@ -1,3 +1,10 @@
+# [1.5.0](https://github.com/chewam/deaths/compare/v1.4.2...v1.5.0) (2020-10-26)
+
+
+### Features
+
+* Add reference line to Overview chart. ([#42](https://github.com/chewam/deaths/issues/42)) ([d026da1](https://github.com/chewam/deaths/commit/d026da1b6a7882255c1d812893c4469ba113a734))
+
 ## [1.4.2](https://github.com/chewam/deaths/compare/v1.4.1...v1.4.2) (2020-10-25)
 
 
