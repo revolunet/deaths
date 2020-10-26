@@ -4,7 +4,7 @@ on: deployment_status
 
 jobs:
   capture:
-    if: github.event.deployment_status.state == 'success'
+    if: github.event.deployment_status.state == 'success' && github.event.deployment_status.state == 'Production'
     runs-on: ubuntu-latest
     steps:
       - name: install puppeteer-headful
