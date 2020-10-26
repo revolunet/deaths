@@ -1,6 +1,10 @@
 module.exports = {
   collectCoverage: true,
-  collectCoverageFrom: ["src/**/**.js", "!**/node_modules/**"],
+  collectCoverageFrom: [
+    "src/**/**.js",
+    "!**/node_modules/**",
+    "!<rootDir>/src/pages/_*.js",
+  ],
   moduleNameMapper: {
     "@data/(.*)": "<rootDir>/src/data/$1",
     "@utils/(.*)": "<rootDir>/src/utils/$1",
