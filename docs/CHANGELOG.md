@@ -1,3 +1,10 @@
+## [1.5.1](https://github.com/chewam/deaths/compare/v1.5.0...v1.5.1) (2020-12-19)
+
+
+### Bug Fixes
+
+* **deps:** update all non-major dependencies ([#54](https://github.com/chewam/deaths/issues/54)) ([7e4166f](https://github.com/chewam/deaths/commit/7e4166fb28e2fb2a4fd51d79805d9619fda713ee))
+
 # [1.5.0](https://github.com/chewam/deaths/compare/v1.4.2...v1.5.0) (2020-10-26)
 
 
