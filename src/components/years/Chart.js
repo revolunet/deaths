@@ -3,7 +3,7 @@ import {
   Label,
   XAxis,
   YAxis,
-  Tooltip as RCTooltip,
+  Tooltip,
   LineChart,
   ReferenceLine,
   CartesianGrid,
@@ -12,7 +12,7 @@ import {
 
 import colors from "@data/colors"
 import deaths from "@data/deaths"
-import Tooltip from "./Tooltip"
+import CustomTooltip from "@components/Tooltip"
 import Months from "@data/months"
 
 const styles = {
@@ -22,6 +22,15 @@ const styles = {
   padding: { left: 0, right: 25 },
   margin: { top: 8, right: 0, bottom: 10, left: -10 },
 }
+
+const tickFormatter = (value) => new Intl.NumberFormat("fr-FR").format(value)
+
+const toolTipRenderer = (payload) =>
+  payload.reverse().map((item, i) => (
+    <div key={i} style={{ color: item.color }}>
+      {item.name}: {new Intl.NumberFormat("fr-FR").format(item.value)} décès
+    </div>
+  ))
 
 const Chart = ({ years }) => {
   const reference = deaths
@@ -46,23 +55,14 @@ const Chart = ({ years }) => {
               position="insideBottomRight"
               value={`${Months[reference.month]} ${
                 reference.year
-              }: ${Intl.NumberFormat("fr-FR").format(reference.value)} décès`}
+              }: ${new Intl.NumberFormat("fr-FR").format(
+                reference.value
+              )} décès`}
             />
           }
           stroke={colors[reference.year]}
           strokeDasharray="3 3"
         />
-        {Object.keys(years).map((year, i) =>
-          years[year] ? (
-            <Line
-              key={i}
-              dataKey={year}
-              type="monotone"
-              stroke={colors[year]}
-              dot={{ fill: styles.stroke }}
-            />
-          ) : null
-        )}
         <XAxis
           dy={10}
           angle={30}
@@ -78,8 +78,20 @@ const Chart = ({ years }) => {
           tick={styles.tick}
           stroke={styles.stroke}
           domain={[40000, 80000]}
+          tickFormatter={tickFormatter}
         />
-        <RCTooltip content={<Tooltip />} />
+        {Object.keys(years).map((year, i) =>
+          years[year] ? (
+            <Line
+              key={i}
+              dataKey={year}
+              type="monotone"
+              stroke={colors[year]}
+              dot={{ fill: styles.stroke }}
+            />
+          ) : null
+        )}
+        <Tooltip renderer={toolTipRenderer} content={<CustomTooltip />} />
       </LineChart>
     </ResponsiveContainer>
   )
