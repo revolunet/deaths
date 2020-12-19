@@ -1,3 +1,10 @@
+# [1.6.0](https://github.com/chewam/deaths/compare/v1.5.1...v1.6.0) (2020-12-19)
+
+
+### Features
+
+* Add ratio chart. ([#58](https://github.com/chewam/deaths/issues/58)) ([44ada6e](https://github.com/chewam/deaths/commit/44ada6e3bea97209378c9ab002fe73475bab6b41))
+
 ## [1.5.1](https://github.com/chewam/deaths/compare/v1.5.0...v1.5.1) (2020-12-19)
 
 
