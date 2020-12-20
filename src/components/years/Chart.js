@@ -77,8 +77,8 @@ const Chart = ({ years }) => {
           type="number"
           tick={styles.tick}
           stroke={styles.stroke}
-          domain={[40000, 80000]}
           tickFormatter={tickFormatter}
+          domain={["dataMin - 5000", "dataMax + 5000"]}
         />
         {Object.keys(years).map((year, i) =>
           years[year] ? (

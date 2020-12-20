@@ -48,8 +48,8 @@ const Overview = () => {
           type="number"
           tick={styles.tick}
           stroke={styles.stroke}
-          domain={[40000, 75000]}
           tickFormatter={tickFormatter}
+          domain={["dataMin - 2000", "dataMax + 3000"]}
         />
         <ReferenceLine
           y={reference.value}

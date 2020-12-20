@@ -46,8 +46,8 @@ const Ratio = () => (
         type="number"
         tick={styles.tick}
         stroke={styles.stroke}
-        domain={[0.8, 1.1]}
         tickFormatter={tickFormatter}
+        domain={["dataMin - 0.07", "dataMax + 0.07"]}
       />
       <Tooltip
         content={<CustomTooltip />}
