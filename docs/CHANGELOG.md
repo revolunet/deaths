@@ -1,3 +1,10 @@
+## [1.8.1](https://github.com/chewam/deaths/compare/v1.8.0...v1.8.1) (2020-12-20)
+
+
+### Bug Fixes
+
+* Update charts domains. ([fd2df65](https://github.com/chewam/deaths/commit/fd2df653bbffdcceac7aec9d483ca6a5e7bfe666))
+
 # [1.8.0](https://github.com/chewam/deaths/compare/v1.7.0...v1.8.0) (2020-12-20)
 
 
