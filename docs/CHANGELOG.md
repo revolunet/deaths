@@ -1,3 +1,10 @@
+# [1.7.0](https://github.com/chewam/deaths/compare/v1.6.0...v1.7.0) (2020-12-20)
+
+
+### Features
+
+* Compact list view. ([#59](https://github.com/chewam/deaths/issues/59)) ([46f957c](https://github.com/chewam/deaths/commit/46f957c8fed4ed518ac7fe4beec77ea0fb1742b1))
+
 # [1.6.0](https://github.com/chewam/deaths/compare/v1.5.1...v1.6.0) (2020-12-19)
 
 
