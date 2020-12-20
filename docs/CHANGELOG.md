@@ -1,3 +1,10 @@
+# [1.8.0](https://github.com/chewam/deaths/compare/v1.7.0...v1.8.0) (2020-12-20)
+
+
+### Features
+
+* Data from year 2000. ([#60](https://github.com/chewam/deaths/issues/60)) ([94ac639](https://github.com/chewam/deaths/commit/94ac639726f2f138b4a3233ad1bfece4cf05a952))
+
 # [1.7.0](https://github.com/chewam/deaths/compare/v1.6.0...v1.7.0) (2020-12-20)
 
 
