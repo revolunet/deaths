@@ -1,3 +1,10 @@
+## [1.8.2](https://github.com/chewam/deaths/compare/v1.8.1...v1.8.2) (2020-12-28)
+
+
+### Bug Fixes
+
+* **deps:** update dependency next to ^10.0.4 ([3701a3f](https://github.com/chewam/deaths/commit/3701a3f1e6632672ededee0d7ad30e568f577130))
+
 ## [1.8.1](https://github.com/chewam/deaths/compare/v1.8.0...v1.8.1) (2020-12-20)
 
 
