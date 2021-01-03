@@ -1,3 +1,10 @@
+# [1.9.0](https://github.com/chewam/deaths/compare/v1.8.2...v1.9.0) (2021-01-03)
+
+
+### Features
+
+* English support ([#64](https://github.com/chewam/deaths/issues/64)) ([0ba6da2](https://github.com/chewam/deaths/commit/0ba6da293031fa69b91aab2810f91e0f4ac9317c))
+
 ## [1.8.2](https://github.com/chewam/deaths/compare/v1.8.1...v1.8.2) (2020-12-28)
 
 
