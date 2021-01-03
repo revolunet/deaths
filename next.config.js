@@ -10,6 +10,10 @@ module.exports = nextSourceMaps({
     ANALYTICS_ID: process.env.ANALYTICS_ID,
     VERCEL_GITHUB_COMMIT_SHA: process.env.VERCEL_GITHUB_COMMIT_SHA,
   },
+  i18n: {
+    locales: ["en", "fr"],
+    defaultLocale: "fr",
+  },
   webpack: (config, { isServer, buildId }) => {
     config.plugins.push(
       new webpack.DefinePlugin({

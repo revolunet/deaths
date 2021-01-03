@@ -10,8 +10,9 @@ import {
   ResponsiveContainer,
 } from "recharts"
 
+import Months from "@data/months"
+import useI18n from "@utils/i18n"
 import { linearDeaths } from "@utils/deaths"
-
 import CustomTooltip from "@components/Tooltip"
 
 const styles = {
@@ -22,13 +23,26 @@ const styles = {
   margin: { top: 8, right: 0, bottom: 10, left: -5 },
 }
 
-const tickFormatter = (value) => new Intl.NumberFormat("fr-FR").format(value)
-
-const toolTipRenderer = ([{ value }]) =>
-  `${new Intl.NumberFormat("fr-FR").format(value)} décès`
-
 const Overview = () => {
+  const { f, fn, fd } = useI18n()
+
   const reference = linearDeaths.reduce((a, b) => (a.value > b.value ? a : b))
+
+  const referenceLabel = `${fd(
+    new Date(reference.year, Months.indexOf(reference.month)),
+    { month: "long" }
+  )} ${reference.year}: ${fn(reference.value)} ${f("deaths")}`
+
+  const YAxisTickFormatter = (value) => fn(value)
+
+  const XAxisTickFormatter = (value) => {
+    const [month, year] = value.split(" ")
+    return `${fd(new Date(year, Months.indexOf(month)), {
+      month: "long",
+    }).substring(0, 3)}. ${year}`
+  }
+
+  const toolTipRenderer = ([{ value }]) => `${fn(value)} ${f("deaths")}`
 
   return (
     <ResponsiveContainer id="overview-resp-container" className="overview">
@@ -42,13 +56,14 @@ const Overview = () => {
           stroke={styles.stroke}
           padding={styles.padding}
           interval="preserveStartEnd"
+          tickFormatter={XAxisTickFormatter}
         />
         <YAxis
           dx={-5}
           type="number"
           tick={styles.tick}
           stroke={styles.stroke}
-          tickFormatter={tickFormatter}
+          tickFormatter={YAxisTickFormatter}
           domain={["dataMin - 2000", "dataMax + 3000"]}
         />
         <ReferenceLine
@@ -58,9 +73,7 @@ const Overview = () => {
               fill={"#ccc"}
               fontSize="80%"
               position="insideBottomRight"
-              value={`${reference.label}: ${new Intl.NumberFormat(
-                "fr-FR"
-              ).format(reference.value)} décès`}
+              value={referenceLabel}
             />
           }
           stroke={styles.stroke}
@@ -70,7 +83,7 @@ const Overview = () => {
         <Line
           dataKey="value"
           type="monotone"
-          dot={{ fill: styles.stroke, fillOpacity: 0 }}
+          dot={{ stroke: styles.stroke, r: 1 }}
         />
       </LineChart>
     </ResponsiveContainer>
