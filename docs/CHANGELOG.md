@@ -1,3 +1,10 @@
+# [1.10.0](https://github.com/chewam/deaths/compare/v1.9.0...v1.10.0) (2021-01-05)
+
+
+### Features
+
+* Change header and main background. ([#66](https://github.com/chewam/deaths/issues/66)) ([87ccb5f](https://github.com/chewam/deaths/commit/87ccb5fef8e13b76c24ff4c9f94e93cd5190a94a))
+
 # [1.9.0](https://github.com/chewam/deaths/compare/v1.8.2...v1.9.0) (2021-01-03)
 
 
