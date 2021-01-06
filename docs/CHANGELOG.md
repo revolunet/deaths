@@ -1,3 +1,10 @@
+## [1.10.1](https://github.com/chewam/deaths/compare/v1.10.0...v1.10.1) (2021-01-06)
+
+
+### Bug Fixes
+
+* Responsiveness. ([#67](https://github.com/chewam/deaths/issues/67)) ([8e4ea6b](https://github.com/chewam/deaths/commit/8e4ea6bc87013596150c93ba37cb17698f5927e8))
+
 # [1.10.0](https://github.com/chewam/deaths/compare/v1.9.0...v1.10.0) (2021-01-05)
 
 
