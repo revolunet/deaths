@@ -1,3 +1,10 @@
+## [1.10.2](https://github.com/chewam/deaths/compare/v1.10.1...v1.10.2) (2021-01-07)
+
+
+### Bug Fixes
+
+* Change charts right alignment. ([cb838f6](https://github.com/chewam/deaths/commit/cb838f60b68383d24e97f2fba9b7a554ca487f63))
+
 ## [1.10.1](https://github.com/chewam/deaths/compare/v1.10.0...v1.10.1) (2021-01-06)
 
 
