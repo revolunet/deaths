@@ -43,7 +43,7 @@ const Overview = () => {
     }).substring(0, 3)}. ${year}`
   }
 
-  const toolTipRenderer = ([{ value }]) => `${fn(value)} ${f("deaths")}`
+  const toolTipRenderer = ([{ value }] = [{}]) => `${fn(value)} ${f("deaths")}`
 
   return (
     <ResponsiveContainer id="overview-resp-container" className="overview">

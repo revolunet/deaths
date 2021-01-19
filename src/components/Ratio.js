@@ -38,7 +38,7 @@ const Ratio = () => {
       minimumFractionDigits: 2,
     })}%`
 
-  const toolTipRenderer = ([{ value }]) =>
+  const toolTipRenderer = ([{ value }] = [{}]) =>
     `${fn(value, {
       minimumFractionDigits: 2,
     })}% ${f("mortality")}`

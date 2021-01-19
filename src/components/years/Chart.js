@@ -35,7 +35,7 @@ const Chart = ({ years }) => {
     })}`
   }
 
-  const toolTipRenderer = (payload) =>
+  const toolTipRenderer = (payload = []) =>
     payload.reverse().map((item, i) => (
       <div key={i} style={{ color: item.color }}>
         {item.name}: {fn(item.value)} {f("deaths")}
