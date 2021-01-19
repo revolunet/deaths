@@ -1,3 +1,10 @@
+## [1.10.3](https://github.com/chewam/deaths/compare/v1.10.2...v1.10.3) (2021-01-19)
+
+
+### Bug Fixes
+
+* Tooltips renderer. ([d8b48c6](https://github.com/chewam/deaths/commit/d8b48c6c84939281e8552a376c5523fd0c2f339e))
+
 ## [1.10.2](https://github.com/chewam/deaths/compare/v1.10.1...v1.10.2) (2021-01-07)
 
 
