@@ -1,3 +1,10 @@
+## [1.10.4](https://github.com/chewam/deaths/compare/v1.10.3...v1.10.4) (2021-01-25)
+
+
+### Bug Fixes
+
+* **deps:** update dependency sass to ^1.32.5 ([61de2ca](https://github.com/chewam/deaths/commit/61de2ca45d8e4daffe55fe3e44e241aa36f82c93))
+
 ## [1.10.3](https://github.com/chewam/deaths/compare/v1.10.2...v1.10.3) (2021-01-19)
 
 
