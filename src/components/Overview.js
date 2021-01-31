@@ -12,7 +12,8 @@ import {
 
 import Months from "@data/months"
 import useI18n from "@utils/i18n"
-import { linearDeaths } from "@utils/deaths"
+import useDeaths from "@services/deaths"
+import { getLinearDeaths } from "@utils/deaths"
 import CustomTooltip from "@components/Tooltip"
 
 const styles = {
@@ -26,6 +27,8 @@ const styles = {
 
 const Overview = () => {
   const { f, fn, fd } = useI18n()
+  const [deaths] = useDeaths()
+  const linearDeaths = getLinearDeaths(deaths)
 
   const reference = linearDeaths.reduce((a, b) => (a.value > b.value ? a : b))
 
@@ -65,7 +68,10 @@ const Overview = () => {
           tick={styles.tick}
           stroke={styles.stroke}
           tickFormatter={YAxisTickFormatter}
-          domain={["dataMin - 2000", "dataMax + 3000"]}
+          domain={[
+            (dataMin) => (dataMin - Math.abs(dataMin) / 10).toFixed(0),
+            (dataMax) => (+dataMax + dataMax / 10).toFixed(0),
+          ]}
         />
         <ReferenceLine
           y={reference.value}

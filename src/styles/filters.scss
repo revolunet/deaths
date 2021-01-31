@@ -1,0 +1,20 @@
+@use "./variables" as *;
+
+.filters {
+  // padding: 0 $spacing * 2;
+  display: flex;
+  padding: $spacing / 2;
+  background-color: white;
+
+  .gender {
+    flex: 1;
+    display: flex;
+    background-color: red;
+  }
+
+  .age {
+    flex: 1;
+    background-color: lime;
+    margin-right: $spacing / 2;
+  }
+}

@@ -3,6 +3,7 @@ import { defaultYears } from "@utils/deaths"
 
 import List from "./List"
 import Chart from "./Chart"
+import Filters from "./Filters"
 
 const Years = () => {
   const [years, setYears] = useState(defaultYears)
@@ -16,6 +17,7 @@ const Years = () => {
     <>
       <aside>
         <List toggleYear={toggleYear} years={years} />
+        <Filters />
       </aside>
       <figure>
         <Chart years={years} />

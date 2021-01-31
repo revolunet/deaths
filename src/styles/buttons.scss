@@ -1,0 +1,56 @@
+@use "./variables" as *;
+$background-color: azure;
+
+.button-group {
+  flex: 1;
+  display: flex;
+  background-color: $background-color;
+
+  &.vertical {
+    flex-direction: column;
+
+    button {
+      flex: 1;
+      border-bottom: none;
+      border-top: 1px solid black;
+      border-left: 1px solid black;
+      border-right: 1px solid black;
+
+      &:first-child {
+        border-radius: 4px 4px 0 0;
+      }
+
+      &:last-child {
+        border-radius: 0 0 4px 4px;
+        border-bottom: 1px solid black;
+      }
+    }
+  }
+
+  button {
+    flex: 1;
+    outline: none;
+    cursor: pointer;
+    border-right: none;
+    border-top: 1px solid black;
+    border-left: 1px solid black;
+    border-bottom: 1px solid black;
+
+    &:first-child {
+      border-radius: 4px 0 0 4px;
+    }
+
+    &:last-child {
+      border-radius: 0 4px 4px 0;
+      border-right: 1px solid black;
+    }
+
+    &:hover {
+      background-color: lighten($background-color, 10%);
+    }
+
+    &.active {
+      background-color: red;
+    }
+  }
+}

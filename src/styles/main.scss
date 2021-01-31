@@ -34,9 +34,11 @@ main {
   }
 
   aside {
+    display: flex;
     overflow: auto;
+    flex-direction: column;
     margin: 0 $spacing / 2 0 0;
-    padding: 0 $spacing * 2 0 $spacing;
+    // padding: 0 $spacing * 2 0 $spacing;
   }
 }
 

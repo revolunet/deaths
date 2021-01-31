@@ -1,9 +1,11 @@
 @use "./variables" as *;
 
 ul.list {
+  flex: 1;
   margin: 0;
   padding: 0;
   display: flex;
+  overflow: auto;
   list-style: none;
   flex-direction: column;
 

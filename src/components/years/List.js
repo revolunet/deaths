@@ -30,9 +30,9 @@ const List = ({ years, toggleYear }) => {
                 <div>
                   {getTotal(year)} {f("deaths")}
                 </div>
-                <div>
+                {/* <div>
                   {getRatio(year)}% {f("mortality")}
-                </div>
+                </div> */}
               </div>
             </div>
           </li>

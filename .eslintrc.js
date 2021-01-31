@@ -22,6 +22,7 @@ module.exports = {
         ["@lang", "./src/lang"],
         ["@utils", "./src/utils"],
         ["@styles", "./src/styles"],
+        ["@services", "./src/services"],
         ["@components", "./src/components"],
       ],
     },

@@ -11,9 +11,9 @@ import {
 } from "recharts"
 
 import colors from "@data/colors"
-import deaths from "@data/deaths"
 import Months from "@data/months"
 import useI18n from "@utils/i18n"
+import useDeaths from "@services/deaths"
 import CustomTooltip from "@components/Tooltip"
 
 const styles = {
@@ -25,6 +25,7 @@ const styles = {
 }
 
 const Chart = ({ years }) => {
+  const [deaths] = useDeaths()
   const { f, fn, fd } = useI18n()
 
   const YAxisTickFormatter = (value) => fn(value)
@@ -45,7 +46,11 @@ const Chart = ({ years }) => {
   const reference = deaths
     .map((month, i) => {
       const year = Object.keys(month).reduce((a, b) =>
-        !years[b] || b === "month" || month[a] > month[b] ? a : b
+        !years[b] || b === "month" || month[a] > month[b]
+          ? years[a]
+            ? a
+            : 0
+          : b
       )
       return { month: i, year, value: month[year] }
     })
@@ -88,7 +93,10 @@ const Chart = ({ years }) => {
           tick={styles.tick}
           stroke={styles.stroke}
           tickFormatter={YAxisTickFormatter}
-          domain={["dataMin - 5000", "dataMax + 5000"]}
+          domain={[
+            (dataMin) => (+dataMin - Math.abs(dataMin) / 10).toFixed(0),
+            (dataMax) => (+dataMax + dataMax / 10).toFixed(0),
+          ]}
         />
         {Object.keys(years).map((year, i) =>
           years[year] ? (

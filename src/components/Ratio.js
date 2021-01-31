@@ -1,24 +1,27 @@
 import {
   Bar,
   Cell,
+  Line,
   Label,
   XAxis,
   YAxis,
   Tooltip,
-  BarChart,
   CartesianGrid,
   ReferenceLine,
+  ComposedChart,
   ResponsiveContainer,
 } from "recharts"
 
 import colors from "@data/colors"
 import useI18n from "@utils/i18n"
-import { ratioDeaths } from "@utils/deaths"
+import useDeaths from "@services/deaths"
+import { getRatioDeaths } from "@utils/deaths"
 import CustomTooltip from "@components/Tooltip"
 
 const styles = {
   stroke: "#b3b3b3",
   gridStroke: "#666",
+  lineStroke: "#3182bd",
   tick: { fontSize: 12 },
   padding: { left: 10, right: 10 },
   margin: { top: 8, right: 0, bottom: 10, left: -5 },
@@ -26,6 +29,8 @@ const styles = {
 
 const Ratio = () => {
   const { f, fn } = useI18n()
+  const [deaths] = useDeaths()
+  const ratioDeaths = getRatioDeaths(deaths)
 
   const reference = ratioDeaths.reduce((a, b) => (a.ratio > b.ratio ? a : b))
 
@@ -34,18 +39,29 @@ const Ratio = () => {
   )}`
 
   const tickFormatter = (value) =>
+    `${fn(+value.toFixed(0), {
+      minimumFractionDigits: 0,
+    })}`
+
+  const tickFormatter2Decimals = (value) =>
     `${fn(value, {
       minimumFractionDigits: 2,
     })}%`
 
-  const toolTipRenderer = ([{ value }] = [{}]) =>
-    `${fn(value, {
-      minimumFractionDigits: 2,
-    })}% ${f("mortality")}`
+  const toolTipRenderer = ([{ value: ratio }, { value: count }] = [{}, {}]) => (
+    <>
+      <div>
+        {fn(ratio, { minimumFractionDigits: 2 })}% {f("mortality")}
+      </div>
+      <div>
+        {fn(count, { minimumFractionDigits: 2 })} {f("deaths")}
+      </div>
+    </>
+  )
 
   return (
     <ResponsiveContainer id="ratio-resp-container" className="ratio">
-      <BarChart data={ratioDeaths} margin={styles.margin}>
+      <ComposedChart data={ratioDeaths} margin={styles.margin}>
         <CartesianGrid stroke={styles.gridStroke} strokeDasharray="3 3" />
         <XAxis
           dy={10}
@@ -59,10 +75,28 @@ const Ratio = () => {
         <YAxis
           dx={-5}
           type="number"
+          dataKey="ratio"
+          orientation="left"
+          tick={styles.tick}
+          stroke={styles.stroke}
+          tickFormatter={tickFormatter2Decimals}
+          domain={[
+            (dataMin) => (+dataMin - Math.abs(dataMin) / 10).toFixed(3),
+            (dataMax) => (+dataMax + dataMax / 10).toFixed(3),
+          ]}
+        />
+        <YAxis
+          type="number"
+          yAxisId="right"
+          dataKey="count"
+          orientation="right"
           tick={styles.tick}
           stroke={styles.stroke}
           tickFormatter={tickFormatter}
-          domain={["dataMin - 0.09", "dataMax + 0.07"]}
+          domain={[
+            (dataMin) => (+dataMin - Math.abs(dataMin) / 10).toFixed(3),
+            (dataMax) => (+dataMax + dataMax / 10).toFixed(0),
+          ]}
         />
         <ReferenceLine
           y={reference.ratio}
@@ -78,9 +112,9 @@ const Ratio = () => {
           strokeDasharray="3 3"
         />
         <Tooltip
+          renderer={toolTipRenderer}
           content={<CustomTooltip />}
           cursor={{ fill: "#000", fillOpacity: "0.4" }}
-          renderer={toolTipRenderer}
         />
         <Bar dataKey="ratio">
           {ratioDeaths.map((ratio, index) => (
@@ -91,7 +125,14 @@ const Ratio = () => {
             />
           ))}
         </Bar>
-      </BarChart>
+        <Line
+          yAxisId="right"
+          dataKey="count"
+          type="monotone"
+          stroke={styles.lineStroke}
+          dot={{ stroke: styles.stroke, r: 1 }}
+        />
+      </ComposedChart>
     </ResponsiveContainer>
   )
 }

@@ -1,4 +1,4 @@
-import deaths from "@data/deaths"
+import { global as deaths } from "@data/deaths"
 import palette from "google-palette"
 
 const keys = Object.keys(deaths[0])
