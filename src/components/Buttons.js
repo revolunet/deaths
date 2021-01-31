@@ -1,7 +1,11 @@
 import { useState, useEffect, cloneElement } from "react"
 
-export const Button = ({ active, children, handleClick }) => (
-  <button className={`${active ? "active" : ""}`} onClick={handleClick}>
+export const Button = ({ active, ariaLabel, children, handleClick }) => (
+  <button
+    onClick={handleClick}
+    aria-label={ariaLabel ? ariaLabel : ""}
+    className={`${active ? "active" : ""}`}
+  >
     {children}
   </button>
 )

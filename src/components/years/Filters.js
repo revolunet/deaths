@@ -33,10 +33,10 @@ const Filters = () => {
       </div>
       <div className="gender">
         <ButtonGroup onChange={handleGenderChange} vertical={true}>
-          <Button>
+          <Button ariaLabel="male">
             <IoMale size="40px" />
           </Button>
-          <Button>
+          <Button ariaLabel="female">
             <IoFemale size="40px" />
           </Button>
         </ButtonGroup>
