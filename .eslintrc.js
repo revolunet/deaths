@@ -42,7 +42,6 @@ module.exports = {
   rules: {
     "prettier/prettier": "error",
     "react/prop-types": 0,
-    indent: ["error", 2],
     "linebreak-style": ["error", "unix"],
     quotes: ["error", "double"],
     semi: ["error", "never"],

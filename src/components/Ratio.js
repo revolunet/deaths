@@ -54,7 +54,7 @@ const Ratio = () => {
         {fn(ratio, { minimumFractionDigits: 2 })}% {f("mortality")}
       </div>
       <div>
-        {fn(count, { minimumFractionDigits: 2 })} {f("deaths")}
+        {fn(count, { minimumFractionDigits: 0 })} {f("deaths")}
       </div>
     </>
   )
