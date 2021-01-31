@@ -20,8 +20,18 @@ const Filters = () => {
 
   return (
     <div className="filters">
+      <div className="gender">
+        <ButtonGroup onChange={handleGenderChange} type="grid">
+          <Button ariaLabel="male">
+            <IoMale size="30px" />
+          </Button>
+          <Button ariaLabel="female">
+            <IoFemale size="30px" />
+          </Button>
+        </ButtonGroup>
+      </div>
       <div className="age">
-        <ButtonGroup onChange={handleAgeChange} vertical={true}>
+        <ButtonGroup onChange={handleAgeChange} type="grid">
           <Button>0-15</Button>
           <Button>15-30</Button>
           <Button>30-45</Button>
@@ -29,16 +39,6 @@ const Filters = () => {
           <Button>60-75</Button>
           <Button>75-90</Button>
           <Button>90+</Button>
-        </ButtonGroup>
-      </div>
-      <div className="gender">
-        <ButtonGroup onChange={handleGenderChange} vertical={true}>
-          <Button ariaLabel="male">
-            <IoMale size="40px" />
-          </Button>
-          <Button ariaLabel="female">
-            <IoFemale size="40px" />
-          </Button>
         </ButtonGroup>
       </div>
     </div>

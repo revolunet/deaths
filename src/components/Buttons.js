@@ -10,13 +10,17 @@ export const Button = ({ active, ariaLabel, children, handleClick }) => (
   </button>
 )
 
-export const ButtonGroup = ({ children, onChange, vertical }) => {
+export const ButtonGroup = ({
+  children = [],
+  onChange,
+  type = "horizontal",
+}) => {
   const [selected, setSelected] = useState(null)
 
   useEffect(() => onChange && onChange(selected), [selected])
 
   return (
-    <div className={`button-group ${vertical && "vertical"}`}>
+    <div className={`button-group ${type}`}>
       {children.map((child, i) =>
         cloneElement(child, {
           key: i,
