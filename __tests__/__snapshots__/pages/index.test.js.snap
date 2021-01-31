@@ -44,10 +44,7 @@ exports[`should match snapshot 1`] = `
                 class="deaths"
               >
                 <div>
-                  595 993 décès
-                </div>
-                <div>
-                  0.89% de mortalité
+                  663 536 décès
                 </div>
               </div>
             </div>
@@ -71,10 +68,7 @@ exports[`should match snapshot 1`] = `
                 class="deaths"
               >
                 <div>
-                  621 309 décès
-                </div>
-                <div>
-                  0.93% de mortalité
+                  621 360 décès
                 </div>
               </div>
             </div>
@@ -98,10 +92,7 @@ exports[`should match snapshot 1`] = `
                 class="deaths"
               >
                 <div>
-                  618 469 décès
-                </div>
-                <div>
-                  0.92% de mortalité
+                  618 491 décès
                 </div>
               </div>
             </div>
@@ -125,10 +116,7 @@ exports[`should match snapshot 1`] = `
                 class="deaths"
               >
                 <div>
-                  615 457 décès
-                </div>
-                <div>
-                  0.92% de mortalité
+                  615 462 décès
                 </div>
               </div>
             </div>
@@ -152,10 +140,7 @@ exports[`should match snapshot 1`] = `
                 class="deaths"
               >
                 <div>
-                  602 238 décès
-                </div>
-                <div>
-                  0.90% de mortalité
+                  602 243 décès
                 </div>
               </div>
             </div>
@@ -179,10 +164,7 @@ exports[`should match snapshot 1`] = `
                 class="deaths"
               >
                 <div>
-                  601 841 décès
-                </div>
-                <div>
-                  0.91% de mortalité
+                  601 850 décès
                 </div>
               </div>
             </div>
@@ -206,10 +188,7 @@ exports[`should match snapshot 1`] = `
                 class="deaths"
               >
                 <div>
-                  567 460 décès
-                </div>
-                <div>
-                  0.86% de mortalité
+                  567 462 décès
                 </div>
               </div>
             </div>
@@ -233,10 +212,7 @@ exports[`should match snapshot 1`] = `
                 class="deaths"
               >
                 <div>
-                  577 532 décès
-                </div>
-                <div>
-                  0.88% de mortalité
+                  577 534 décès
                 </div>
               </div>
             </div>
@@ -262,9 +238,6 @@ exports[`should match snapshot 1`] = `
                 <div>
                   578 137 décès
                 </div>
-                <div>
-                  0.89% de mortalité
-                </div>
               </div>
             </div>
           </li>
@@ -287,10 +260,7 @@ exports[`should match snapshot 1`] = `
                 class="deaths"
               >
                 <div>
-                  548 952 décès
-                </div>
-                <div>
-                  0.85% de mortalité
+                  548 954 décès
                 </div>
               </div>
             </div>
@@ -314,10 +284,7 @@ exports[`should match snapshot 1`] = `
                 class="deaths"
               >
                 <div>
-                  556 677 décès
-                </div>
-                <div>
-                  0.86% de mortalité
+                  556 678 décès
                 </div>
               </div>
             </div>
@@ -341,10 +308,7 @@ exports[`should match snapshot 1`] = `
                 class="deaths"
               >
                 <div>
-                  555 745 décès
-                </div>
-                <div>
-                  0.86% de mortalité
+                  555 746 décès
                 </div>
               </div>
             </div>
@@ -368,10 +332,7 @@ exports[`should match snapshot 1`] = `
                 class="deaths"
               >
                 <div>
-                  549 872 décès
-                </div>
-                <div>
-                  0.86% de mortalité
+                  549 875 décès
                 </div>
               </div>
             </div>
@@ -397,9 +358,6 @@ exports[`should match snapshot 1`] = `
                 <div>
                   538 196 décès
                 </div>
-                <div>
-                  0.85% de mortalité
-                </div>
               </div>
             </div>
           </li>
@@ -422,10 +380,7 @@ exports[`should match snapshot 1`] = `
                 class="deaths"
               >
                 <div>
-                  533 280 décès
-                </div>
-                <div>
-                  0.84% de mortalité
+                  533 281 décès
                 </div>
               </div>
             </div>
@@ -449,10 +404,7 @@ exports[`should match snapshot 1`] = `
                 class="deaths"
               >
                 <div>
-                  545 716 décès
-                </div>
-                <div>
-                  0.87% de mortalité
+                  545 718 décès
                 </div>
               </div>
             </div>
@@ -476,10 +428,7 @@ exports[`should match snapshot 1`] = `
                 class="deaths"
               >
                 <div>
-                  526 695 décès
-                </div>
-                <div>
-                  0.85% de mortalité
+                  526 698 décès
                 </div>
               </div>
             </div>
@@ -503,10 +452,7 @@ exports[`should match snapshot 1`] = `
                 class="deaths"
               >
                 <div>
-                  570 654 décès
-                </div>
-                <div>
-                  0.92% de mortalité
+                  570 656 décès
                 </div>
               </div>
             </div>
@@ -530,10 +476,7 @@ exports[`should match snapshot 1`] = `
                 class="deaths"
               >
                 <div>
-                  552 517 décès
-                </div>
-                <div>
-                  0.90% de mortalité
+                  552 523 décès
                 </div>
               </div>
             </div>
@@ -557,10 +500,7 @@ exports[`should match snapshot 1`] = `
                 class="deaths"
               >
                 <div>
-                  548 158 décès
-                </div>
-                <div>
-                  0.90% de mortalité
+                  548 162 décès
                 </div>
               </div>
             </div>
@@ -584,15 +524,101 @@ exports[`should match snapshot 1`] = `
                 class="deaths"
               >
                 <div>
-                  546 856 décès
-                </div>
-                <div>
-                  0.90% de mortalité
+                  546 860 décès
                 </div>
               </div>
             </div>
           </li>
         </ul>
+        <div
+          class="filters"
+        >
+          <div
+            class="age"
+          >
+            <div
+              class="button-group vertical"
+            >
+              <button
+                class=""
+              >
+                0-15
+              </button>
+              <button
+                class=""
+              >
+                15-30
+              </button>
+              <button
+                class=""
+              >
+                30-45
+              </button>
+              <button
+                class=""
+              >
+                45-60
+              </button>
+              <button
+                class=""
+              >
+                60-75
+              </button>
+              <button
+                class=""
+              >
+                75-90
+              </button>
+              <button
+                class=""
+              >
+                90+
+              </button>
+            </div>
+          </div>
+          <div
+            class="gender"
+          >
+            <div
+              class="button-group vertical"
+            >
+              <button
+                class=""
+              >
+                <svg
+                  fill="currentColor"
+                  height="40px"
+                  stroke="currentColor"
+                  stroke-width="0"
+                  viewBox="0 0 512 512"
+                  width="40px"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M442 48h-90a22 22 0 000 44h36.89l-60.39 60.39c-68.19-52.86-167-48-229.54 14.57C31.12 234.81 31.12 345.19 99 413a174.21 174.21 0 00246 0c62.57-62.58 67.43-161.35 14.57-229.54L420 123.11V160a22 22 0 0044 0V70a22 22 0 00-22-22zM313.92 381.92a130.13 130.13 0 01-183.84 0c-50.69-50.68-50.69-133.16 0-183.84s133.16-50.69 183.84 0 50.69 133.16 0 183.84z"
+                  />
+                </svg>
+              </button>
+              <button
+                class=""
+              >
+                <svg
+                  fill="currentColor"
+                  height="40px"
+                  stroke="currentColor"
+                  stroke-width="0"
+                  viewBox="0 0 512 512"
+                  width="40px"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M430 190c0-95.94-78.06-174-174-174S82 94.06 82 190c0 88.49 66.4 161.77 152 172.61V394h-36a22 22 0 000 44h36v36a22 22 0 0044 0v-36h36a22 22 0 000-44h-36v-31.39c85.6-10.84 152-84.12 152-172.61zm-304 0c0-71.68 58.32-130 130-130s130 58.32 130 130-58.32 130-130 130-130-58.32-130-130z"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
       </aside>
       <figure>
         <div
