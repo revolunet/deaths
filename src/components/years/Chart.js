@@ -19,6 +19,7 @@ import CustomTooltip from "@components/Tooltip"
 const styles = {
   stroke: "#b3b3b3",
   gridStroke: "#666",
+  dotFill: "#121212",
   tick: { fontSize: 12 },
   padding: { left: 0, right: 25 },
   margin: { top: 8, right: 0, bottom: 10, left: -10 },
@@ -105,7 +106,7 @@ const Chart = ({ years }) => {
               dataKey={year}
               type="monotone"
               stroke={colors[year]}
-              dot={{ fill: styles.stroke }}
+              dot={{ fill: styles.dotFill }}
             />
           ) : null
         )}

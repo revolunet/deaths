@@ -8,15 +8,20 @@ ul.list {
   overflow: auto;
   list-style: none;
   flex-direction: column;
+  // background-color: powderblue;
+  padding: $spacing $spacing * 2 0 $spacing;
 
   li {
     flex: 1;
     display: flex;
     cursor: pointer;
     position: relative;
+    border-radius: 2px;
     align-items: center;
-    margin: $spacing 0;
     flex-direction: row;
+    margin-bottom: $spacing;
+    padding: $spacing * 1.5 $spacing;
+    background-color: $background-color;
 
     .dot {
       border-width: 1px;
@@ -27,6 +32,7 @@ ul.list {
       height: $spacing * 1.3;
       min-width: $spacing * 1.3;
       min-height: $spacing * 1.3;
+      background-color: $base-color;
     }
 
     & > div:last-child {
@@ -53,6 +59,16 @@ ul.list {
     &.disabled {
       font-style: italic;
       color: $font-color-disabled;
+      background-color: transparent;
+
+      &:hover {
+        background-color: $background-color;
+
+        .dot {
+          // border-color: $base-color !important;
+          background-color: $base-color !important;
+        }
+      }
 
       .dot {
         background-color: transparent !important;
