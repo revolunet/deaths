@@ -1,0 +1,45 @@
+@use "sass:color";
+
+$base-colors: (
+  "dark": black,
+  "light": white,
+);
+
+$scheme: (
+  "primary": (
+    "light": #6200ee,
+    "dark": #8a85ff,
+  ),
+  "color": (
+    "light": black,
+    "dark": #e6e5e8,
+  ),
+  "on-primary": (
+    "dark": white,
+    "light": white,
+  ),
+  "background": (
+    "light": white,
+    "dark": #1c2025,
+  ),
+  "surface": (
+    "light": #efefef,
+    "dark": #282c34,
+  ),
+);
+
+@function color($key: "primary", $variant: "light") {
+  $map: map-get($scheme, $key);
+  @return map-get($map, $variant);
+}
+
+@mixin apply($selector) {
+  $modes: dark, light;
+  @each $mode in $modes {
+    @media (prefers-color-scheme: $mode) {
+      #{$selector} {
+        @content ($mode);
+      }
+    }
+  }
+}

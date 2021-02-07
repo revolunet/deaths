@@ -1,8 +1,9 @@
-@use "./fonts";
-@use "./global";
-@use "./header";
-@use "./main";
-@use "./list";
-@use "./ratio";
-@use "./overview";
-@use "./footer";
+@use "main";
+
+@use "components/list";
+@use "components/panel";
+@use "components/button";
+
+@use "views/deaths";
+@use "views/overview";
+@use "views/mortality";

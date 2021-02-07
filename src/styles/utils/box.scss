@@ -1,0 +1,15 @@
+@use "sass:list";
+$base-spacing: 1rem;
+
+@function combine($sizes) {
+  $result: ();
+  @each $size in $sizes {
+    $result: list.append($result, $size * $base-spacing);
+  }
+  @return $result;
+}
+
+@mixin spacing($margin: 0, $padding: 0) {
+  margin: combine($margin);
+  padding: combine($padding);
+}

@@ -1,0 +1,12 @@
+.panel.deaths {
+  flex-direction: column;
+
+  .filters {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .recharts-responsive-container {
+    min-height: 300px;
+  }
+}
