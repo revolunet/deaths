@@ -10,9 +10,17 @@ $base-spacing: 1rem;
   @return $result;
 }
 
-@mixin spacing($margin: 0, $padding: 0) {
+@mixin margin($margin: 0) {
   margin: combine($margin);
+}
+
+@mixin padding($padding: 0) {
   padding: combine($padding);
+}
+
+@mixin spacing($margin: 0, $padding: 0) {
+  @include margin($margin);
+  @include padding($padding);
 }
 
 @mixin radius($margin: 0, $padding: 0) {
