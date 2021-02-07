@@ -10,10 +10,10 @@
     button {
       min-width: 0;
       flex-shrink: 0;
-      @include box.margin((0, 1, 0, 0));
+      @include box.margin(0, 1, 0, 0);
 
       &:last-child {
-        @include box.margin();
+        @include box.margin(0);
       }
     }
   }

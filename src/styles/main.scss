@@ -11,6 +11,11 @@ body {
   @include text.size("base");
 }
 
+body,
+button {
+  font-family: "Roboto";
+}
+
 @media (prefers-color-scheme: dark) {
   body {
     color: theme.color("color", "dark");

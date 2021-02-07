@@ -11,20 +11,20 @@ const Mortality = () => {
     {
       fill: false,
       type: "line",
-      label: "Count",
+      label: "Ratio",
       borderWidth: 3,
       pointRadius: 5,
       yAxisID: "y-axis-2",
       borderColor: "#03dac6",
       pointBackgroundColor: "#03dac6",
-      data: deaths.map((death) => death.count),
+      data: deaths.map((death) => death.ratio),
     },
     {
       type: "bar",
-      label: "Ratio",
+      label: "Count",
       borderWidth: 3,
       yAxisID: "y-axis-1",
-      data: deaths.map((death) => death.ratio),
+      data: deaths.map((death) => death.count),
     },
   ]
 

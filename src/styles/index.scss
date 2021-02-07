@@ -1,8 +1,10 @@
 @use "main";
+@use "fonts";
 
 @use "components/list";
 @use "components/panel";
 @use "components/button";
+@use "components/header";
 
 @use "views/deaths";
 @use "views/filters";

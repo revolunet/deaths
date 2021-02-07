@@ -1,0 +1,10 @@
+@use "../utils/box";
+@use "../utils/theme";
+
+.header {
+  @include box.padding(1, 2);
+}
+
+@include theme.apply(".header") using ($mode) {
+  background-color: theme.color("surface", $mode);
+}
