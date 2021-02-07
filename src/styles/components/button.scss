@@ -5,11 +5,10 @@
 button {
   cursor: pointer;
   border-width: 1px;
-  border-radius: 4px;
   border-style: solid;
+  @include box.radius();
   @include text.size("base");
   background-color: transparent;
-  @include box.spacing(0.5, 0.5);
 
   &:focus {
     outline: none;

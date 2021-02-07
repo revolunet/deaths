@@ -45,7 +45,7 @@ const Mortality = () => {
   ]
 
   return (
-    <Panel className="overview">
+    <Panel className="mortality">
       <Chart xAxes={xAxes} yAxes={yAxes} datasets={datasets} labels={labels} />
     </Panel>
   )

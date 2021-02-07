@@ -1,4 +1,5 @@
 @use "sass:list";
+$base-radius: 4px;
 $base-spacing: 1rem;
 
 @function combine($sizes) {
@@ -12,4 +13,8 @@ $base-spacing: 1rem;
 @mixin spacing($margin: 0, $padding: 0) {
   margin: combine($margin);
   padding: combine($padding);
+}
+
+@mixin radius($margin: 0, $padding: 0) {
+  border-radius: $base-radius;
 }

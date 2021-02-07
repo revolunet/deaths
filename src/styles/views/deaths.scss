@@ -1,9 +1,25 @@
+@use "../utils/box";
+
 .panel.deaths {
   flex-direction: column;
+  @include box.spacing(1, (1.5, 1, 1));
 
   .filters {
     display: flex;
     flex-wrap: wrap;
+    @include box.radius();
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.2);
+    @include box.spacing((1, 0, 0), (1, 0, 0, 1));
+
+    li {
+      min-width: 0;
+      flex-shrink: 0;
+
+      button {
+        @include box.spacing((0, 1, 1, 0), (0.5, 0.8));
+      }
+    }
   }
 
   .recharts-responsive-container {

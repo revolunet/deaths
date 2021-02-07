@@ -1,7 +1,6 @@
+@use "../utils/box";
+
 .panel.mortality {
   flex-direction: column;
-
-  .recharts-responsive-container {
-    min-height: 300px;
-  }
+  @include box.spacing(1, (1.5, 1, 1));
 }

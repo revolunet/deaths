@@ -1,0 +1,20 @@
+@use "../utils/box";
+
+.panel.filters {
+  justify-content: space-between;
+
+  .button-group {
+    display: flex;
+    flex-wrap: wrap;
+
+    button {
+      min-width: 0;
+      flex-shrink: 0;
+      @include box.spacing((0, 1, 0, 0), (0.5, 0.8));
+
+      &:last-child {
+        @include box.spacing(0, (0.5, 0.8));
+      }
+    }
+  }
+}
