@@ -1,4 +1,4 @@
-import { MouseEvent, ReactNode } from "react"
+import { ReactNode } from "react"
 import { useState, useEffect, cloneElement } from "react"
 
 type Props = {

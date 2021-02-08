@@ -1,16 +1,16 @@
 import useSWR from "swr"
 import Population from "@/data/population.json"
 
-const getRatio = (data, year) =>
+const getRatio = (data: {}[], year: string) =>
   (
     (data.reduce((count, month) => count + (month[year] || 0), 0) * 100) /
     Population[year]
   ).toFixed(3)
 
-const getCount = (data, year) =>
+const getCount = (data: {}[], year: string) =>
   data.reduce((count, month) => count + (month[year] || 0), 0)
 
-const getData = (deaths) =>
+const getData = (deaths: {}[]) =>
   Object.keys(deaths[0]).reduce(
     (years, key) => (
       key !== "month" &&
@@ -30,7 +30,7 @@ const useMortality = () => {
     revalidateOnFocus: false,
   })
 
-  const setMortality = (deaths) => {
+  const setMortality = (deaths: {}[]) => {
     const data = getData(deaths)
     mutate(data)
   }

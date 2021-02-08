@@ -1,10 +1,10 @@
 import useSWR from "swr"
 import Months from "@/data/months.json"
 
-const getData = (deaths) =>
+const getData = (deaths: {}[]) =>
   deaths
-    .reduce(
-      (result, death) =>
+    .reduce<{}[]>(
+      (result: any[], death: { month: string }) =>
         result.concat(
           Object.keys(death).reduce(
             (months, key) => (
@@ -27,7 +27,7 @@ const getData = (deaths) =>
         ),
       []
     )
-    .sort((a, b) => a.date - b.date)
+    .sort((a: { date: number }, b: { date: number }) => a.date - b.date)
 
 const useOverview = () => {
   const { data, mutate } = useSWR("overview", null, {
@@ -35,7 +35,7 @@ const useOverview = () => {
     revalidateOnFocus: false,
   })
 
-  const setOverview = (deaths) => {
+  const setOverview = (deaths: {}[]) => {
     const data = getData(deaths)
     mutate(data)
   }
