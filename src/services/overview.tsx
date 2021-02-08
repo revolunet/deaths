@@ -1,19 +1,5 @@
 import useSWR from "swr"
-
-const Months = [
-  "Janvier",
-  "Février",
-  "Mars",
-  "Avril",
-  "Mai",
-  "Juin",
-  "Juillet",
-  "Aout",
-  "Septembre",
-  "Octobre",
-  "Novembre",
-  "Decembre",
-]
+import Months from "@/data/months.json"
 
 const getData = (deaths) =>
   deaths

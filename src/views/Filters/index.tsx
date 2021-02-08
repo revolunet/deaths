@@ -1,19 +1,8 @@
-import AgeGroups from "./AgeGroups"
 import Genders from "./Genders"
+import AgeGroups from "./AgeGroups"
 import Panel from "@/components/Panel"
-
-import { useEffect, useState } from "react"
 import useFilters from "@/services/filters"
-
-const Groups = [
-  "fifteen",
-  "thirty",
-  "fortyfive",
-  "sixty",
-  "seventyfive",
-  "ninety",
-  "ninetyplus",
-]
+import Groups from "@/data/age-groups.json"
 
 const Deaths = () => {
   const [{ age, gender }, setFilters] = useFilters()
