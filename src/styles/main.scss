@@ -16,14 +16,14 @@ button {
   font-family: "Roboto";
 }
 
-@media (prefers-color-scheme: dark) {
+[data-theme="dark"] {
   body {
     color: theme.color("color", "dark");
     background-color: theme.color("background", "dark");
   }
 }
 
-@media (prefers-color-scheme: light) {
+[data-theme="light"] {
   body {
     color: theme.color("color");
     background-color: theme.color("background");

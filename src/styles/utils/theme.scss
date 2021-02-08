@@ -36,7 +36,7 @@ $scheme: (
 @mixin apply($selector) {
   $modes: dark, light;
   @each $mode in $modes {
-    @media (prefers-color-scheme: $mode) {
+    [data-theme="#{$mode}"] {
       #{$selector} {
         @content ($mode);
       }

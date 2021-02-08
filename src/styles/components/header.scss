@@ -2,6 +2,9 @@
 @use "../utils/theme";
 
 .header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   @include box.padding(0.5, 1.5);
 }
 
