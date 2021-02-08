@@ -22,6 +22,7 @@ button {
 
   &:hover,
   &.active {
+    @include box.shadow();
     color: theme.color("on-primary", $mode);
     background-color: theme.color("primary", $mode);
   }

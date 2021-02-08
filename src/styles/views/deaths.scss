@@ -5,24 +5,15 @@
   @include box.spacing(1, (1.5, 1, 1));
 
   .filters {
-    display: flex;
-    flex-wrap: wrap;
-    @include box.radius();
+    @include box.margin(1, 0, 0);
     justify-content: center;
-    background-color: rgba(0, 0, 0, 0.2);
-    @include box.spacing((1, 0, 0), (1, 0, 0, 1));
 
     li {
-      min-width: 0;
-      flex-shrink: 0;
+      flex: 0 0 0;
 
       button {
-        @include box.margin(0, 1, 1, 0);
+        @include box.margin(0.5);
       }
     }
-  }
-
-  .recharts-responsive-container {
-    min-height: 300px;
   }
 }

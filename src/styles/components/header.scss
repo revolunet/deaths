@@ -2,7 +2,7 @@
 @use "../utils/theme";
 
 .header {
-  @include box.padding(1, 2);
+  @include box.padding(0.5, 1.5);
 }
 
 @include theme.apply(".header") using ($mode) {

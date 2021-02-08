@@ -29,14 +29,15 @@ export const ButtonGroup = ({
   useEffect(() => onChange && onChange(selected), [selected])
 
   return (
-    <div className={`button-group ${type}`}>
-      {children.map((child, i) =>
-        cloneElement(child, {
-          key: i,
-          active: i === selected,
-          onClick: () => setSelected(i === selected ? null : i),
-        })
-      )}
-    </div>
+    <ul className={`button-group ${type}`}>
+      {children.map((child, i) => (
+        <li key={i}>
+          {cloneElement(child, {
+            active: i === selected,
+            onClick: () => setSelected(i === selected ? null : i),
+          })}
+        </li>
+      ))}
+    </ul>
   )
 }
