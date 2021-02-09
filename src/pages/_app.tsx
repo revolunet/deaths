@@ -1,13 +1,16 @@
 import type { AppProps } from "next/app"
-import { ThemeProvider } from "next-themes"
+import { Themes } from "@/services/themes"
 
+// styles
 import "@/styles/index.scss"
+import dark from "@/styles/themes/dark.module.scss"
+import light from "@/styles/themes/light.module.scss"
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <ThemeProvider defaultTheme="system">
+    <Themes light={light} dark={dark}>
       <Component {...pageProps} />
-    </ThemeProvider>
+    </Themes>
   )
 }
 

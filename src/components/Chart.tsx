@@ -1,5 +1,7 @@
 import merge from "deepmerge"
+import hexToRgba from "hex-to-rgba"
 import { Line } from "react-chartjs-2"
+import { useTheme } from "@/services/themes"
 
 type Chart = {
   xAxes: Array<Object>
@@ -26,13 +28,15 @@ const getBackground = (
 }
 
 const Chart = ({ xAxes, yAxes, datasets, labels, gradient }: Chart) => {
+  const { values: theme } = useTheme()
+
   const config = (canvas: HTMLCanvasElement) => {
     const defaultDataset = {
       pointRadius: 3,
       pointBorderWidth: 2,
-      borderColor: "#8a85ff",
-      pointBackgroundColor: "#8a85ff",
-      pointBorderColor: "rgba(40, 44, 52, 0.9)",
+      borderColor: theme?.primary,
+      pointBackgroundColor: theme?.primary,
+      pointBorderColor: hexToRgba(theme?.background || "", 0.9),
     }
 
     return {
@@ -51,7 +55,10 @@ const Chart = ({ xAxes, yAxes, datasets, labels, gradient }: Chart) => {
         merge(
           {
             gridLines: { display: false },
-            ticks: { fontColor: "#adb0bb", padding: 5 },
+            ticks: {
+              padding: 5,
+              fontColor: theme?.color,
+            },
           },
           xAxe
         )
@@ -61,17 +68,17 @@ const Chart = ({ xAxes, yAxes, datasets, labels, gradient }: Chart) => {
           {
             gridLines: {
               lineWidth: 1,
-              color: "#484a51",
               drawTicks: false,
               drawBorder: false,
               borderDash: [3, 3],
+              color: theme?.muted,
               drawOnChartArea: true,
-              zeroLineColor: "#484a51",
+              zeroLineColor: theme?.muted,
             },
             ticks: {
               padding: 15,
               beginAtZero: true,
-              fontColor: "#adb0bb",
+              fontColor: theme?.color,
             },
           },
           yAxe

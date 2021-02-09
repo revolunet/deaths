@@ -1,9 +1,11 @@
 import Chart from "@/components/Chart"
 import Panel from "@/components/Panel"
+import { useTheme } from "@/services/themes"
 import useMortality from "@/services/mortality"
 
 const Mortality = () => {
   const [deaths] = useMortality()
+  const { values: theme } = useTheme()
 
   const labels = deaths.map((death) => death.year)
 
@@ -15,8 +17,8 @@ const Mortality = () => {
       borderWidth: 3,
       pointRadius: 5,
       yAxisID: "y-axis-2",
-      borderColor: "#03dac6",
-      pointBackgroundColor: "#03dac6",
+      borderColor: theme?.secondary,
+      pointBackgroundColor: theme?.secondary,
       data: deaths.map((death) => death.ratio),
     },
     {

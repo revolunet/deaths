@@ -1,36 +1,58 @@
 @use "sass:color";
 
-$base-colors: (
-  "dark": black,
-  "light": white,
-);
-
 $scheme: (
   "primary": (
-    "light": #6200ee,
+    "light": #1976d2,
     "dark": #8a85ff,
   ),
+  "secondary": (
+    "light": #ff3d57,
+    "dark": #03dac6,
+  ),
   "color": (
-    "light": black,
-    "dark": #e6e5e8,
+    "dark": #adb0bb,
+    "light": #484a51,
+  ),
+  "muted": (
+    "light": #adb0bb,
+    "dark": #484a51,
   ),
   "on-primary": (
     "dark": white,
     "light": white,
   ),
   "background": (
-    "light": white,
-    "dark": #1c2025,
+    "light": #fafafa,
+    "dark": #1a2038,
   ),
   "surface": (
-    "light": #efefef,
-    "dark": #282c34,
+    "light": white,
+    "dark": #222a45,
+  ),
+);
+
+$shadows: (
+  "dark": (
+    0px 3px 3px -2px rgba(0, 0, 0, 0.06),
+    0px 3px 4px 0px rgba(0, 0, 0, 0.042),
+    0px 1px 8px 0px rgba(0, 0, 0, 0.036),
+  ),
+  "light": (
+    0px 3px 3px -2px rgba(0, 0, 0, 0.06),
+    0px 3px 4px 0px rgba(0, 0, 0, 0.042),
+    0px 1px 8px 0px rgba(0, 0, 0, 0.036),
   ),
 );
 
 @function color($key: "primary", $variant: "light") {
   $map: map-get($scheme, $key);
   @return map-get($map, $variant);
+}
+
+@mixin colors($mode) {
+  @each $key, $item in $scheme {
+    #{$key}: map-get($item, $mode);
+  }
 }
 
 @mixin apply($selector) {
@@ -42,4 +64,8 @@ $scheme: (
       }
     }
   }
+}
+
+@function shadow($mode: "light") {
+  @return map-get($shadows, $mode);
 }

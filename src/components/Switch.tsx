@@ -1,10 +1,10 @@
-import { useTheme } from "next-themes"
+import { useTheme } from "@/services/themes"
 import { useEffect, useState } from "react"
 import { FaMoon, FaSun } from "react-icons/fa"
 
 const Switch = () => {
+  const { theme, values, setTheme } = useTheme()
   const [mounted, setMounted] = useState(false)
-  const { resolvedTheme, theme, setTheme } = useTheme()
 
   useEffect(() => setMounted(true), [])
 
@@ -12,10 +12,18 @@ const Switch = () => {
 
   return (
     <div className="switch">
-      {(theme || resolvedTheme) === "dark" ? (
-        <FaSun color="#8a85ff" size={24} onClick={() => setTheme("light")} />
+      {theme === "dark" ? (
+        <FaSun
+          color={values.primary}
+          size={24}
+          onClick={() => setTheme("light")}
+        />
       ) : (
-        <FaMoon color="#8a85ff" size={24} onClick={() => setTheme("dark")} />
+        <FaMoon
+          color={values.primary}
+          size={24}
+          onClick={() => setTheme("dark")}
+        />
       )}
     </div>
   )

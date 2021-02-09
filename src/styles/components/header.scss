@@ -9,5 +9,7 @@
 }
 
 @include theme.apply(".header") using ($mode) {
+  box-shadow: theme.shadow($mode);
+  color: theme.color("primary", $mode);
   background-color: theme.color("surface", $mode);
 }
