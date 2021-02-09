@@ -1,39 +1,42 @@
 import Chart from "@/components/Chart"
 import Panel from "@/components/Panel"
 import { useTheme } from "@/services/themes"
+import AgeGroups from "@/data/age-groups.json"
 import useMortality from "@/services/mortality"
 
 const Mortality = () => {
-  const [deaths] = useMortality()
+  const [deathsGroups] = useMortality()
   const { values: theme } = useTheme()
 
-  const labels = deaths.map((death) => death.year)
+  const labels = deathsGroups[0]?.map((death) => death.year)
 
-  const datasets = [
-    {
-      fill: false,
-      type: "line",
-      label: "Ratio",
-      borderWidth: 3,
-      pointRadius: 5,
-      yAxisID: "y-axis-2",
-      borderColor: theme?.secondary,
-      pointBackgroundColor: theme?.secondary,
-      data: deaths.map((death) => death.ratio),
-    },
-    {
-      type: "bar",
-      label: "Count",
-      borderWidth: 3,
-      yAxisID: "y-axis-1",
-      data: deaths.map((death) => death.count),
-    },
-  ]
+  const datasets = deathsGroups.map((deaths, i) => ({
+    type: "bar",
+    borderWidth: 3,
+    label: AgeGroups[i],
+    yAxisID: "y-axis-1",
+    data: deaths.map((death) => death.count),
+  }))
 
-  const xAxes = [{ offset: true }]
+  datasets.push({
+    fill: false,
+    type: "line",
+    label: "Ratio",
+    borderWidth: 3,
+    pointRadius: 5,
+    yAxisID: "y-axis-2",
+    borderColor: theme?.secondary,
+    pointBackgroundColor: theme?.secondary,
+    data: deathsGroups[0]?.map((death, i) =>
+      deathsGroups.reduce((sum, deaths) => (sum += +deaths[i].ratio), 0)
+    ),
+  })
+
+  const xAxes = [{ offset: true, stacked: true }]
 
   const yAxes = [
     {
+      stacked: true,
       id: "y-axis-1",
       type: "linear",
       position: "left",

@@ -30,8 +30,8 @@ const useMortality = () => {
     revalidateOnFocus: false,
   })
 
-  const setMortality = (deaths: {}[]) => {
-    const data = getData(deaths)
+  const setMortality = (ageGroupsData: [][]) => {
+    const data = ageGroupsData.map((deaths) => getData(deaths))
     mutate(data)
   }
 
