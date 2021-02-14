@@ -1,8 +1,33 @@
 @use "../utils/box";
+@use "../utils/theme";
 
 .panel.filters {
+  align-items: center;
   @include box.padding(0.5);
   justify-content: space-between;
+
+  .slider {
+    @include box.margin(0, 2);
+
+    .MuiSlider-markLabelActive {
+      opacity: 1 !important;
+    }
+
+    .MuiSlider-rail,
+    .MuiSlider-track {
+      height: 4px;
+    }
+
+    .MuiSlider-mark {
+      width: 4px;
+      height: 4px;
+    }
+
+    .MuiSlider-thumb {
+      width: 14px;
+      height: 14px;
+    }
+  }
 
   ul {
     li {
@@ -11,4 +36,13 @@
       }
     }
   }
+}
+
+@include theme.apply(".MuiSlider-colorPrimary") using ($mode) {
+  color: theme.color("primary", $mode);
+}
+
+@include theme.apply(".MuiSlider-markLabel") using ($mode) {
+  opacity: 0.5;
+  color: theme.color("color", $mode);
 }

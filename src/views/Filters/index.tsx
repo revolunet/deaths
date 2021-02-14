@@ -5,16 +5,19 @@ import useFilters from "@/services/filters"
 import Groups from "@/data/age-groups.json"
 
 const Deaths = () => {
-  const [{ age, gender }, setFilters] = useFilters()
+  const [{ ageGroup, gender }, setFilters] = useFilters()
 
   const handleGenderChange = (value: number) => {
     const gender = value === 0 ? "male" : value === 1 ? "female" : null
-    setFilters({ age, gender })
+    setFilters({ ageGroup, gender })
   }
 
-  const handleAgeGroupChange = (value: number) => {
-    const age = value !== null ? Groups[value] : null
-    setFilters({ age, gender })
+  // const handleAgeGroupChange = (ageGroup: number) => {
+  //   // const ageGroup = value !== null ? Groups[value] : null
+  //   setFilters({ ageGroup, gender })
+  // }
+  const handleAgeGroupChange = (event: any, newValue: number | number[]) => {
+    setFilters({ ageGroup: newValue, gender })
   }
 
   return (

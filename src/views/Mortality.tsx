@@ -19,14 +19,14 @@ const Mortality = () => {
   }))
 
   datasets.push({
-    fill: false,
+    // fill: false,
     type: "line",
     label: "Ratio",
     borderWidth: 3,
-    pointRadius: 5,
+    // pointRadius: 5,
     yAxisID: "y-axis-2",
-    borderColor: theme?.secondary,
-    pointBackgroundColor: theme?.secondary,
+    // borderColor: theme?.secondary,
+    // pointBackgroundColor: theme?.secondary,
     data: deathsGroups[0]?.map((death, i) =>
       deathsGroups.reduce((sum, deaths) => (sum += +deaths[i].ratio), 0)
     ),

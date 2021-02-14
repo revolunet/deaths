@@ -20,18 +20,18 @@ const Chart = () => {
     [0.5, hexToRgba(theme?.primary || defaultColor, 0)],
   ]
 
-  const labels = deaths.map((death) => death.month)
+  const labels = deaths.labels
 
   const datasets = Object.keys(years).reduce(
-    (data, year) => (
+    (datasets, year) => (
       years[year] &&
-        data.push({
+        datasets.push({
           pointRadius: 5,
           pointBorderWidth: 2,
           label: `Count ${year}`,
-          data: deaths.map((month) => month[year]),
+          data: deaths.data[+year - 2000],
         }),
-      data
+      datasets
     ),
     []
   )
