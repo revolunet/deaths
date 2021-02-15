@@ -3,11 +3,26 @@
 
 .panel.filters {
   align-items: center;
-  @include box.padding(0.5);
-  justify-content: space-between;
+  @include box.padding(1);
+
+  .genders {
+    display: flex;
+    flex-direction: column;
+
+    .icon {
+      cursor: pointer;
+
+      &:first-child {
+        left: 2px;
+        position: relative;
+        @include box.margin(0, 0, 0.5, 0);
+      }
+    }
+  }
 
   .slider {
-    @include box.margin(0, 2);
+    flex: 1;
+    @include box.margin(0, 1.5, 1, 2);
 
     .MuiSlider-markLabelActive {
       opacity: 1 !important;
@@ -28,14 +43,17 @@
       height: 14px;
     }
   }
+}
 
-  ul {
-    li {
-      button {
-        @include box.margin(0.5);
-      }
-    }
-  }
+@include theme.apply(".panel.filters .genders .icon") using ($mode) {
+  color: theme.color("muted", $mode);
+}
+
+@include theme.apply(
+    ".panel.filters .genders .icon:hover, .panel.filters .genders .icon.active"
+  )
+  using ($mode) {
+  color: theme.color("primary", $mode);
 }
 
 @include theme.apply(".MuiSlider-colorPrimary") using ($mode) {
@@ -45,4 +63,9 @@
 @include theme.apply(".MuiSlider-markLabel") using ($mode) {
   opacity: 0.5;
   color: theme.color("color", $mode);
+}
+
+@include theme.apply(".MuiSlider-markActive") using ($mode) {
+  opacity: 1;
+  background-color: theme.color("surface", $mode);
 }

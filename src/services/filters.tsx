@@ -1,57 +1,27 @@
-import useSWR, { mutate } from "swr"
-import deaths from "@/data/deaths.json"
+import useSWR from "swr"
 import useDeaths from "@/services/deaths"
 import useOverview from "@/services/overview"
-import AgeGroups from "@/data/age-groups.json"
 import useMortality from "@/services/mortality"
 
 const initialData: Filters = {
-  ageGroup: null,
+  ageGroup: [0, 110],
   gender: null,
 }
 
-type Filters = {
-  ageGroup?: number
-  gender?: string
-}
-
-// const getData = ({ age, gender }) =>
-//   gender && age
-//     ? deaths[gender][age]
-//     : gender
-//     ? deaths[gender]["global"]
-//     : age
-//     ? deaths[age]
-//     : deaths["global"]
-
-// const getAgeGroupsdData = ({ age, gender }) =>
-//   gender && age
-//     ? [deaths[gender][age]]
-//     : gender
-//     ? AgeGroups.map((group) => deaths[gender][group])
-//     : age
-//     ? [deaths[age]]
-//     : AgeGroups.map((group) => deaths[group])
-
 const useFilters = () => {
-  // const [, setDeaths] = useDeaths()
-  const [, applyFilters] = useDeaths()
-  // const [, setOverview] = useOverview()
-  // const [, setMortality] = useMortality()
+  const [, applyDeathsFilters] = useDeaths()
+  const [, setOverview] = useOverview()
+  const [, applyMortalityFilters] = useMortality()
 
   const { data: filters, mutate } = useSWR("filters", null, {
     initialData,
   })
 
   const setFilters = (filters: Filters) => {
-    // const data = getData(filters)
-    // const ageGroupsData = getAgeGroupsdData(filters)
-
     mutate(filters)
-    // setDeaths(data)
-    applyFilters(filters)
-    // setOverview(data)
-    // setMortality(ageGroupsData)
+    const deaths = applyDeathsFilters(filters)
+    setOverview(deaths)
+    applyMortalityFilters(filters)
   }
 
   return [filters, setFilters] as const

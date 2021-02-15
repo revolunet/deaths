@@ -1,15 +1,10 @@
 import useSWR from "swr"
 import { deaths } from "@/data/deaths.json"
 
-type Filters = {
-  ageGroup?: [number, number]
-  gender?: string
-}
-
-const sumYears = (years) =>
+const sumYears = (years: number[][]) =>
   years.reduce((r, a) => a.map((b, i) => (r[i] || 0) + b), [])
 
-const sumAgeGroups = (ageGroups, start, end) =>
+const sumAgeGroups = (ageGroups: number[][][], start: number, end: number) =>
   ageGroups
     .slice(start, end)
     .reduce(
@@ -18,8 +13,10 @@ const sumAgeGroups = (ageGroups, start, end) =>
       []
     )
 
-const getData = ({ gender = null, ageGroup = null } = {}) => {
-  console.log("getData", gender, ageGroup)
+const getData = ({
+  gender,
+  ageGroup,
+}: Filters): { labels: string[]; data: number[][] } => {
   const data =
     gender && ageGroup
       ? sumAgeGroups(
@@ -29,17 +26,14 @@ const getData = ({ gender = null, ageGroup = null } = {}) => {
         )
       : gender
       ? deaths[gender].global
-      : ageGroup
-      ? sumAgeGroups(deaths.ageGroups, ageGroup[0] / 10, ageGroup[1] / 10)
-      : deaths.global
+      : sumAgeGroups(deaths.ageGroups, ageGroup[0] / 10, ageGroup[1] / 10)
 
   return { labels: deaths.labels, data }
 }
 
-const initialData = getData()
+const initialData = getData({ gender: null, ageGroup: [0, 110] })
 
 const useDeaths = () => {
-  console.log("useDeaths")
   const { data, mutate } = useSWR("deaths", null, {
     initialData,
     revalidateOnFocus: false,
@@ -47,7 +41,8 @@ const useDeaths = () => {
 
   const applyFilters = (filters: Filters) => {
     const data = getData(filters)
-    return mutate(data)
+    mutate(data)
+    return data
   }
 
   return [data, applyFilters] as const

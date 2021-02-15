@@ -1,7 +1,6 @@
 import type { AppProps } from "next/app"
 import { Themes } from "@/services/themes"
 
-// styles
 import "@/styles/index.scss"
 import dark from "@/styles/themes/dark.module.scss"
 import light from "@/styles/themes/light.module.scss"

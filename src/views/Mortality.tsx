@@ -1,35 +1,32 @@
 import Chart from "@/components/Chart"
 import Panel from "@/components/Panel"
 import { useTheme } from "@/services/themes"
-import AgeGroups from "@/data/age-groups.json"
 import useMortality from "@/services/mortality"
 
 const Mortality = () => {
-  const [deathsGroups] = useMortality()
+  const [mortality] = useMortality()
   const { values: theme } = useTheme()
 
-  const labels = deathsGroups[0]?.map((death) => death.year)
+  const labels = mortality.labels
 
-  const datasets = deathsGroups.map((deaths, i) => ({
+  const datasets = mortality.data.map((ageGroup: number[][], i: number) => ({
     type: "bar",
-    borderWidth: 3,
-    label: AgeGroups[i],
+    data: ageGroup,
+    borderWidth: 2,
+    label: `bar-${i}`,
     yAxisID: "y-axis-1",
-    data: deaths.map((death) => death.count),
   }))
 
   datasets.push({
-    // fill: false,
+    fill: false,
     type: "line",
     label: "Ratio",
     borderWidth: 3,
-    // pointRadius: 5,
+    pointRadius: 5,
     yAxisID: "y-axis-2",
-    // borderColor: theme?.secondary,
-    // pointBackgroundColor: theme?.secondary,
-    data: deathsGroups[0]?.map((death, i) =>
-      deathsGroups.reduce((sum, deaths) => (sum += +deaths[i].ratio), 0)
-    ),
+    data: mortality.ratio,
+    borderColor: theme?.secondary,
+    pointBackgroundColor: theme?.secondary,
   })
 
   const xAxes = [{ offset: true, stacked: true }]

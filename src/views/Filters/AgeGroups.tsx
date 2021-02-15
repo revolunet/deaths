@@ -1,4 +1,3 @@
-import { ButtonGroup, Button } from "@/components/Buttons"
 import Slider from "@material-ui/core/Slider"
 
 const marks = [
@@ -25,25 +24,7 @@ const AgeGroups = ({ onChange }) => {
       className="slider"
       onChange={onChange}
       defaultValue={[0, 110]}
-      // valueLabelDisplay="auto"
-      // aria-labelledby="range-slider"
-      // getAriaValueText={valuetext}
     />
-    // <div>
-    //   <ButtonGroup onChange={onChange} type="grid">
-    //     <Button>0 - 9</Button>
-    //     <Button>10 - 19</Button>
-    //     <Button>20 - 29</Button>
-    //     <Button>30 - 39</Button>
-    //     <Button>40 - 49</Button>
-    //     <Button>50 - 59</Button>
-    //     <Button>60 - 69</Button>
-    //     <Button>70 - 79</Button>
-    //     <Button>80 - 89</Button>
-    //     <Button>90 - 99</Button>
-    //     <Button>100+</Button>
-    //   </ButtonGroup>
-    // </div>
   )
 }
 

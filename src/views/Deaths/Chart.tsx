@@ -10,7 +10,10 @@ const Chart = () => {
   const { values: theme } = useTheme()
 
   const xAxes = [{}]
+
   const yAxes = [{}]
+
+  const labels = deaths.labels
 
   const defaultColor = "#ffffff"
 
@@ -19,8 +22,6 @@ const Chart = () => {
     [0.2, hexToRgba(theme?.primary || defaultColor, 0.2)],
     [0.5, hexToRgba(theme?.primary || defaultColor, 0)],
   ]
-
-  const labels = deaths.labels
 
   const datasets = Object.keys(years).reduce(
     (datasets, year) => (

@@ -14,14 +14,14 @@ const Switch = () => {
     <div className="switch">
       {theme === "dark" ? (
         <FaSun
-          color={values.primary}
           size={24}
+          color={values.primary}
           onClick={() => setTheme("light")}
         />
       ) : (
         <FaMoon
-          color={values.primary}
           size={24}
+          color={values.primary}
           onClick={() => setTheme("dark")}
         />
       )}

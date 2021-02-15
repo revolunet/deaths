@@ -24,123 +24,42 @@ const ageGroups = [
   [90, 99],
   [100, 1000],
 ]
-// const AgeGoups = require("../src/data/age-groups.json")
-
-// const Months = [
-//   "Janvier",
-//   "Février",
-//   "Mars",
-//   "Avril",
-//   "Mai",
-//   "Juin",
-//   "Juillet",
-//   "Aout",
-//   "Septembre",
-//   "Octobre",
-//   "Novembre",
-//   "Decembre",
-// ]
 
 const data = new Map()
 
-// const processDataByGender = (data, filter) => {
-//   const result = []
+const processMortalityData = (
+  data,
+  { age, gender: genderIndex, year, month }
+) => {
+  const gender = genderIndex === 1 ? "male" : "female"
+  const ageGroupIndex = age > 99 ? 10 : Math.floor(age / 10)
+  const yearIndex = year - 2000
+  const monthIndex = month - 1
 
-//   data.forEach(({ gender, year, month }) => {
-//     const index = month - 1
-//     if (year >= 2000 && 0 <= index && index < 12 && gender === filter.gender) {
-//       if (!result[index]) {
-//         result[index] = { month: Months[index] }
-//       }
-//       if (!result[index][year]) {
-//         result[index][year] = 0
-//       }
-//       result[index][year]++
-//     }
-//   })
+  // by age group
+  if (!data["ageGroups"]) {
+    data["ageGroups"] = []
+  }
+  if (!data["ageGroups"][ageGroupIndex]) {
+    data["ageGroups"][ageGroupIndex] = []
+  }
+  if (!data["ageGroups"][ageGroupIndex][yearIndex]) {
+    data["ageGroups"][ageGroupIndex][yearIndex] = 0
+  }
+  data["ageGroups"][ageGroupIndex][yearIndex]++
 
-//   return result
-// }
-
-// const processDataByAge = (data, filter) => {
-//   const result = []
-
-//   data.forEach(({ age, year, month }) => {
-//     const index = month - 1
-//     if (
-//       year >= 2000 &&
-//       0 <= index &&
-//       index < 12 &&
-//       filter.start <= age &&
-//       age <= filter.end
-//     ) {
-//       if (!result[index]) {
-//         result[index] = { month: Months[index] }
-//       }
-//       if (!result[index][year]) {
-//         result[index][year] = 0
-//       }
-//       result[index][year]++
-//     }
-//   })
-
-//   return result
-// }
-
-// const processDataByGenderAndAge = (data, filter) => {
-//   const result = []
-
-//   data.forEach(({ age, gender, year, month }) => {
-//     const index = month - 1
-//     if (
-//       year >= 2000 &&
-//       0 <= index &&
-//       index < 12 &&
-//       gender === filter.gender &&
-//       filter.start <= age &&
-//       age <= filter.end
-//     ) {
-//       if (!result[index]) {
-//         result[index] = { month: Months[index] }
-//       }
-//       if (!result[index][year]) {
-//         result[index][year] = 0
-//       }
-//       result[index][year]++
-//     }
-//   })
-
-//   return result
-// }
-
-// const processData = (data) => {
-//   const results = []
-
-//   data.forEach(({ year, month }) => {
-//     const index = month - 1
-//     if (year >= 2000 && 0 <= index && index < 12) {
-//       if (!results[index]) {
-//         result[index] = { month: Months[index] }
-//       }
-//       if (!results[index][year]) {
-//         results[index][year] = 0
-//       }
-//       results[index][year]++
-//     }
-//   })
-
-//   return result
-// }
-
-// const getDataByGenderAndAge = (data, gender) =>
-//   ageGroups.map((group) =>
-//     processDataByGenderAndAge(data, { start: group[0], end: group[1], gender })
-//   )
-
-// const getDataByAge = (data) =>
-//   ageGroups.map((group) =>
-//     processDataByAge(data, { start: group[0], end: group[1] })
-//   )
+  // by age group and gender
+  if (!data[gender]) {
+    data[gender] = { ageGroups: [] }
+  }
+  if (!data[gender]["ageGroups"][ageGroupIndex]) {
+    data[gender]["ageGroups"][ageGroupIndex] = []
+  }
+  if (!data[gender]["ageGroups"][ageGroupIndex][yearIndex]) {
+    data[gender]["ageGroups"][ageGroupIndex][yearIndex] = 0
+  }
+  data[gender]["ageGroups"][ageGroupIndex][yearIndex]++
+}
 
 const processDeathsData = (data, { age, gender: genderIndex, year, month }) => {
   // data.labels.push(month)
@@ -149,18 +68,6 @@ const processDeathsData = (data, { age, gender: genderIndex, year, month }) => {
   const ageGroupIndex = age > 99 ? 10 : Math.floor(age / 10)
   const yearIndex = year - 2000
   const monthIndex = month - 1
-
-  // global
-  if (!data["global"]) {
-    data["global"] = []
-  }
-  if (!data["global"][yearIndex]) {
-    data["global"][yearIndex] = []
-  }
-  if (!data["global"][yearIndex][monthIndex]) {
-    data["global"][yearIndex][monthIndex] = 0
-  }
-  data["global"][yearIndex][monthIndex]++
 
   // by gender
   if (!data[gender]["global"]) {
@@ -212,7 +119,9 @@ const getChartsData = (data) => {
       male: {},
       female: {},
     },
-    overview: {},
+    overview: {
+      labels: [],
+    },
     mortality: {},
   }
 
@@ -220,6 +129,7 @@ const getChartsData = (data) => {
     const index = month - 1
     if (year >= 2000 && 0 <= index && index < 12) {
       processDeathsData(chartsData.deaths, { age, gender, year, month })
+      processMortalityData(chartsData.mortality, { age, gender, year, month })
     }
   })
 
@@ -292,92 +202,7 @@ const main = async () => {
   const resultFilePath = `${__dirname}/../src/data/deaths.json`
   await getFilesData(files)
   console.log("File processing done:", data.size, "records found.")
-
   const json = getChartsData(data)
-
-  // const json = {
-  // ...getDeathsChartData(data)
-  // global: processData(data),
-  // ageGroups: getDataByAge(data),
-  // male: {
-  //   global: processDataByGender(data, { gender: 1 }),
-  //   ageGroups: getDataByGenderAndAge(data, 1),
-  //   // fifteen: processDataByGenderAndAge(data, {
-  //   //   gender: 1,
-  //   //   start: 0,
-  //   //   end: 15,
-  //   // }),
-  //   // thirty: processDataByGenderAndAge(data, {
-  //   //   gender: 1,
-  //   //   start: 16,
-  //   //   end: 30,
-  //   // }),
-  //   // fortyfive: processDataByGenderAndAge(data, {
-  //   //   gender: 1,
-  //   //   start: 31,
-  //   //   end: 40,
-  //   // }),
-  //   // sixty: processDataByGenderAndAge(data, { gender: 1, start: 41, end: 60 }),
-  //   // seventyfive: processDataByGenderAndAge(data, {
-  //   //   gender: 1,
-  //   //   start: 61,
-  //   //   end: 75,
-  //   // }),
-  //   // ninety: processDataByGenderAndAge(data, {
-  //   //   gender: 1,
-  //   //   start: 76,
-  //   //   end: 90,
-  //   // }),
-  //   // ninetyplus: processDataByGenderAndAge(data, {
-  //   //   gender: 1,
-  //   //   start: 91,
-  //   //   end: 200,
-  //   // }),
-  // },
-  // female: {
-  //   global: processDataByGender(data, { gender: 2 }),
-  //   ageGroups: getDataByGenderAndAge(data, 2),
-  //   // fifteen: processDataByGenderAndAge(data, {
-  //   //   gender: 2,
-  //   //   start: 0,
-  //   //   end: 15,
-  //   // }),
-  //   // thirty: processDataByGenderAndAge(data, {
-  //   //   gender: 2,
-  //   //   start: 16,
-  //   //   end: 30,
-  //   // }),
-  //   // fortyfive: processDataByGenderAndAge(data, {
-  //   //   gender: 2,
-  //   //   start: 31,
-  //   //   end: 40,
-  //   // }),
-  //   // sixty: processDataByGenderAndAge(data, { gender: 1, start: 41, end: 60 }),
-  //   // seventyfive: processDataByGenderAndAge(data, {
-  //   //   gender: 2,
-  //   //   start: 61,
-  //   //   end: 75,
-  //   // }),
-  //   // ninety: processDataByGenderAndAge(data, {
-  //   //   gender: 2,
-  //   //   start: 76,
-  //   //   end: 90,
-  //   // }),
-  //   // ninetyplus: processDataByGenderAndAge(data, {
-  //   //   gender: 2,
-  //   //   start: 91,
-  //   //   end: 200,
-  //   // }),
-  // },
-  // // fifteen: processDataByAge(data, { start: 0, end: 15 }),
-  // // thirty: processDataByAge(data, { start: 16, end: 30 }),
-  // // fortyfive: processDataByAge(data, { start: 31, end: 40 }),
-  // // sixty: processDataByAge(data, { start: 41, end: 60 }),
-  // // seventyfive: processDataByAge(data, { start: 61, end: 75 }),
-  // // ninety: processDataByAge(data, { start: 76, end: 90 }),
-  // // ninetyplus: processDataByAge(data, { start: 91, end: 200 }),
-  // }
-
   fs.writeFileSync(resultFilePath, JSON.stringify(json))
   console.log("Result written into", resultFilePath)
 }
