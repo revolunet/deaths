@@ -34,7 +34,6 @@ const processMortalityData = (
   const gender = genderIndex === 1 ? "male" : "female"
   const ageGroupIndex = age > 99 ? 10 : Math.floor(age / 10)
   const yearIndex = year - 2000
-  const monthIndex = month - 1
 
   // by age group
   if (!data["ageGroups"]) {
@@ -62,8 +61,6 @@ const processMortalityData = (
 }
 
 const processDeathsData = (data, { age, gender: genderIndex, year, month }) => {
-  // data.labels.push(month)
-  // data.labels = [...new Set(data.labels)]
   const gender = genderIndex === 1 ? "male" : "female"
   const ageGroupIndex = age > 99 ? 10 : Math.floor(age / 10)
   const yearIndex = year - 2000
@@ -118,9 +115,6 @@ const getChartsData = (data) => {
       labels: Months,
       male: {},
       female: {},
-    },
-    overview: {
-      labels: [],
     },
     mortality: {},
   }
