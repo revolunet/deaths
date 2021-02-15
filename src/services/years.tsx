@@ -1,7 +1,7 @@
 import useSWR from "swr"
-import { deaths } from "@/data/deaths.json"
+import Deaths from "@/data/deaths.json"
 
-const { ageGroups } = deaths
+const { ageGroups } = Deaths
 
 const initialData = {
   ...ageGroups[0].reduce(

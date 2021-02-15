@@ -1,5 +1,5 @@
 import useSWR from "swr"
-import { deaths } from "@/data/deaths.json"
+import Deaths from "@/data/deaths.json"
 
 const sumYears = (years: number[][]) =>
   years.reduce((r, a) => a.map((b, i) => (r[i] || 0) + b), [])
@@ -20,15 +20,15 @@ const getData = ({
   const data =
     gender && ageGroup
       ? sumAgeGroups(
-          deaths[gender].ageGroups,
+          Deaths[gender].ageGroups,
           ageGroup[0] / 10,
           ageGroup[1] / 10
         )
       : gender
-      ? deaths[gender].global
-      : sumAgeGroups(deaths.ageGroups, ageGroup[0] / 10, ageGroup[1] / 10)
+      ? Deaths[gender].global
+      : sumAgeGroups(Deaths.ageGroups, ageGroup[0] / 10, ageGroup[1] / 10)
 
-  return { labels: deaths.labels, data }
+  return { labels: Deaths.labels, data }
 }
 
 const initialData = getData({ gender: null, ageGroup: [0, 110] })

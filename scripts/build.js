@@ -11,19 +11,19 @@ const baseDir = `${__dirname}/../data`
 
 const Months = require("../src/data/months.json")
 
-const ageGroups = [
-  [0, 9],
-  [10, 19],
-  [20, 29],
-  [30, 39],
-  [40, 49],
-  [50, 59],
-  [60, 69],
-  [70, 79],
-  [80, 89],
-  [90, 99],
-  [100, 1000],
-]
+// const ageGroups = [
+//   [0, 9],
+//   [10, 19],
+//   [20, 29],
+//   [30, 39],
+//   [40, 49],
+//   [50, 59],
+//   [60, 69],
+//   [70, 79],
+//   [80, 89],
+//   [90, 99],
+//   [100, 1000],
+// ]
 
 const data = new Map()
 
@@ -193,12 +193,21 @@ const getFiles = () => {
 
 const main = async () => {
   const files = await getFiles()
-  const resultFilePath = `${__dirname}/../src/data/deaths.json`
+  // const resultFilePath = `${__dirname}/../src/data/deaths.json`
+  const resultFolderPath = `${__dirname}/../src/data/`
   await getFilesData(files)
   console.log("File processing done:", data.size, "records found.")
   const json = getChartsData(data)
-  fs.writeFileSync(resultFilePath, JSON.stringify(json))
-  console.log("Result written into", resultFilePath)
+  // fs.writeFileSync(resultFilePath, JSON.stringify(json))
+  fs.writeFileSync(
+    resultFolderPath + "deaths.json",
+    JSON.stringify(json.deaths)
+  )
+  fs.writeFileSync(
+    resultFolderPath + "mortality.json",
+    JSON.stringify(json.mortality)
+  )
+  console.log("Result written into", resultFolderPath)
 }
 
 module.exports = main
