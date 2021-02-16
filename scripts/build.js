@@ -12,10 +12,24 @@ const baseDir = `${__dirname}/../data`
 
 const data = new Map()
 
-const processMortalityData = (
+const processLocationsData = (
   data,
-  { age, gender: genderIndex, year, month }
+  { age, gender: genderIndex, year, department }
 ) => {
+  // const gender = genderIndex === 1 ? "male" : "female"
+  // const ageGroupIndex = age > 99 ? 10 : Math.floor(age / 10)
+  const yearIndex = year - 2000
+
+  if (!data[yearIndex]) {
+    data[yearIndex] = {}
+  }
+  if (!data[yearIndex][department]) {
+    data[yearIndex][department] = 0
+  }
+  data[yearIndex][department]++
+}
+
+const processMortalityData = (data, { age, gender: genderIndex, year }) => {
   const gender = genderIndex === 1 ? "male" : "female"
   const ageGroupIndex = age > 99 ? 10 : Math.floor(age / 10)
   const yearIndex = year - 2000
@@ -101,14 +115,22 @@ const getChartsData = (data) => {
       male: {},
       female: {},
     },
+    locations: [],
     mortality: {},
   }
 
-  data.forEach(({ age, gender, year, month }) => {
+  data.forEach(({ age, gender, year, month, department }) => {
     const index = month - 1
     if (year >= 2000 && 0 <= index && index < 12) {
       processDeathsData(chartsData.deaths, { age, gender, year, month })
-      processMortalityData(chartsData.mortality, { age, gender, year, month })
+      processMortalityData(chartsData.mortality, { age, gender, year })
+      processLocationsData(chartsData.locations, {
+        age,
+        gender,
+        year,
+        month,
+        department,
+      })
     }
   })
 
@@ -128,10 +150,11 @@ const readLine = (line) => [
   parseInt(line.substring(154, 158), 10),
   parseInt(line.substring(158, 160), 10),
   parseInt(line.substring(160, 162), 10),
+  parseInt(line.substring(162, 164), 10),
 ]
 
 const processLine = (line) => {
-  const [gender, dob, year, month, day] = readLine(line)
+  const [gender, dob, year, month, day, department] = readLine(line)
   const start = new Date(dob[0], dob[1] - 1, dob[2])
   const end = new Date(year, month - 1, day)
   const { years: age } =
@@ -140,7 +163,7 @@ const processLine = (line) => {
       : { years: -1 }
 
   if (Number.isInteger(year) && Number.isInteger(month) && year >= 2000) {
-    data.set(getLineHash(line), { gender, age, year, month })
+    data.set(getLineHash(line), { gender, age, year, month, department })
   }
 }
 
@@ -191,6 +214,10 @@ const main = async () => {
   fs.writeFileSync(
     resultFolderPath + "mortality.json",
     JSON.stringify(json.mortality)
+  )
+  fs.writeFileSync(
+    resultFolderPath + "locations.json",
+    JSON.stringify(json.locations)
   )
   console.log("Result written into", resultFolderPath)
 }
