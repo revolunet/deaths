@@ -1,4 +1,4 @@
-import Link from "next/link"
+// import Link from "next/link"
 // import { useRouter } from "next/router"
 const version = process.env.APP_VERSION || "0.0.0"
 const sha = process.env.VERCEL_GITHUB_COMMIT_SHA || "dev"
