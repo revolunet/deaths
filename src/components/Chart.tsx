@@ -1,7 +1,9 @@
 import merge from "deepmerge"
 import hexToRgba from "hex-to-rgba"
-import { Line } from "react-chartjs-2"
+import { defaults, Line } from "react-chartjs-2"
 import { useTheme } from "@/services/themes"
+
+// defaults.global.animation = false
 
 type Chart = {
   xAxes: Array<Object>
@@ -49,6 +51,8 @@ const Chart = ({ xAxes, yAxes, datasets, labels, gradient }: Chart) => {
   }
 
   const options = {
+    maintainAspectRatio: false,
+    responsive: true,
     legend: { display: false },
     scales: {
       xAxes: xAxes.map((xAxe) =>
@@ -87,7 +91,7 @@ const Chart = ({ xAxes, yAxes, datasets, labels, gradient }: Chart) => {
     },
   }
 
-  return <Line data={config} width={400} height={200} options={options} />
+  return <Line data={config} options={options} />
 }
 
 export default Chart

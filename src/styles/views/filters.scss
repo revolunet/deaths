@@ -7,22 +7,21 @@
 
   .genders {
     display: flex;
-    flex-direction: column;
 
     .icon {
       cursor: pointer;
+      @include box.margin(0, 0, 0, 0.5);
 
       &:first-child {
         left: 2px;
         position: relative;
-        @include box.margin(0, 0, 0.5, 0);
       }
     }
   }
 
   .slider {
     flex: 1;
-    @include box.margin(0, 1.5, 1, 2);
+    @include box.margin(0, 1.5, 1, 1);
 
     .MuiSlider-markLabelActive {
       opacity: 1 !important;

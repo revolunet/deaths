@@ -1,7 +1,10 @@
 @use "../utils/box";
 
 .panel.locations {
+  flex: 1;
+  overflow: auto;
   flex-direction: column;
+  @include box.margin(0, 1, 1);
 
   .button-group {
     justify-content: center;

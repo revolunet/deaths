@@ -1,14 +1,18 @@
 import Head from "next/head"
-
+import Menu from "@/views/Menu"
 import Deaths from "@/views/Deaths"
 import Filters from "@/views/Filters"
+import { useRouter } from "next/router"
 import Overview from "@/views/Overview"
+import Header from "@/components/Header"
 import Mortality from "@/views/Mortality"
 import Locations from "@/views/Locations"
 
-import Header from "@/components/Header"
-
 function Page() {
+  const {
+    query: { view },
+  } = useRouter()
+
   return (
     <>
       <Head>
@@ -21,25 +25,12 @@ function Page() {
         />
       </Head>
       <Header />
+      <Menu />
       <Filters />
-      <Deaths />
-      <Overview />
-      <Mortality />
-      <Locations />
-      {/* <div className="layout">
-        <div className="wrapper">
-          <Locations />
-        </div>
-        <div className="wrapper">
-          <Deaths />
-        </div>
-        <div className="wrapper">
-          <Overview />
-        </div>
-        <div className="wrapper">
-          <Mortality />
-        </div>
-      </div> */}
+      {view === "deaths" && <Deaths />}
+      {view === "overview" && <Overview />}
+      {view === "mortality" && <Mortality />}
+      {view === "locations" && <Locations />}
     </>
   )
 }

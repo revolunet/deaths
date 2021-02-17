@@ -1,7 +1,9 @@
 @use "../utils/box";
 
 .panel.deaths {
+  flex: 1;
   flex-direction: column;
+  @include box.margin(0, 1, 1);
   @include box.padding(1.5, 1, 1);
 
   .filters {

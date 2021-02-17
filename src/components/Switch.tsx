@@ -15,13 +15,13 @@ const Switch = () => {
       {theme === "dark" ? (
         <FaSun
           size={24}
-          color={values.primary}
+          color={values["on-primary"]}
           onClick={() => setTheme("light")}
         />
       ) : (
         <FaMoon
           size={24}
-          color={values.primary}
+          color={values["on-primary"]}
           onClick={() => setTheme("dark")}
         />
       )}

@@ -46,7 +46,7 @@ const Map = ({ onOver, yearIndex }) => {
     <>
       <ComposableMap
         data-tip=""
-        style={{ width: "100%", height: "auto" }}
+        style={{ width: "100%", height: "99%" }}
         projectionConfig={{ scale: 3500, center: [2.4, 46.2] }}
       >
         <Geographies geography={France}>
