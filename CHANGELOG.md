@@ -1,3 +1,10 @@
+# [1.11.0-alpha.4](https://github.com/chewam/deaths/compare/v1.11.0-alpha.3...v1.11.0-alpha.4) (2021-02-17)
+
+
+### Features
+
+* Create layout and menu. ([9e14320](https://github.com/chewam/deaths/commit/9e14320329ec6e520b0d705842aeda1127f28016))
+
 # [1.11.0-alpha.3](https://github.com/chewam/deaths/compare/v1.11.0-alpha.2...v1.11.0-alpha.3) (2021-02-17)
 
 
