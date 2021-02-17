@@ -1,3 +1,10 @@
+# [1.11.0-alpha.5](https://github.com/chewam/deaths/compare/v1.11.0-alpha.4...v1.11.0-alpha.5) (2021-02-17)
+
+
+### Features
+
+* Load deaths data from XHR. ([905904b](https://github.com/chewam/deaths/commit/905904bb652fe68931fb010d2f7a37ed8ac370fe))
+
 # [1.11.0-alpha.4](https://github.com/chewam/deaths/compare/v1.11.0-alpha.3...v1.11.0-alpha.4) (2021-02-17)
 
 
