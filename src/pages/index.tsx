@@ -1,5 +1,5 @@
 import Head from "next/head"
-import Menu from "@/views/Menu"
+import Menu from "@/components/Menu"
 import Deaths from "@/views/Deaths"
 import Filters from "@/views/Filters"
 import { useRouter } from "next/router"

@@ -1,37 +1,23 @@
-import { ComposableMap, Geographies, Geography } from "react-simple-maps"
 import { memo } from "react"
-import { scaleQuantize } from "d3-scale"
-import France from "@/data/departements.json"
-
 import useYears from "@/services/years"
-import useLocations from "@/services/locations"
-
+import { scaleQuantize } from "d3-scale"
 import { sumObjects } from "@/utils/index"
-
-const colorScale = scaleQuantize().domain([1, 10]).range([
-  // "#ffedea",
-  // "#ffcec5",
-  // "#ffad9f",
-  // "#ff8a75",
-  // "#ff5533",
-  // "#e2492d",
-  // "#be3d26",
-  // "#9a311f",
-  // "#782618",
-  "#C2F0FF",
-  "#B2DCFF",
-  "#A3C2FF",
-  "#94A3FF",
-  "#8a85ff",
-  "#8F73DF",
-  "#8E61BF",
-  "#884F9F",
-  "#7C3E80",
-])
+import { useTheme } from "@/services/themes"
+import France from "@/data/departements.json"
+import useLocations from "@/services/locations"
+import { ComposableMap, Geographies, Geography } from "react-simple-maps"
 
 const Map = ({ onOver, yearIndex }) => {
+  const [years] = useYears()
   const [locations] = useLocations()
-  const [years, setYears] = useYears()
+  const { values: theme } = useTheme()
+
+  const colorScale = scaleQuantize()
+    .domain([1, 10])
+    .range(theme.scale.split(", "))
+
+  const getColor = (count) =>
+    colorScale(count ? Math.round((count * 10) / max) : 0)
 
   const data = locations.reduce(
     (acc, year, i) => (
@@ -61,19 +47,13 @@ const Map = ({ onOver, yearIndex }) => {
                 <Geography
                   key={geo.rsmKey}
                   geography={geo}
-                  fill={colorScale(count ? Math.round((count * 10) / max) : 0)}
-                  onMouseEnter={() => {
+                  stroke={theme.muted}
+                  fill={getColor(count)}
+                  onMouseEnter={() =>
                     onOver(`${nom} (${code}): ${count} décès`)
-                  }}
-                  onMouseLeave={() => {
-                    onOver("")
-                  }}
-                  style={{
-                    hover: {
-                      fill: "#000",
-                      outline: "none",
-                    },
-                  }}
+                  }
+                  onMouseLeave={() => onOver("")}
+                  style={{ hover: { fill: theme.surface } }}
                 />
               )
             })
