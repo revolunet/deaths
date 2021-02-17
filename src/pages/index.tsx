@@ -29,9 +29,9 @@ function Page() {
       <Menu />
       <Filters />
       {view === "deaths" && <Deaths />}
-      {view === "overview" && <Overview />}
+      {/* {view === "overview" && <Overview />}
       {view === "mortality" && <Mortality />}
-      {view === "locations" && <Locations />}
+      {view === "locations" && <Locations />} */}
       <Footer />
     </>
   )

@@ -10,8 +10,8 @@ const initialData: Filters = {
 }
 
 const useFilters = () => {
-  const [, applyDeathsFilters] = useDeaths()
   const [, setOverview] = useOverview()
+  const [, applyDeathsFilters] = useDeaths()
   const [, applyMortalityFilters] = useMortality()
   const [, applyLocationsFilters] = useLocations()
 
@@ -22,9 +22,9 @@ const useFilters = () => {
   const setFilters = (filters: Filters) => {
     mutate(filters)
     const deaths = applyDeathsFilters(filters)
-    setOverview(deaths)
-    applyMortalityFilters(filters)
-    applyLocationsFilters(filters)
+    // setOverview(deaths)
+    // applyMortalityFilters(filters)
+    // applyLocationsFilters(filters)
   }
 
   return [filters, setFilters] as const

@@ -13,7 +13,7 @@ const Chart = () => {
 
   const yAxes = [{}]
 
-  const labels = deaths.labels
+  const labels = deaths["labels"] ?? []
 
   const defaultColor = "#ffffff"
 
@@ -23,28 +23,32 @@ const Chart = () => {
     [0.5, hexToRgba(theme?.primary || defaultColor, 0)],
   ]
 
-  const datasets = Object.keys(years).reduce(
-    (datasets, year) => (
-      years[year] &&
-        datasets.push({
-          pointRadius: 5,
-          pointBorderWidth: 2,
-          label: `Count ${year}`,
-          data: deaths.data[+year - 2000],
-        }),
-      datasets
-    ),
-    []
-  )
+  const datasets =
+    years &&
+    Object.keys(years).reduce(
+      (datasets, year) => (
+        years[year] &&
+          datasets.push({
+            pointRadius: 5,
+            pointBorderWidth: 2,
+            label: `Count ${year}`,
+            data: (deaths["data"] || {})[+year - 2000],
+          }),
+        datasets
+      ),
+      []
+    )
 
   return (
-    <DefaultChart
-      xAxes={xAxes}
-      yAxes={yAxes}
-      labels={labels}
-      datasets={datasets}
-      gradient={gradient}
-    />
+    <div className="chart">
+      <DefaultChart
+        xAxes={xAxes}
+        yAxes={yAxes}
+        labels={labels}
+        datasets={datasets}
+        gradient={gradient}
+      />
+    </div>
   )
 }
 

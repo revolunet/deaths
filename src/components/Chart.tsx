@@ -3,7 +3,7 @@ import hexToRgba from "hex-to-rgba"
 import { defaults, Line } from "react-chartjs-2"
 import { useTheme } from "@/services/themes"
 
-defaults.global.animation = false
+// defaults.global.animation = false
 
 type Chart = {
   xAxes: Array<Object>
@@ -43,7 +43,7 @@ const Chart = ({ xAxes, yAxes, datasets, labels, gradient }: Chart) => {
 
     return {
       labels,
-      datasets: datasets.map((dataset) => {
+      datasets: datasets?.map((dataset) => {
         const obj = merge(defaultDataset, dataset)
         return { backgroundColor: getBackground(canvas, gradient), ...obj }
       }),

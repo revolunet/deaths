@@ -1,22 +1,25 @@
 import useSWR from "swr"
-import Deaths from "@/data/deaths.json"
 
-const { ageGroups } = Deaths
-
-const initialData = {
-  ...ageGroups[0].reduce(
-    (data, item, i) => ({ ...data, [2000 + i]: false }),
-    {}
-  ),
+const defaultYears = {
   2020: true,
   2017: true,
   2003: true,
 }
 
+const fetcher = (url: string) =>
+  fetch(url).then(async (res) => ({
+    ...(await res.json()),
+    ...defaultYears,
+  }))
+
 const useYears = () => {
-  const { data: years, mutate: setYears } = useSWR("years", null, {
-    initialData,
-  })
+  const { data: years, mutate: setYears } = useSWR(
+    "/data/years.json",
+    fetcher,
+    {
+      revalidateOnFocus: false,
+    }
+  )
 
   return [years, setYears] as const
 }

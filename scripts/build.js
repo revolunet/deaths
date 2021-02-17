@@ -12,6 +12,10 @@ const baseDir = `${__dirname}/../data`
 
 const data = new Map()
 
+const processYears = (data, { year }) => {
+  data[year] = false
+}
+
 const processCountriesData = (
   data,
   { age, gender: genderIndex, year, country }
@@ -180,6 +184,7 @@ const getChartsData = (data) => {
     mortality: {},
     locations: {},
     countries: {},
+    years: {},
   }
 
   data.forEach(({ age, gender, year, month, department, country }) => {
@@ -199,6 +204,7 @@ const getChartsData = (data) => {
         year,
         country,
       })
+      processYears(chartsData.years, { year })
     }
   })
 
@@ -299,6 +305,7 @@ const main = async () => {
     resultFolderPath + "countries.json",
     JSON.stringify(json.countries)
   )
+  fs.writeFileSync(resultFolderPath + "years.json", JSON.stringify(json.years))
 
   console.log("Result written into", resultFolderPath)
 }
