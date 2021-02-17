@@ -1,0 +1,9 @@
+@use "../utils/box";
+@use "../utils/text";
+
+footer {
+  display: flex;
+  @include text.size("sm");
+  @include box.margin(0, 1, 0.5);
+  justify-content: space-between;
+}

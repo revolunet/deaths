@@ -3,13 +3,14 @@
 
 .menu {
   display: flex;
-  @include box.padding(0, 1);
+  @include box.padding(0, 1.5);
 
   a {
     display: block;
+    text-align: center;
     text-decoration: none;
-    @include box.padding(0, 0.2, 0.5);
-    @include box.margin(0.5, 1, 0, 1);
+    @include box.margin(0, 2, 0, 0);
+    @include box.padding(0, 0, 0.5);
   }
 }
 
@@ -17,12 +18,12 @@
   box-shadow: theme.shadow($mode);
   background-color: theme.color("primary", $mode);
   a {
-    color: theme.color("muted", $mode);
+    color: theme.color("on-primary-muted", $mode);
   }
   li.active {
     a {
       color: theme.color("on-primary", $mode);
-      border-bottom: 2px solid theme.color("on-primary", $mode);
+      border-bottom: 3px solid theme.color("on-primary", $mode);
     }
   }
 }

@@ -3,7 +3,7 @@ import hexToRgba from "hex-to-rgba"
 import { defaults, Line } from "react-chartjs-2"
 import { useTheme } from "@/services/themes"
 
-// defaults.global.animation = false
+defaults.global.animation = false
 
 type Chart = {
   xAxes: Array<Object>

@@ -25,6 +25,10 @@ $scheme: (
     "dark": white,
     "light": white,
   ),
+  "on-primary-muted": (
+    "dark": color.scale(#7c3e80, $lightness: -30%),
+    "light": color.scale(#1976d2, $lightness: -30%),
+  ),
   "background": (
     "light": #fafafa,
     "dark": #1a2038,

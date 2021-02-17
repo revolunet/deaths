@@ -5,6 +5,7 @@ import Filters from "@/views/Filters"
 import { useRouter } from "next/router"
 import Overview from "@/views/Overview"
 import Header from "@/components/Header"
+import Footer from "@/components/Footer"
 import Mortality from "@/views/Mortality"
 import Locations from "@/views/Locations"
 
@@ -31,6 +32,7 @@ function Page() {
       {view === "overview" && <Overview />}
       {view === "mortality" && <Mortality />}
       {view === "locations" && <Locations />}
+      <Footer />
     </>
   )
 }

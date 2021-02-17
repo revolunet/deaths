@@ -5,7 +5,7 @@ import Filters from "@/components/Filters"
 const Deaths = () => {
   return (
     <Panel className="deaths">
-      <div className="toto" style={{ flex: 1 }}>
+      <div style={{ flex: 1 }}>
         <Chart />
       </div>
       <Filters />
