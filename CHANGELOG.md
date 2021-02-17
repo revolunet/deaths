@@ -1,3 +1,10 @@
+# [1.11.0-alpha.3](https://github.com/chewam/deaths/compare/v1.11.0-alpha.2...v1.11.0-alpha.3) (2021-02-17)
+
+
+### Features
+
+* Add locations map. ([#78](https://github.com/chewam/deaths/issues/78)) ([40761ee](https://github.com/chewam/deaths/commit/40761ee7d809e410f05b56777ee8ab85d4839476))
+
 # [1.11.0-alpha.2](https://github.com/chewam/deaths/compare/v1.11.0-alpha.1...v1.11.0-alpha.2) (2021-02-15)
 
 
