@@ -4,14 +4,39 @@ import useDeaths from "@/services/deaths"
 import { useTheme } from "@/services/themes"
 import DefaultChart from "@/components/Chart"
 
+const average = (nums: [number]) => nums.reduce((a, b) => a + b) / nums.length
+
+const getMaximum = (data) => {
+  if (!data) return {}
+  const maximums = data.reduce((acc, year, i) => {
+    const max = Math.max(...year)
+    const index = year.indexOf(max)
+    acc[max] = { year: 2000 + i, month: index + 1, value: max }
+    return acc
+  }, {})
+  const keys = Object.keys(maximums)
+  const maxValue = Math.max(...keys)
+  return maximums[maxValue]
+}
+
 const Chart = () => {
   const [years] = useYears()
   const [deaths] = useDeaths()
   const { values: theme } = useTheme()
 
+  const { data } = deaths
+
+  const max = getMaximum(data)
+
   const xAxes = [{}]
 
-  const yAxes = [{}]
+  const yAxes = [
+    {
+      ticks: {
+        suggestedMax: max && max.value + (max.value * 5) / 100,
+      },
+    },
+  ]
 
   const labels = deaths["labels"] ?? []
 
@@ -30,14 +55,53 @@ const Chart = () => {
         years[year] &&
           datasets.push({
             pointRadius: 5,
-            pointBorderWidth: 2,
             label: `Count ${year}`,
+            pointBorderColor: theme?.primary,
+            pointBackgroundColor: theme?.surface,
             data: (deaths["data"] || {})[+year - 2000],
           }),
         datasets
       ),
       []
     )
+
+  datasets &&
+    datasets.map((dataset, i) => {
+      dataset.datalabels = {
+        align: "end",
+        anchor: "end",
+        display: ({ dataIndex, dataset: { data } }) =>
+          data[dataIndex] > average(data),
+      }
+    })
+
+  const annotations = [
+    {
+      type: "line",
+      borderWidth: 2,
+      value: max.value,
+      mode: "horizontal",
+      borderDash: [6, 3],
+      scaleID: "y-axis-0",
+      borderColor: theme?.secondary,
+      drawTime: "afterDatasetsDraw",
+      label: {
+        enabled: true,
+        fontColor: theme["on-primary"],
+        backgroundColor: theme?.secondary,
+        content: `${max.month}/${max.year}: ${max.value} décès`,
+      },
+    },
+  ]
+
+  const datalabels = {
+    backgroundColor: theme["primary"],
+    borderRadius: 4,
+    color: "white",
+    font: { weight: "bold" },
+    formatter: (value) => (value / 1000).toFixed() + "K",
+    padding: 6,
+  }
 
   return (
     <div className="chart">
@@ -47,6 +111,8 @@ const Chart = () => {
         labels={labels}
         datasets={datasets}
         gradient={gradient}
+        annotations={annotations}
+        datalabels={datalabels}
       />
     </div>
   )

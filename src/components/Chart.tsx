@@ -2,6 +2,8 @@ import merge from "deepmerge"
 import hexToRgba from "hex-to-rgba"
 import { defaults, Line } from "react-chartjs-2"
 import { useTheme } from "@/services/themes"
+import "chartjs-plugin-annotation"
+import "chartjs-plugin-datalabels"
 
 // defaults.global.animation = false
 
@@ -11,6 +13,8 @@ type Chart = {
   labels: Array<any>
   datasets: Array<Object>
   gradient?: [number, string][]
+  annotations?: Array<Object>
+  datalabels?: Object
 }
 
 const getBackground = (
@@ -29,7 +33,15 @@ const getBackground = (
   return "rgba(0, 0, 0, 0.1)"
 }
 
-const Chart = ({ xAxes, yAxes, datasets, labels, gradient }: Chart) => {
+const Chart = ({
+  xAxes,
+  yAxes,
+  datasets,
+  labels,
+  gradient,
+  annotations,
+  datalabels,
+}: Chart) => {
   const { values: theme } = useTheme()
 
   const config = (canvas: HTMLCanvasElement) => {
@@ -51,9 +63,10 @@ const Chart = ({ xAxes, yAxes, datasets, labels, gradient }: Chart) => {
   }
 
   const options = {
-    maintainAspectRatio: false,
     responsive: true,
+    maintainAspectRatio: false,
     legend: { display: false },
+    tooltips: { enabled: false },
     scales: {
       xAxes: xAxes.map((xAxe) =>
         merge(
@@ -88,6 +101,10 @@ const Chart = ({ xAxes, yAxes, datasets, labels, gradient }: Chart) => {
           yAxe
         )
       ),
+    },
+    plugins: { datalabels },
+    annotation: {
+      annotations: [...annotations],
     },
   }
 

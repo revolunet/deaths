@@ -307,6 +307,8 @@ const main = async () => {
   )
   fs.writeFileSync(resultFolderPath + "years.json", JSON.stringify(json.years))
 
+  // fs.writeFileSync(resultFolderPath + "data.json", JSON.stringify([...data]))
+
   console.log("Result written into", resultFolderPath)
 }
 

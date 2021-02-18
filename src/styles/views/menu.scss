@@ -9,8 +9,11 @@
     display: block;
     text-align: center;
     text-decoration: none;
-    @include box.margin(0, 2, 0, 0);
+    border-bottom-width: 3px;
+    border-bottom-style: solid;
     @include box.padding(0, 0, 0.5);
+    @include box.margin(0, 2, 0, 0);
+    border-bottom-color: transparent;
   }
 }
 
@@ -23,7 +26,7 @@
   li.active {
     a {
       color: theme.color("on-primary", $mode);
-      border-bottom: 3px solid theme.color("on-primary", $mode);
+      border-bottom-color: theme.color("on-primary", $mode);
     }
   }
 }

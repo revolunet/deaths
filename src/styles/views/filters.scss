@@ -4,6 +4,7 @@
 .panel.filters {
   align-items: center;
   @include box.padding(1);
+  @include box.margin(1, 1, 0.5);
 
   .genders {
     display: flex;

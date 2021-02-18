@@ -1,5 +1,6 @@
 import useSWR from "swr"
 import { sumYears } from "@/utils/index"
+import useFilters from "@/services/filters"
 
 const fetcher = (url: string) =>
   fetch(url).then(async (res) => ({
@@ -27,15 +28,15 @@ const getData = (deaths): number[][] => {
 }
 
 const useDeaths = () => {
-  const { data, mutate } = useSWR("/data/deaths.json", fetcher, {
+  const { data: deaths, mutate } = useSWR("/data/deaths.json", fetcher, {
     revalidateOnFocus: false,
   })
 
   const applyFilters = (filters: Filters) =>
-    data && mutate({ ...data, filters }, false)
+    deaths && mutate({ ...deaths, filters }, false)
 
   return [
-    data ? { labels: data.data?.labels, data: getData(data) } : [],
+    deaths ? { labels: deaths.data?.labels, data: getData(deaths) } : [],
     applyFilters,
   ] as const
 }
