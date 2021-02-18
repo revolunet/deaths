@@ -14,7 +14,7 @@ const getMaximum = (data) => {
     acc[max] = { year: 2000 + i, month: index + 1, value: max }
     return acc
   }, {})
-  const keys = Object.keys(maximums)
+  const keys = Object.keys(maximums).map(Number)
   const maxValue = Math.max(...keys)
   return maximums[maxValue]
 }
@@ -24,9 +24,9 @@ const Chart = () => {
   const [deaths] = useDeaths()
   const { values: theme } = useTheme()
 
-  const { data } = deaths
+  // const { data } = deaths
 
-  const max = getMaximum(data)
+  const max = getMaximum(deaths.data)
 
   const xAxes = [{}]
 
@@ -55,7 +55,7 @@ const Chart = () => {
         years[year] &&
           datasets.push({
             pointRadius: 5,
-            label: `Count ${year}`,
+            label: year,
             pointBorderColor: theme?.primary,
             pointBackgroundColor: theme?.surface,
             data: (deaths["data"] || {})[+year - 2000],
@@ -70,8 +70,8 @@ const Chart = () => {
       dataset.datalabels = {
         align: "end",
         anchor: "end",
-        display: ({ dataIndex, dataset: { data } }) =>
-          data[dataIndex] > average(data),
+        display: ({ active, dataIndex, dataset: { data } }) =>
+          active || data[dataIndex] > average(data),
       }
     })
 
@@ -95,12 +95,18 @@ const Chart = () => {
   ]
 
   const datalabels = {
-    backgroundColor: theme["primary"],
-    borderRadius: 4,
-    color: "white",
-    font: { weight: "bold" },
-    formatter: (value) => (value / 1000).toFixed() + "K",
     padding: 6,
+    color: "white",
+    borderRadius: 4,
+    font: { weight: "bold" },
+    backgroundColor: ({ active }) =>
+      active
+        ? hexToRgba(theme?.primary || defaultColor, 0.9)
+        : hexToRgba(theme?.primary || defaultColor, 0.8),
+    formatter: (value, { active, dataIndex, dataset: { label, data } }) =>
+      active
+        ? `${dataIndex + 1}/${label}\n${data[dataIndex]} décès`
+        : (value / 1000).toFixed() + "K",
   }
 
   return (

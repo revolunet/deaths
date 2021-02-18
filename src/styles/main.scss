@@ -27,6 +27,10 @@ button {
 
 a {
   text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
 [data-theme="dark"] {

@@ -67,6 +67,7 @@ const Chart = ({
     maintainAspectRatio: false,
     legend: { display: false },
     tooltips: { enabled: false },
+    hover: { mode: "nearest", intersect: false },
     scales: {
       xAxes: xAxes.map((xAxe) =>
         merge(

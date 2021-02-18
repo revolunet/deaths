@@ -1,19 +1,22 @@
-// import Link from "next/link"
-// import { useRouter } from "next/router"
 const version = process.env.APP_VERSION || "0.0.0"
 const sha = process.env.VERCEL_GITHUB_COMMIT_SHA || "dev"
 
 const Footer = () => {
-  // const router = useRouter()
-  // const { locale } = router
-
   return (
     <footer>
-      <div>Chewam © 2020</div>
       <div>
-        {/* <Link href="/" locale={locale === "fr" ? "en" : "fr"}>
-          <a>{locale === "fr" ? "en" : "fr"}</a>
-        </Link>{" "} */}
+        <span>Chewam © 2020 - Données INSEE </span>(
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://www.data.gouv.fr/fr/datasets/fichier-des-personnes-decedees"
+        >
+          data.gouv.fr
+        </a>
+        )
+      </div>
+
+      <div>
         version {version} (
         <a
           target="_blank"

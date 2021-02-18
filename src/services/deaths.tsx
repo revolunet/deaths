@@ -36,7 +36,7 @@ const useDeaths = () => {
     deaths && mutate({ ...deaths, filters }, false)
 
   return [
-    deaths ? { labels: deaths.data?.labels, data: getData(deaths) } : [],
+    deaths ? { labels: deaths.data?.labels, data: getData(deaths) } : {},
     applyFilters,
   ] as const
 }
