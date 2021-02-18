@@ -14,8 +14,8 @@ const Deaths = () => {
 
   return (
     <Panel className="filters">
-      <Genders onChange={handleGenderChange} />
       <AgeGroups onChange={handleAgeGroupChange} />
+      <Genders onChange={handleGenderChange} />
     </Panel>
   )
 }

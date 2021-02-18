@@ -1,5 +1,9 @@
 @use "sass:color";
 
+// pink #e14eca
+// green #00f2c3
+// blue #1d8cf8
+
 $scheme: (
   "primary": (
     "light": #1976d2,
@@ -21,6 +25,10 @@ $scheme: (
     "dark": white,
     "light": white,
   ),
+  "on-primary-muted": (
+    "dark": color.scale(#7c3e80, $lightness: -30%),
+    "light": color.scale(#1976d2, $lightness: -30%),
+  ),
   "background": (
     "light": #fafafa,
     "dark": #1a2038,
@@ -28,6 +36,30 @@ $scheme: (
   "surface": (
     "light": white,
     "dark": #222a45,
+  ),
+  "scale": (
+    "dark": (
+      #c2f0ff,
+      #b2dcff,
+      #a3c2ff,
+      #94a3ff,
+      #8a85ff,
+      #8f73df,
+      #8e61bf,
+      #884f9f,
+      #7c3e80,
+    ),
+    "light": (
+      #adf5d6,
+      #8ef0d8,
+      #70eae2,
+      #52d0e3,
+      #35a7db,
+      #1976d2,
+      #1344bb,
+      #0e19a2,
+      #1b0a89,
+    ),
   ),
 );
 

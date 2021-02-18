@@ -3,12 +3,21 @@
 @use "utils/theme";
 
 html {
+  height: 100%;
   -webkit-font-smoothing: antialiased;
 }
 
 body {
+  height: 100%;
+  display: flex;
   @include box.spacing();
   @include text.size("base");
+}
+
+#__next {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 body,
@@ -16,10 +25,21 @@ button {
   font-family: "Roboto";
 }
 
+a {
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
 [data-theme="dark"] {
   body {
     color: theme.color("color", "dark");
     background-color: theme.color("background", "dark");
+  }
+  a {
+    color: theme.color("primary", "dark");
   }
 }
 
@@ -27,5 +47,8 @@ button {
   body {
     color: theme.color("color");
     background-color: theme.color("background");
+  }
+  a {
+    color: theme.color("primary", "light");
   }
 }

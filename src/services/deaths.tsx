@@ -1,51 +1,44 @@
 import useSWR from "swr"
-import Deaths from "@/data/deaths.json"
+import { sumYears } from "@/utils/index"
+import useFilters from "@/services/filters"
 
-const sumYears = (years: number[][]) =>
-  years.reduce((r, a) => a.map((b, i) => (r[i] || 0) + b), [])
+const fetcher = (url: string) =>
+  fetch(url).then(async (res) => ({
+    data: await res.json(),
+    filters: { gender: null, ageGroup: [0, 110] } as Filters,
+  }))
 
 const sumAgeGroups = (ageGroups: number[][][], start: number, end: number) =>
   ageGroups
-    .slice(start, end)
+    ?.slice(start, end)
     .reduce(
       (data, group, i) =>
         group.map((year, i) => sumYears([data[i] ?? [], year])),
       []
     )
 
-const getData = ({
-  gender,
-  ageGroup,
-}: Filters): { labels: string[]; data: number[][] } => {
-  const data =
-    gender && ageGroup
-      ? sumAgeGroups(
-          Deaths[gender].ageGroups,
-          ageGroup[0] / 10,
-          ageGroup[1] / 10
-        )
-      : gender
-      ? Deaths[gender].global
-      : sumAgeGroups(Deaths.ageGroups, ageGroup[0] / 10, ageGroup[1] / 10)
-
-  return { labels: Deaths.labels, data }
+const getData = (deaths): number[][] => {
+  const { filters, data } = deaths
+  const { gender, ageGroup } = filters
+  return gender && ageGroup
+    ? sumAgeGroups(data[gender].ageGroups, ageGroup[0] / 10, ageGroup[1] / 10)
+    : gender
+    ? data[gender].global
+    : sumAgeGroups(data?.ageGroups, ageGroup[0] / 10, ageGroup[1] / 10)
 }
 
-const initialData = getData({ gender: null, ageGroup: [0, 110] })
-
 const useDeaths = () => {
-  const { data, mutate } = useSWR("deaths", null, {
-    initialData,
+  const { data: deaths, mutate } = useSWR("/data/deaths.json", fetcher, {
     revalidateOnFocus: false,
   })
 
-  const applyFilters = (filters: Filters) => {
-    const data = getData(filters)
-    mutate(data)
-    return data
-  }
+  const applyFilters = (filters: Filters) =>
+    deaths && mutate({ ...deaths, filters }, false)
 
-  return [data, applyFilters] as const
+  return [
+    deaths ? { labels: deaths.data?.labels, data: getData(deaths) } : {},
+    applyFilters,
+  ] as const
 }
 
 export default useDeaths

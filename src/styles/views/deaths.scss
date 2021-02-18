@@ -1,12 +1,20 @@
 @use "../utils/box";
 
 .panel.deaths {
+  flex: 1;
   flex-direction: column;
-  @include box.spacing(1, (1.5, 1, 1));
+  @include box.padding(1.5, 1, 1);
+  @include box.margin(0.5, 1, 0.5);
+
+  .chart {
+    flex: 1;
+    overflow: auto;
+  }
 
   .filters {
-    @include box.margin(1, 0, 0);
+    flex-shrink: 0;
     justify-content: center;
+    @include box.margin(1, 0, 0);
 
     li {
       flex: 0 0 0;

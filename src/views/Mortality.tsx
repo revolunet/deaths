@@ -48,7 +48,14 @@ const Mortality = () => {
 
   return (
     <Panel className="mortality">
-      <Chart xAxes={xAxes} yAxes={yAxes} datasets={datasets} labels={labels} />
+      <div style={{ flex: 1 }}>
+        <Chart
+          xAxes={xAxes}
+          yAxes={yAxes}
+          datasets={datasets}
+          labels={labels}
+        />
+      </div>
     </Panel>
   )
 }

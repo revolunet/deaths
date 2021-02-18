@@ -26,13 +26,15 @@ const Overview = () => {
 
   return (
     <Panel className="overview">
-      <Chart
-        xAxes={xAxes}
-        yAxes={yAxes}
-        labels={labels}
-        datasets={datasets}
-        gradient={gradient}
-      />
+      <div style={{ flex: 1 }}>
+        <Chart
+          xAxes={xAxes}
+          yAxes={yAxes}
+          labels={labels}
+          datasets={datasets}
+          gradient={gradient}
+        />
+      </div>
     </Panel>
   )
 }
