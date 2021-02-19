@@ -1,4 +1,5 @@
 import useSWR from "swr"
+import Years from "@/data/years.json"
 
 const defaultYears = {
   2020: true,
@@ -6,22 +7,21 @@ const defaultYears = {
   2003: true,
 }
 
-const fetcher = (url: string) =>
-  fetch(url).then(async (res) => ({
-    ...(await res.json()),
-    ...defaultYears,
-  }))
+// const fetcher = (url: string) => fetch(url).then((res) => res.json())
+
+// const fetcher = (url: string) =>
+//   fetch(url).then(async (res) => ({
+//     ...(await res.json()),
+//     ...defaultYears,
+//   }))
 
 const useYears = () => {
-  const { data: years, mutate: setYears } = useSWR(
-    "/data/years.json",
-    fetcher,
-    {
-      revalidateOnFocus: false,
-    }
-  )
+  const { data, mutate } = useSWR("/data/years.json", null, {
+    revalidateOnFocus: false,
+    initialData: { ...Years, ...defaultYears },
+  })
 
-  return [years, setYears] as const
+  return [data, mutate] as const
 }
 
 export default useYears

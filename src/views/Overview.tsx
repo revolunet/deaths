@@ -4,25 +4,85 @@ import Panel from "@/components/Panel"
 import { useTheme } from "@/services/themes"
 import useOverview from "@/services/overview"
 
+const average = (nums: [number]) => nums.reduce((a, b) => a + b) / nums.length
+
 const Overview = () => {
-  const [overview] = useOverview()
-  const { values: theme } = useTheme()
+  const [{ labels, data }] = useOverview()
+  const { values: theme = {} } = useTheme()
+  console.log("overview", labels, data)
+
+  const max = Math.max(...data)
 
   const xAxes = [{}]
 
-  const yAxes = [{}]
+  const yAxes = [
+    {
+      ticks: {
+        suggestedMax: max && max + (max * 5) / 100,
+      },
+    },
+  ]
 
   const defaultColor = "#ffffff"
 
-  const labels = overview.labels
-
-  const datasets = [{ label: "Décès", data: overview.data }]
+  const datasets = [
+    {
+      data,
+      label: "Décès",
+      pointBorderColor: theme.primary,
+      pointBackgroundColor: theme.surface,
+      datalabels: {
+        align: "end",
+        anchor: "end",
+        display: ({ active, dataIndex, dataset: { data } }) => {
+          const avg = average(data)
+          return active || data[dataIndex] > avg + avg * 0.2
+        },
+      },
+    },
+  ]
 
   const gradient: [number, string][] = [
-    [0, hexToRgba(theme?.primary || defaultColor, 0.5)],
-    [0.2, hexToRgba(theme?.primary || defaultColor, 0.2)],
-    [0.5, hexToRgba(theme?.primary || defaultColor, 0)],
+    [0, hexToRgba(theme.primary || defaultColor, 0.5)],
+    [0.2, hexToRgba(theme.primary || defaultColor, 0.2)],
+    [0.5, hexToRgba(theme.primary || defaultColor, 0)],
   ]
+
+  const annotations = max && [
+    {
+      type: "line",
+      borderWidth: 2,
+      value: max,
+      mode: "horizontal",
+      borderDash: [6, 3],
+      scaleID: "y-axis-0",
+      borderColor: theme.secondary,
+      drawTime: "afterDatasetsDraw",
+      label: {
+        enabled: true,
+        fontColor: theme["on-primary"],
+        backgroundColor: theme.secondary,
+        content: `${labels[data.indexOf(max)]}: ${max} décès`,
+      },
+    },
+  ]
+
+  const datalabels = {
+    padding: 6,
+    color: "white",
+    borderRadius: 4,
+    font: { weight: "bold" },
+    backgroundColor: ({ active }) =>
+      active
+        ? hexToRgba(theme.primary || defaultColor, 0.9)
+        : hexToRgba(theme.primary || defaultColor, 0.8),
+    formatter: (value, { active, dataIndex, dataset: { label, data } }) =>
+      active
+        ? `${labels[dataIndex]}\n${data[dataIndex]} décès`
+        : value > 1000
+        ? (value / 1000).toFixed() + "K"
+        : value,
+  }
 
   return (
     <Panel className="overview">
@@ -33,6 +93,8 @@ const Overview = () => {
           labels={labels}
           datasets={datasets}
           gradient={gradient}
+          datalabels={datalabels}
+          annotations={annotations}
         />
       </div>
     </Panel>

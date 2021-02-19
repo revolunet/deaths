@@ -105,7 +105,7 @@ const Chart = ({
     },
     plugins: { datalabels },
     annotation: {
-      annotations: [...annotations],
+      annotations: [...(annotations ?? [])],
     },
   }
 

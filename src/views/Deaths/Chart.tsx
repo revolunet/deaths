@@ -3,6 +3,7 @@ import useYears from "@/services/years"
 import useDeaths from "@/services/deaths"
 import { useTheme } from "@/services/themes"
 import DefaultChart from "@/components/Chart"
+import { useEffect } from "react"
 
 const average = (nums: [number]) => nums.reduce((a, b) => a + b) / nums.length
 
@@ -21,12 +22,17 @@ const getMaximum = (data) => {
 
 const Chart = () => {
   const [years] = useYears()
-  const [deaths] = useDeaths()
-  const { values: theme } = useTheme()
+  const [{ labels, data }] = useDeaths()
+  const { values: theme = {} } = useTheme()
 
-  // const { data } = deaths
+  console.log("CHART useDeaths", labels, data)
 
-  const max = getMaximum(deaths.data)
+  useEffect(
+    () => console.log("%cCHART render", "background: #222; color: #bada55"),
+    []
+  )
+
+  const max = getMaximum(data)
 
   const xAxes = [{}]
 
@@ -38,14 +44,12 @@ const Chart = () => {
     },
   ]
 
-  const labels = deaths["labels"] ?? []
-
   const defaultColor = "#ffffff"
 
   const gradient: [number, string][] = [
-    [0, hexToRgba(theme?.primary || defaultColor, 0.5)],
-    [0.2, hexToRgba(theme?.primary || defaultColor, 0.2)],
-    [0.5, hexToRgba(theme?.primary || defaultColor, 0)],
+    [0, hexToRgba(theme.primary || defaultColor, 0.5)],
+    [0.2, hexToRgba(theme.primary || defaultColor, 0.2)],
+    [0.5, hexToRgba(theme.primary || defaultColor, 0)],
   ]
 
   const datasets =
@@ -56,9 +60,9 @@ const Chart = () => {
           datasets.push({
             pointRadius: 5,
             label: year,
-            pointBorderColor: theme?.primary,
-            pointBackgroundColor: theme?.surface,
-            data: (deaths["data"] || {})[+year - 2000],
+            pointBorderColor: theme.primary,
+            pointBackgroundColor: theme.surface,
+            data: (data || {})[+year - 2000],
           }),
         datasets
       ),
@@ -75,7 +79,7 @@ const Chart = () => {
       }
     })
 
-  const annotations = [
+  const annotations = max && [
     {
       type: "line",
       borderWidth: 2,
@@ -83,12 +87,12 @@ const Chart = () => {
       mode: "horizontal",
       borderDash: [6, 3],
       scaleID: "y-axis-0",
-      borderColor: theme?.secondary,
+      borderColor: theme.secondary,
       drawTime: "afterDatasetsDraw",
       label: {
         enabled: true,
         fontColor: theme["on-primary"],
-        backgroundColor: theme?.secondary,
+        backgroundColor: theme.secondary,
         content: `${max.month}/${max.year}: ${max.value} décès`,
       },
     },
@@ -101,8 +105,8 @@ const Chart = () => {
     font: { weight: "bold" },
     backgroundColor: ({ active }) =>
       active
-        ? hexToRgba(theme?.primary || defaultColor, 0.9)
-        : hexToRgba(theme?.primary || defaultColor, 0.8),
+        ? hexToRgba(theme.primary || defaultColor, 0.9)
+        : hexToRgba(theme.primary || defaultColor, 0.8),
     formatter: (value, { active, dataIndex, dataset: { label, data } }) =>
       active
         ? `${dataIndex + 1}/${label}\n${data[dataIndex]} décès`
@@ -117,8 +121,8 @@ const Chart = () => {
         labels={labels}
         datasets={datasets}
         gradient={gradient}
-        annotations={annotations}
         datalabels={datalabels}
+        annotations={annotations}
       />
     </div>
   )
