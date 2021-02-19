@@ -1,3 +1,10 @@
+# [1.11.0-alpha.6](https://github.com/chewam/deaths/compare/v1.11.0-alpha.5...v1.11.0-alpha.6) (2021-02-19)
+
+
+### Features
+
+* Transition between views. ([434a1d5](https://github.com/chewam/deaths/commit/434a1d56cc5648fa49e002705d3f9eb87d31de80))
+
 # [1.11.0-alpha.5](https://github.com/chewam/deaths/compare/v1.11.0-alpha.4...v1.11.0-alpha.5) (2021-02-17)
 
 
