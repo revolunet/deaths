@@ -33,7 +33,6 @@ const useRawDeaths = () => {
   const { data } = useSWR("/data/deaths.json", fetcher, {
     revalidateOnFocus: false,
   })
-  console.log("useRawDeaths", data)
 
   if (data && filters) {
     const filteredData = filter(data, filters)

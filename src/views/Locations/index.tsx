@@ -15,10 +15,7 @@ const Locations = () => {
 
   return (
     <Panel className="locations">
-      <div
-        className="toto"
-        style={{ flex: 1, position: "relative", overflow: "auto" }}
-      >
+      <div style={{ flex: 1, position: "relative", overflow: "auto" }}>
         <Map yearIndex={yearIndex} onOver={setTooltip} />
       </div>
       {isMounted && <ReactTooltip>{tooltip}</ReactTooltip>}

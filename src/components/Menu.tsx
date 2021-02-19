@@ -7,6 +7,7 @@ const Menu = () => {
   } = useRouter()
 
   const items = [
+    { label: "Tableau de board" },
     { label: "Comparaison", view: "deaths" },
     { label: "Vue d'Ensemble", view: "overview" },
     { label: "Mortalité", view: "mortality" },
@@ -20,7 +21,7 @@ const Menu = () => {
           <Link
             href={{
               pathname: "/",
-              query: { view: items[i].view },
+              query: items[i].view && { view: items[i].view },
             }}
             shallow={true}
           >

@@ -3,7 +3,6 @@ import useYears from "@/services/years"
 import useDeaths from "@/services/deaths"
 import { useTheme } from "@/services/themes"
 import DefaultChart from "@/components/Chart"
-import { useEffect } from "react"
 
 const average = (nums: [number]) => nums.reduce((a, b) => a + b) / nums.length
 
@@ -25,13 +24,6 @@ const Chart = () => {
   const [{ labels, data }] = useDeaths()
   const { values: theme = {} } = useTheme()
 
-  console.log("CHART useDeaths", labels, data)
-
-  useEffect(
-    () => console.log("%cCHART render", "background: #222; color: #bada55"),
-    []
-  )
-
   const max = getMaximum(data)
 
   const xAxes = [{}]
@@ -46,11 +38,11 @@ const Chart = () => {
 
   const defaultColor = "#ffffff"
 
-  const gradient: [number, string][] = [
-    [0, hexToRgba(theme.primary || defaultColor, 0.5)],
-    [0.2, hexToRgba(theme.primary || defaultColor, 0.2)],
-    [0.5, hexToRgba(theme.primary || defaultColor, 0)],
-  ]
+  // const gradient: [number, string][] = [
+  //   [0, hexToRgba(theme.primary || defaultColor, 0.5)],
+  //   [0.2, hexToRgba(theme.primary || defaultColor, 0.2)],
+  //   [0.5, hexToRgba(theme.primary || defaultColor, 0)],
+  // ]
 
   const datasets =
     years &&
@@ -58,11 +50,12 @@ const Chart = () => {
       (datasets, year) => (
         years[year] &&
           datasets.push({
-            pointRadius: 5,
             label: year,
+            pointRadius: 5,
             pointBorderColor: theme.primary,
-            pointBackgroundColor: theme.surface,
             data: (data || {})[+year - 2000],
+            pointBackgroundColor: theme.surface,
+            backgroundColor: hexToRgba(theme.primary || defaultColor, 0.1),
           }),
         datasets
       ),
@@ -110,7 +103,9 @@ const Chart = () => {
     formatter: (value, { active, dataIndex, dataset: { label, data } }) =>
       active
         ? `${dataIndex + 1}/${label}\n${data[dataIndex]} décès`
-        : (value / 1000).toFixed() + "K",
+        : value > 1000
+        ? (value / 1000).toFixed() + "K"
+        : value,
   }
 
   return (
@@ -120,7 +115,7 @@ const Chart = () => {
         yAxes={yAxes}
         labels={labels}
         datasets={datasets}
-        gradient={gradient}
+        // gradient={gradient}
         datalabels={datalabels}
         annotations={annotations}
       />

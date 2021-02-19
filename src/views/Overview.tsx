@@ -9,7 +9,6 @@ const average = (nums: [number]) => nums.reduce((a, b) => a + b) / nums.length
 const Overview = () => {
   const [{ labels, data }] = useOverview()
   const { values: theme = {} } = useTheme()
-  console.log("overview", labels, data)
 
   const max = Math.max(...data)
 
@@ -31,6 +30,7 @@ const Overview = () => {
       label: "Décès",
       pointBorderColor: theme.primary,
       pointBackgroundColor: theme.surface,
+      backgroundColor: hexToRgba(theme.primary || defaultColor, 0.15),
       datalabels: {
         align: "end",
         anchor: "end",
@@ -42,11 +42,11 @@ const Overview = () => {
     },
   ]
 
-  const gradient: [number, string][] = [
-    [0, hexToRgba(theme.primary || defaultColor, 0.5)],
-    [0.2, hexToRgba(theme.primary || defaultColor, 0.2)],
-    [0.5, hexToRgba(theme.primary || defaultColor, 0)],
-  ]
+  // const gradient: [number, string][] = [
+  //   [0, hexToRgba(theme.primary || defaultColor, 0.5)],
+  //   [0.2, hexToRgba(theme.primary || defaultColor, 0.2)],
+  //   [0.5, hexToRgba(theme.primary || defaultColor, 0)],
+  // ]
 
   const annotations = max && [
     {
@@ -92,7 +92,7 @@ const Overview = () => {
           yAxes={yAxes}
           labels={labels}
           datasets={datasets}
-          gradient={gradient}
+          // gradient={gradient}
           datalabels={datalabels}
           annotations={annotations}
         />
