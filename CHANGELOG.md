@@ -1,3 +1,10 @@
+# [1.11.0-alpha.8](https://github.com/chewam/deaths/compare/v1.11.0-alpha.7...v1.11.0-alpha.8) (2021-02-21)
+
+
+### Bug Fixes
+
+* Map colors. ([1d5c01b](https://github.com/chewam/deaths/commit/1d5c01bc95554fb8086d075712338863101cf109))
+
 # [1.11.0-alpha.7](https://github.com/chewam/deaths/compare/v1.11.0-alpha.6...v1.11.0-alpha.7) (2021-02-21)
 
 
