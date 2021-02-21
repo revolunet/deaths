@@ -25,12 +25,16 @@ const getMonthsData = (ageGroups: number[][][], start: number, end: number) =>
       []
     )
 
-const filter2 = (data, { gender, ageGroup }: Filters) => {
+const filterMonths = (data, { gender, ageGroup }: Filters) => {
   const d =
     gender && ageGroup
-      ? sumAgeGroups(data[gender].ageGroups, ageGroup[0] / 10, ageGroup[1] / 10)
+      ? getMonthsData(
+          data[gender].ageGroups,
+          ageGroup[0] / 10,
+          ageGroup[1] / 10
+        )
       : gender
-      ? data[gender].global
+      ? getMonthsData(data[gender].global, ageGroup[0] / 10, ageGroup[1] / 10)
       : getMonthsData(data?.ageGroups, ageGroup[0] / 10, ageGroup[1] / 10)
 
   return { labels: data.labels, data: d }
@@ -58,7 +62,7 @@ const useRawDeaths = () => {
 
   if (data && filters) {
     const filteredData = filter(data, filters)
-    const filteredData2 = filter2(data, filters)
+    const filteredData2 = filterMonths(data, filters)
     setDeaths(filteredData)
     setMonths(filteredData2)
     setOverview(filteredData)

@@ -14,7 +14,7 @@ const Map = ({ onOver, yearIndex }) => {
 
   const colorScale = scaleQuantize()
     .domain([1, 10])
-    .range(theme.scale.split(", "))
+    .range(theme.scale.split(","))
 
   const getColor = (count) =>
     colorScale(count ? Math.round((count * 10) / max) : 0)
