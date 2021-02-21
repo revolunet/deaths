@@ -1,4 +1,5 @@
 import Deaths from "@/views/Deaths"
+import Months from "@/views/Months"
 import Filters from "@/views/Filters"
 import Overview from "@/views/Overview"
 import { useRouter } from "next/router"
@@ -37,7 +38,7 @@ const Views = () => {
         ) : view === "locations" ? (
           <Locations />
         ) : (
-          <div className="views">DASHBOARD</div>
+          <Months />
         )}
       </ComponentTransition>
       {/* </div> */}

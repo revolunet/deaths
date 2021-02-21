@@ -1,6 +1,6 @@
 import merge from "deepmerge"
 import hexToRgba from "hex-to-rgba"
-import { defaults, Line } from "react-chartjs-2"
+import { Line } from "react-chartjs-2"
 import { useTheme } from "@/services/themes"
 import "chartjs-plugin-annotation"
 import "chartjs-plugin-datalabels"

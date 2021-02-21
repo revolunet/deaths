@@ -87,7 +87,7 @@ const Mortality = () => {
 
   const datalabels = {
     color: ({ active }) => (active ? theme["on-primary"] : theme.primary),
-    display: function ({ active, dataset, dataIndex, chart: { scales } }) {
+    display: ({ active, dataset, dataIndex, chart: { scales } }) => {
       const end = scales["y-axis-1"].end
       return active || dataset.data[dataIndex] > end * 0.05
     },
