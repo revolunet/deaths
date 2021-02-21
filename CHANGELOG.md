@@ -1,3 +1,10 @@
+# [1.11.0-alpha.7](https://github.com/chewam/deaths/compare/v1.11.0-alpha.6...v1.11.0-alpha.7) (2021-02-21)
+
+
+### Features
+
+* Add dashboard. ([29b09ed](https://github.com/chewam/deaths/commit/29b09ed1e717776ec7b63e677f764ae33f79ade5))
+
 # [1.11.0-alpha.6](https://github.com/chewam/deaths/compare/v1.11.0-alpha.5...v1.11.0-alpha.6) (2021-02-19)
 
 
