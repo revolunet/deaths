@@ -4,7 +4,7 @@ import { getRatio, getTotal } from "@utils/deaths"
 
 const List = ({ years, toggleYear }) => {
   const { f } = useI18n()
-
+  const deathsRatio = getRatio(year);
   return (
     <ul className="list">
       {Object.keys(years)
@@ -30,9 +30,9 @@ const List = ({ years, toggleYear }) => {
                 <div>
                   {getTotal(year)} {f("deaths")}
                 </div>
-                <div>
-                  {getRatio(year)}% {f("mortality")}
-                </div>
+                {!isNaN(deathsRatio) && <div>
+                  {deathsRatio}% {f("mortality")}
+                </div>}
               </div>
             </div>
           </li>
